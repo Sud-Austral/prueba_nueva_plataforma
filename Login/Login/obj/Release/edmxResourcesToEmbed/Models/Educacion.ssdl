@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="prueba_educacion1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TABLA_PRUEBA_EDUCACION">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="coleccion" Type="varchar(max)" />
+    <Property Name="sector" Type="varchar(max)" />
+    <Property Name="tema" Type="varchar(max)" />
+    <Property Name="contenido" Type="varchar(max)" />
+    <Property Name="pais" Type="varchar(max)" />
+    <Property Name="escala" Type="varchar(max)" />
+    <Property Name="territorio" Type="varchar(max)" />
+    <Property Name="temporalidad" Type="varchar(max)" />
+    <Property Name="unidad_medida" Type="varchar(max)" />
+    <Property Name="fuente" Type="varchar(max)" />
+    <Property Name="titulo" Type="varchar(max)" />
+    <Property Name="descripcion_larga" Type="varchar(max)" />
+    <Property Name="visualizacion" Type="varchar(max)" />
+    <Property Name="tag" Type="varchar(max)" />
+    <Property Name="url" Type="varchar(max)" />
+    <Property Name="filtro_url" Type="varchar(max)" />
+    <Property Name="filtro_integrado" Type="varchar(max)" />
+    <Property Name="muestra" Type="varchar(max)" />
+    <Property Name="suscripcion" Type="varchar(max)" />
+    <Property Name="coleccion_id" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="prueba_educacion1ModelStoreContainer">
+    <EntitySet Name="TABLA_PRUEBA_EDUCACION" EntityType="Self.TABLA_PRUEBA_EDUCACION" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="prueba_educacion1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TABLA_PRUEBA_EDUCACION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="coleccion" Type="varchar(max)" />
+          <Property Name="sector" Type="varchar(max)" />
+          <Property Name="tema" Type="varchar(max)" />
+          <Property Name="contenido" Type="varchar(max)" />
+          <Property Name="pais" Type="varchar(max)" />
+          <Property Name="escala" Type="varchar(max)" />
+          <Property Name="territorio" Type="varchar(max)" />
+          <Property Name="temporalidad" Type="varchar(max)" />
+          <Property Name="unidad_medida" Type="varchar(max)" />
+          <Property Name="fuente" Type="varchar(max)" />
+          <Property Name="titulo" Type="varchar(max)" />
+          <Property Name="descripcion_larga" Type="varchar(max)" />
+          <Property Name="visualizacion" Type="varchar(max)" />
+          <Property Name="tag" Type="varchar(max)" />
+          <Property Name="url" Type="varchar(max)" />
+          <Property Name="filtro_url" Type="varchar(max)" />
+          <Property Name="filtro_integrado" Type="varchar(max)" />
+          <Property Name="muestra" Type="varchar(max)" />
+          <Property Name="suscripcion" Type="varchar(max)" />
+          <Property Name="coleccion_id" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="prueba_educacion1ModelStoreContainer">
+          <EntitySet Name="TABLA_PRUEBA_EDUCACION" EntityType="Self.TABLA_PRUEBA_EDUCACION" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="prueba_educacion1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TABLA_PRUEBA_EDUCACION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="coleccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sector" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tema" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="escala" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="territorio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="temporalidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="unidad_medida" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fuente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_larga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="visualizacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="filtro_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="filtro_integrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="muestra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suscripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="coleccion_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="prueba_educacion1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TABLA_PRUEBA_EDUCACION" EntityType="Self.TABLA_PRUEBA_EDUCACION" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="prueba_educacion1ModelStoreContainer" CdmEntityContainer="prueba_educacion1Entities">
+          <EntitySetMapping Name="TABLA_PRUEBA_EDUCACION">
+            <EntityTypeMapping TypeName="prueba_educacion1Model.TABLA_PRUEBA_EDUCACION">
+              <MappingFragment StoreEntitySet="TABLA_PRUEBA_EDUCACION">
+                <ScalarProperty Name="coleccion_id" ColumnName="coleccion_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="coleccion" ColumnName="coleccion" />
+                <ScalarProperty Name="sector" ColumnName="sector" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="escala" ColumnName="escala" />
+                <ScalarProperty Name="territorio" ColumnName="territorio" />
+                <ScalarProperty Name="temporalidad" ColumnName="temporalidad" />
+                <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion_larga" ColumnName="descripcion_larga" />
+                <ScalarProperty Name="visualizacion" ColumnName="visualizacion" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="filtro_url" ColumnName="filtro_url" />
+                <ScalarProperty Name="filtro_integrado" ColumnName="filtro_integrado" />
+                <ScalarProperty Name="muestra" ColumnName="muestra" />
+                <ScalarProperty Name="suscripcion" ColumnName="suscripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

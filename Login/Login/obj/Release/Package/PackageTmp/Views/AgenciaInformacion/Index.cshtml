@@ -50,7 +50,7 @@
                 <button type="button" class="btn  btn-warning m-1" style="font-size: 0.8rem; width: 70%;">País</button>
                 <button type="button" class="btn  btn-info m-1" style="font-size: 0.8rem; width: 70%;">Escala</button>
                 <button type="button" class="btn  btn-primary m-1" style="font-size: 0.8rem; width: 70%;">Territorio</button>
-                <button type="button" class="btn  btn-dark m-1" style="font-size: 0.8rem; width: 70%;">Temporalidad</button>
+                <button type="button" class="btn  btn-dark m-1 " style="font-size: 0.8rem; width: 70%;">Temporalidad</button>
                 <button type="button" class="btn  btn-primary m-1" style="font-size: 0.8rem; width: 70%;">Unidad Medida</button>
             </div>
             <div class="col-11 col-md-2 mx-auto d-none d-md-block">
@@ -234,7 +234,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Compartir</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Código para insertar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -242,18 +242,23 @@
                         <div class="row">
                             @*<div class="col-md-10">.col-md-4</div>*@
                             <div class="col-md-12 ms-auto">
-                                <input style="width: 100%; height: 100px;" type="text" id="urliframe" name="urliframe" value="@ViewBag.Grafico.url">
+                                <p class="fw-light">Vínculo para enviar por correo electrónico</p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-10 ms-auto">
+                                <input style="width: 100%;" type="text" id="urliframe" name="urliframe" value="@ViewBag.Grafico.url">
+                            </div>
+                            <div class="col-md-2">
                                 <button onclick="copiarurlIframe()" class="btn-primary">Copiar</button>
                             </div>
                         </div>
-                        <div class="row mt-2">
-                            @*<div class="col-md-10">.col-md-4</div>*@
+                        <div class="row mt-5">
                             <div class="col-md-12 ms-auto">
-                                <input style="width: 100%; height: 100px;" type="text" id="codigoIframe" name="codigoIframe" value='<iframe width="600" height="373.5" <span></span> src="@ViewBag.Grafico.url" frameborder="0" allowFullScreen="true"></iframe>'>
+                                <p class="fw-light">Código HTML que puede pegar en un sitio web</p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-10 ms-auto">
+                                <input style="width: 100%;" type="text" id="codigoIframe" name="codigoIframe" value='<iframe width="600" height="373.5" <span></span> src="@ViewBag.Grafico.url" frameborder="0" allowFullScreen="true"></iframe>'>
+                            </div>
+                            <div class="col-md-2">
                                 <button onclick="copiarcodigoIframe()" class="btn-primary">Copiar</button>
                             </div>
                         </div>

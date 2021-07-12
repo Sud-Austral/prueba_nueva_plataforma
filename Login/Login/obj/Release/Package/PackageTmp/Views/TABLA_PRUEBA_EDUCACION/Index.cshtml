@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Login.Models.TABLA_PRUEBA_EDUCACION>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.coleccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sector)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.escala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.territorio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.temporalidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unidad_medida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fuente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion_larga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.visualizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filtro_url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filtro_integrado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.muestra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.suscripcion)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.coleccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sector)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.escala)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.territorio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.temporalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unidad_medida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fuente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion_larga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.visualizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.filtro_url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.filtro_integrado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.muestra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.suscripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

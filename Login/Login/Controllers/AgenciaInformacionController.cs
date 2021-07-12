@@ -12,22 +12,23 @@ namespace Login.Controllers
     {
         private agenciaEntities1 db = new agenciaEntities1();
         private graficosEntities dbGrafico = new graficosEntities();
+        private prueba_educacion1Entities dbEducacion = new prueba_educacion1Entities();
         public ActionResult Index(int id = 0)
         {
-            ViewBag.Grafico = db.AGENCIA_INFORMACION.Where(x => x.id == id).First();
+            ViewBag.Grafico = dbEducacion.TABLA_PRUEBA_EDUCACION.Where(x => x.id == id).First();
             return View();
         }
 
         public ActionResult paginabusqueda(string id = "NO_RESULT")
         {
-            IEnumerable<AGENCIA_INFORMACION> union;
+            IEnumerable<TABLA_PRUEBA_EDUCACION> union;
             if(id == "NO_RESULT")
             {
-                union = db.AGENCIA_INFORMACION;
+                union = dbEducacion.TABLA_PRUEBA_EDUCACION;
             }
             else
             {
-                union = db.AGENCIA_INFORMACION.Where(x => x.titulo.Contains(id) || x.tag.Contains(id));
+                union = dbEducacion.TABLA_PRUEBA_EDUCACION.Where(x => x.titulo.Contains(id) || x.tag.Contains(id));
             }
             
             ViewBag.Resultado = union;
@@ -51,6 +52,8 @@ namespace Login.Controllers
             List<string> Tema = new List<string>();
             List<string> Contenido = new List<string>();
             List<string> Coleccion = new List<string>();
+            Escala.Add("parche");
+            Paises.Add("parche");
             foreach (var item in union)
             {
                 if (!Paises.Contains(item.territorio))

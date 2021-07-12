@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="prueba_educacion1ModelStoreContainer" CdmEntityContainer="prueba_educacion1Entities">
+    <EntitySetMapping Name="TABLA_PRUEBA_EDUCACION">
+      <EntityTypeMapping TypeName="prueba_educacion1Model.TABLA_PRUEBA_EDUCACION">
+        <MappingFragment StoreEntitySet="TABLA_PRUEBA_EDUCACION">
+          <ScalarProperty Name="coleccion_id" ColumnName="coleccion_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="coleccion" ColumnName="coleccion" />
+          <ScalarProperty Name="sector" ColumnName="sector" />
+          <ScalarProperty Name="tema" ColumnName="tema" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="escala" ColumnName="escala" />
+          <ScalarProperty Name="territorio" ColumnName="territorio" />
+          <ScalarProperty Name="temporalidad" ColumnName="temporalidad" />
+          <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion_larga" ColumnName="descripcion_larga" />
+          <ScalarProperty Name="visualizacion" ColumnName="visualizacion" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="filtro_url" ColumnName="filtro_url" />
+          <ScalarProperty Name="filtro_integrado" ColumnName="filtro_integrado" />
+          <ScalarProperty Name="muestra" ColumnName="muestra" />
+          <ScalarProperty Name="suscripcion" ColumnName="suscripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

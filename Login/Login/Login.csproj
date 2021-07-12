@@ -202,6 +202,7 @@
     <Compile Include="Controllers\PaginaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ReadAPIController.cs" />
+    <Compile Include="Controllers\TABLA_PRUEBA_EDUCACIONController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -236,6 +237,21 @@
     </Compile>
     <Compile Include="Models\DETALLE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Educacion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Educacion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Educacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Educacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Educacion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Educacion.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\FUENTE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -282,6 +298,9 @@
     </Compile>
     <Compile Include="Models\ShopifyYSuscripciones.cs" />
     <Compile Include="Models\Suscripcion.cs" />
+    <Compile Include="Models\TABLA_PRUEBA_EDUCACION.cs">
+      <DependentUpon>Educacion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TEMPORALIDAD.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -756,6 +775,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Agencia.edmx</DependentUpon>
       <LastGenOutput>Agencia.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Educacion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Educacion.edmx</DependentUpon>
+      <LastGenOutput>Educacion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Educacion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Educacion.edmx</DependentUpon>
+      <LastGenOutput>Educacion.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2970,10 +2999,14 @@
     <Content Include="Content\assets Home page\vendor\remixicon\remixicon.ttf" />
     <Content Include="Content\assets Home page\vendor\remixicon\remixicon.woff" />
     <Content Include="Content\assets Home page\vendor\remixicon\remixicon.woff2" />
-    <None Include="Properties\PublishProfiles\agencia-informacion - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\ServicioDashboard - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ServicioDashboard - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ServicioDashboard - Web Deploy.pubxml" />
+    <EntityDeploy Include="Models\Educacion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Educacion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Educacion.edmx.diagram">
+      <DependentUpon>Educacion.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\prueba-educacion1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\Index2.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
@@ -3240,6 +3273,11 @@
     <Content Include="Views\AgenciaInformacion\paginabusqueda.cshtml" />
     <Content Include="Views\Shared\_LayoutAgencia.cshtml" />
     <Content Include="Views\AgenciaInformacion\Home.cshtml" />
+    <Content Include="Views\TABLA_PRUEBA_EDUCACION\Create.cshtml" />
+    <Content Include="Views\TABLA_PRUEBA_EDUCACION\Delete.cshtml" />
+    <Content Include="Views\TABLA_PRUEBA_EDUCACION\Details.cshtml" />
+    <Content Include="Views\TABLA_PRUEBA_EDUCACION\Edit.cshtml" />
+    <Content Include="Views\TABLA_PRUEBA_EDUCACION\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
