@@ -1,0 +1,463 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+}
+/*estilos de los efectos del navbar principal*/
+.navbarClent {
+    background-color: #BC1423 !important;
+}
+.nav-link {
+    transition: 0.3s ease;
+    /* background: #3fa46a;*/
+    /*  color: #ffffff;*/
+    font-size: 16px;
+    text-decoration: none;
+    /*border-top: 4px solid #3fa46a;
+    border-bottom: 4px solid #3fa46a;*/
+    padding: 20px 0;
+    margin: 0 20px;
+}
+
+    .nav-link:hover {
+        border-top: 4px solid #fff;
+        border-bottom: 4px solid #fff;
+        padding: 6px 0;
+        background-color: #afabab;
+    }
+/*fin estilos de los efectos del navbar principal*/
+/****content-logo********/
+.content-logo {
+    width: 200px;
+    height: auto;
+}
+
+    .content-logo img {
+        width: 100%;
+        height: 100%;
+    }
+/****final content-logo********/
+.content-header {
+    width: 100%;
+    text-align: center;
+    background-color: #B3B1B2;
+}
+
+    .content-header h3 {
+        font-weight: 100;
+        margin-top: 20px;
+    }
+/*estilos titulo de header*/
+
+
+
+
+
+/*segunda propuesta*/
+/*#titulo1 {
+    margin-top: 20px;
+    font: 100 2em/1 "Oswald", sans-serif;*/
+/* Clip Background Image */
+/*background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;*/
+/* Animate Background Image */
+/*-webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;*/
+/* Activate hardware acceleration for smoother animations */
+/*-webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}*/
+
+/* Animate Background Image */
+/*@-webkit-keyframes aitf {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }*/
+/*estilos texto en el header*/
+}
+/*Estilos del primer parrafo de content1 antes del buscador*/
+body #centerbox {
+    width: 500px;
+    margin: 0 auto;
+}
+
+article.highlight {
+    margin-bottom: 10px;
+    color: #000000;
+    background: #cecece;
+    background: #B3B1B2;
+    border-radius: 5px;
+}
+
+    article.highlight * {
+        transition: color 0.1s linear;
+    }
+
+    article.highlight span {
+        color: #000000 !important;
+    }
+
+    article.highlight p {
+        margin: 0;
+    }
+
+    article.highlight:hover, article.highlight.hover {
+        color: #cecece;
+    }
+/* fin Estilos del primer parrafo de content1 antes del buscador*/
+.content1 {
+    width: 100%;
+    text-align: center;
+    background-color: #B3B1B2;
+}
+
+#content1-p2 {
+    font-size: 12px;
+}
+
+.content1 h3 {
+    font-weight: 100;
+    margin-top: 20px;
+}
+
+.content2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+    .content2 p {
+        width: 100%;
+        margin-top: 10px;
+    }
+/*Estilos de contenidos de los cuadros*/
+.container .card {
+    border: none;
+    cursor: pointer;
+}
+
+    .container .card .face {
+        height: 200px;
+        transition: 0.5s;
+    }
+
+        .container .card .face.face1 {
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            transform: translateY(100px);
+        }
+
+    .container .card:hover .face.face1 {
+        background: #00a135;
+        transform: translateY(0);
+    }
+
+    .container .card .face.face1 .content {
+        opacity: 0.2;
+        transition: 0.5s;
+    }
+
+    .container .card:hover .face.face1 .content {
+        opacity: 1;
+    }
+
+    .container .card .face.face1 .content img {
+        max-width: 100px;
+    }
+
+    .container .card .face.face1 .content h3 {
+        margin: 10px 0 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .container .card .face.face2 {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        transform: translateY(-100px);
+    }
+
+    .container .card:hover .face.face2 {
+        transform: translateY(0);
+    }
+
+    .container .card .face.face2 .content p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container .card .face.face2 .content a:hover {
+        background: #333;
+        color: #fff;
+    }
+
+/*estos estilos para la otra propuesta*/
+/*.quotes .box:hover {
+    color: #f2f2f2;
+    box-shadow: 20px 50px 100px rgba(0, 0, 0, 0.5);
+}
+
+.quotes .box.box1:hover,
+.quotes .box.box1:hover ~ .bg {
+    opacity: 1;
+    background: #e2a9e5;
+    background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+    background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
+    background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2a9e5', endColorstr='#2b94e5',GradientType=1 );
+}
+
+.quotes .box.box2:hover,
+.quotes .box.box2:hover ~ .bg {
+    opacity: 1;
+    background: #632c65;
+    background: -moz-linear-gradient(-45deg, #632c65 15%, #56a5e2 100%);
+    background: -webkit-linear-gradient(-45deg, #632c65 15%,#56a5e2 100%);
+    background: linear-gradient(135deg, #632c65 15%,#56a5e2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#632c65', endColorstr='#56a5e2',GradientType=1 );
+}
+
+.quotes .box.box3:hover,
+.quotes .box.box3:hover ~ .bg {
+    opacity: 1;
+    background: #4b384c;
+    background: -moz-linear-gradient(-45deg, #4b384c 15%, #da5de2 100%);
+    background: -webkit-linear-gradient(-45deg, #4b384c 15%,#da5de2 100%);
+    background: linear-gradient(135deg, #4b384c 15%,#da5de2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b384c', endColorstr='#da5de2',GradientType=1 );
+}
+.content2-cuadros {
+    border: 2px solid #BFBFBF;
+    border-radius: 10%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+*/
+/*fin Estilos de contenidos de los cuadros*/
+.content3 {
+    width: 100%;
+    text-align: center;
+    background-color: #EDEDED;
+}
+
+    .content3 h3 {
+        margin-top: 40px;
+    }
+
+.content4 {
+    width: 100%;
+    text-align: center;
+}
+
+    .content4 h3 {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .content4 img {
+        margin-top: 40px;
+    }
+
+    .content4 a {
+        margin-bottom: 10px;
+    }
+
+#content4-p1 {
+    font-size: 12px;
+}
+
+/*efecto de botones en content4*/
+/* SIBLING FADE: fade out siblings around a hovered item */
+
+.sibling-fade {
+    visibility: hidden;
+}
+    /* Prevents :hover from triggering in the gaps between items */
+
+    .sibling-fade > * {
+        visibility: visible;
+    }
+    /* Brings the child items back in, even though the parent is `hidden` */
+
+    .sibling-fade > * {
+        transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+    }
+    /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
+
+    .sibling-fade:hover > * {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    /* Fade out all items when the parent is hovered */
+
+    .sibling-fade > *:hover {
+        opacity: 1;
+        transform: scale(1);
+        transition-delay: 0ms, 0ms;
+    }
+/* Fade in the currently hovered item */
+
+.content5 {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+    .content5 p {
+        margin-top: 60px;
+    }
+
+    .content5 img {
+        border-radius: 50%;
+        width: 170px;
+        height: 170px;
+    }
+
+/*Estilos de las comillas grande */
+blockquote:before {
+    content: "\201C"; /* inicio comilla */
+    font-family: Georgia;
+    font-size: 60px; /* tamaño */
+    font-weight: bold;
+    line-height: 0px;
+    color: #000; /* Color  */
+    vertical-align: middle;
+    float: left;
+}
+
+blockquote:after { /* final */
+    content: "\201D";
+    font-family: Georgia;
+    font-size: 60px; /* tamaño */
+    font-weight: bold;
+    line-height: 0px;
+    color: #000; /* Color  */
+    vertical-align: middle;
+    padding-top: 10px;
+    float: right;
+}
+/*Estilos de las comillas grande */
+/*medias query*/
+@media screen and (min-width:768px) {
+    .content5-secciones div {
+        border-right: 2px solid #000000;
+    }
+
+    .content5 p {
+        width: 70%;
+        margin: auto;
+    }
+    /* INICIA ESTILOS COLECCIONES*/
+    .h5coleccion {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .pcoleccion {
+        font-size: 1.1rem;
+    }
+    /* FIN ESTILOS COLECCIONES*/
+
+}
+
+@media screen and (max-width:768px) {
+    .slide-big {
+        display: none;
+    }
+}
+
+/* INICIA ESTILOS COLECCIONES*/
+@media screen and (max-width:576px) {
+    .h5coleccion {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .pcoleccion {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:768px) {
+    .h5coleccion {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .pcoleccion {
+        font-size: 1rem;
+    }
+}
+/*CSS Menú MOVIL */
+.ddcolecciones {
+    background-color: #dbdde9;
+}
+
+.ddhcolecciones:hover {
+    font-weight: bold;
+}
+
+/*CSS Menú*/
+.h6colecciones {
+    padding-left: 10px !important;
+    padding-top: 35px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #d1d3de;
+}
+
+.liacolecciones {
+    padding: 5px !important;
+    margin: 0px !important;
+    padding-left: 10px !important;
+}
+
+    .liacolecciones:hover {
+        background-color: #ffffff;
+    }
+
+    .liacolecciones:active {
+        color: #00a135 !important;
+    }
+
+.ulcolecciones {
+    background-color: #dbdde9 !important;
+}
+
+.lispancolecciones {
+    color: #000000 !important;
+}
+
+.icolecciones {
+    color: #1671b8;
+}
+
+.licolecciones {
+    border-bottom: 1px solid #d1d3de;
+}
+
+.cardcoleccion {
+    border-color: transparent;
+    background-color: transparent;
+}
+/* TERMINA ESTILOS COLECCIONES*/

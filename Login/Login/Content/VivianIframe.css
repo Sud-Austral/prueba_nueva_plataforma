@@ -1,0 +1,23 @@
+﻿body {
+}
+@page {
+    margin: 0; 
+}
+@page {
+    size:A4;
+    size:landscape;
+    zoom:80% !important;
+    transform:scale(.5) !important;
+}
+
+
+@media print{
+    #chart_wrap {
+        display: block !important;
+    }
+
+    desabilita las opcion de print de pdf
+    * {
+        -webkit-print-color-adjust:exact !important;
+    }
+}
