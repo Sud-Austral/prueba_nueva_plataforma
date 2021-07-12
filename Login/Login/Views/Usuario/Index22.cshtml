@@ -1,0 +1,1264 @@
+﻿
+
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DATAINTELLIGENCE | DashboardS</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!--Estilos del de los productos-->
+    <link href="~/Content/EstilosNuevoMenuLateral.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap/css/StyleUsuarioBootstrap.css" rel="stylesheet" />
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- iCheck -->
+    <link href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
+    <!-- JQVMap -->
+    <link href="~/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+    <!-- overlayScrollbars -->
+    <link href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />
+    <!-- Daterange picker -->
+    <link href="~/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- summernote -->
+    <link href="~/plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <script>
+
+
+        function mostrador(seccion) {
+            var arreglo = [
+                '#uno',
+                '#dos',
+                '#tres',
+                '#cuatro',
+                '#cinco',
+                '#seis',
+                '#siete',
+                '#ocho',
+                '#nueve',
+                '#diez',
+                '#once',
+                '#doce',
+                '#trece',
+                '#catorce',
+                '#quince',
+                '#dieciséis'
+            ];
+            //arreglo.forEach
+            jQuery.each(arreglo, function (i, val) {
+                $(val).hide();
+            });
+            $(seccion).show();
+
+        }
+    </script>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed ">
+    <div class="wrapper" >
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/Content/img/negro-rojo-trans - copia.png" alt="DATAINTELLIGENCE"
+                 @*height="300" width="300">*@
+                 height="364" width="1704">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="https://www.dataintelligence-group.com/" class="brand-link">
+                <img src="~/Content/img/Icono_dataIntelligence_Rojo.png" alt="DATAINTELLIGENCE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light" style="font-size:16px;">DATAINTELLIGENCE</span>
+
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar mb-5">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    @*
+            <div class="image">
+                <img src="~/assets/img/avatars/avatar1.jpeg" class="img-circle elevation-2" alt="User Image">
+            </div>
+                    *@
+                    <div class="info">
+                        <a href="#" class="d-block">@ViewBag.User</a>
+                    </div>
+                </div>
+                <p class="m-2" style="color:#fff;">
+                    Buscar en mis Suscripciones
+                    @*<i class="fas fa-angle-left right"></i>*@
+                </p>
+                <!-- SidebarSearch Form -->
+              
+                <div class="form-inline mb-5">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input  class="form-control form-control-sidebar" type="search" placeholder="Buscar en mis Suscripciones" aria-label="Search" style="font-size:13px;">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--<form class="input-group mb-5" href="/Usuario/Index?id=" >-->@*onsubmit="BuscadorSuscripciones(event);"*@
+                <!--<div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar"  type="search" placeholder="Buscar en mis Suscripciones" aria-label="Search" style="font-size:13px;">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar" type="submit" value="Submit">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>-->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2 ">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item mb-3 pb-3" style="border-bottom:0.5px solid #808080;">
+                            <a onclick="mostrador('#uno');" href="#" class="nav-link " style="border:1px solid #377db3">
+                                <i class="nav-icon fa-question-circle-o"></i>
+                                <p>
+                                    INICIO
+
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3 pb-3" style="border-bottom:0.5px solid #808080;">
+                            <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                @*<i class="nav-icon fas fa-edit"></i>*@
+                                <p>
+                                    MIS SUSCRIPCIONES
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            @if (ViewBag.Menu.Count > 0)
+                            {
+                                foreach (var item in ViewBag.Menu)
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link" style=" border-bottom:1px solid #377db3">
+                                                @*<i class="far fa-circle nav-icon"></i>*@
+                                                @* <img src="~/Content/img/iconos_sector/10.png" />*@
+                                                @{
+                                                    string RutaImagen = "/Content/img/iconos_sector/" + item.id + ".png";
+                                                }
+                                                <img class="img-fluid" style="width:25px;" src="@RutaImagen" />
+                                                <p style="color:#518bb3">
+                                                    @*Industria*@
+                                                    @item.nombre
+                                                    <i class="fas fa-angle-left right"></i>
+                                                </p>
+                                            </a>
+                                            @foreach (var item2 in item.SECTOR)
+                                            {
+                                                <ul class="nav nav-treeview">
+                                                    <li class="nav-item" style="border-bottom:0.5px solid #fff">
+                                                        <a href="#" class="nav-link">
+                                                            @*<i class="far fa-circle nav-icon"></i>*@
+                                                            <i class="fas fa-circle mr-1" style="color:#fff; "></i>
+                                                            <p>
+                                                                Colección
+                                                                @item2.nombre
+                                                                <i class="fas fa-angle-left right"></i>
+                                                            </p>
+                                                        </a>
+                                                        @foreach (var item3 in item2.PRODUCTO)
+                                                        {
+                                                            <ul class="nav nav-treeview">
+                                                                <li class="nav-item" style="border-bottom:0.5px solid #808080">
+                                                                    <a href="#" class="nav-link">
+                                                                        <i class="far fa-circle nav-icon"></i>
+                                                                        <p>
+
+                                                                            @item3.nombre
+                                                                            <i class="fas fa-angle-left right"></i>
+                                                                        </p>
+                                                                    </a>
+                                                                    @foreach (var item4 in item3.CATEGORIA)
+                                                                    {
+                                                                        <ul class="nav nav-treeview menu" data-animation="diagonal">
+                                                                            @*el id ChangeColor cambia el color de fondo a rojo en la hoja que se llama EstilosNuevoMenuLateral linea 65*@
+                                                                            <li id="ChangeColor" class="nav-item " style="cursor: pointer;">
+
+                                                                                <a href="index2/@item4.id" onclick="event.preventDefault(); mostrador('#siete'); fnClick('@item4.id') " class="nav-link">
+                                                                                    <span class="border border-top"></span>
+                                                                                    <span class="border border-right"></span>
+                                                                                    <span class="border border-bottom"></span>
+                                                                                    <span class="border border-left"></span>
+                                                                                    @*href="/Usuario/Resultados2?id==2" class="nav-link">*@
+
+                                                                                    @*<i class="far fa-circle nav-icon"></i>*@
+                                                                                    <p class="ml-5">
+                                                                                        <i class="fas fa-circle mr-3 menu " style="font-size:10px !important; color:#808080; "></i>
+                                                                                        @item4.nombre
+
+                                                                                        @*<i class="fas fa-angle-left right"></i>*@
+                                                                                    </p>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    }
+                                                                </li>
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                </ul>
+                                            }
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                            else
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>
+                                                Sin Suscripciones
+                                                <i class="fas fa-angle-left right"></i>
+                                            </p>
+                                        </a>
+                                    <li />
+                                </ul>
+                            }
+                        </li>
+
+                        <li class="nav-item mb-3 pb-3" style="border-bottom:0.5px solid #808080;">
+                            <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                @*<i class="nav-icon fas fa-edit"></i>*@
+                                <p>
+                                    MIS PRODUCTOS
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            @if (ViewBag.Menu.Count > 0)
+                            {
+                                foreach (var item in ViewBag.Menu)
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                            <a onclick="mostrador('#dos');" href="#" class="nav-link ">
+                                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                                <p style="color:#518bb3">
+                                                    Plataformas
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                            <a onclick="mostrador('#tres');" href="#" class="nav-link ">
+                                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                                <p style="color:#518bb3">
+                                                    Informes Interactivos
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                            <a onclick="mostrador('#cuatro');" href="#" class="nav-link ">
+                                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                                <p style="color:#518bb3">
+                                                    Reportes 360°
+                                                </p>
+                                            </a>
+                                        </li>
+                                        @*<li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Industria
+                                            @item.nombre
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    @foreach (var item2 in item.SECTOR)
+                                    {
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="#" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>
+                                                        Sector
+                                                        @item2.nombre
+                                                        <i class="fas fa-angle-left right"></i>
+                                                    </p>
+                                                </a>
+                                                @foreach (var item3 in item2.PRODUCTO)
+                                                {
+                                                    <ul class="nav nav-treeview">
+                                                        <li class="nav-item">
+                                                            <a href="#" class="nav-link">
+                                                                <i class="far fa-circle nav-icon"></i>
+                                                                <p>
+                                                                    Producto
+                                                                    @item3.nombre
+                                                                    <i class="fas fa-angle-left right"></i>
+                                                                </p>
+                                                            </a>
+                                                            @foreach (var item4 in item3.CATEGORIA)
+                                                            {
+                                                                <ul class="nav nav-treeview">
+                                                                    <li class="nav-item">
+                                                                        <a href="#" class="nav-link">
+                                                                            <i class="far fa-circle nav-icon"></i>
+                                                                            <p>
+                                                                                Categoria
+                                                                                @item4.nombre
+                                                                                <i class="fas fa-angle-left right"></i>
+                                                                            </p>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            }
+                                                        </li>
+                                                    </ul>
+                                                }
+                                            </li>
+                                        </ul>
+                                    }
+                                </li>*@
+                                    </ul>
+                                }
+                            }
+                            else
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>
+                                                Sin Suscripciones
+                                                <i class="fas fa-angle-left right"></i>
+                                            </p>
+                                        </a>
+                                    <li />
+                                </ul>
+
+                            }
+                        </li>
+
+                        <li class="nav-item mb-3 pb-3" style="border-bottom:0.5px solid #808080;">
+                            <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                @*<i class="nav-icon fas fa-edit"></i>*@
+                                <p>
+                                    MI CUENTA
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            @if (ViewBag.Menu.Count > 0)
+                            {
+                                foreach (var item in ViewBag.Menu)
+                                {
+                                    <ul class="nav nav-treeview mb-5" style="list-style-type: circle">
+
+                                        <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                            <a onclick="mostrador('#seis');" href="#" class="nav-link ">
+                                                @*<i class="nav-icon fas fa-tachometer-alt"></i>*@
+                                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                                <p style="color:#518bb3">
+                                                    PERFIL
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item menu-open " style=" border-bottom: 1px solid #377db3">
+                                            <a onclick="mostrador('#cinco');" href="#" class="nav-link ">
+                                                @*<i class="nav-icon fas fa-tachometer-alt"></i>*@
+                                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                                <p style="color:#518bb3">
+                                                    PRODUCTOS FACTURADOS
+                                                </p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                }
+                            }
+                            else
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>
+                                                Sin Suscripciones
+                                                <i class="fas fa-angle-left right"></i>
+                                            </p>
+                                        </a>
+                                    <li />
+                                </ul>
+
+                            }
+                        </li>
+
+                        <li class="nav-item mb-3 pb-3" style="border-bottom:0.5px solid #808080;">
+                            <a href="#" class="nav-link" style="border:1px solid #377db3">
+                                @*<i class="nav-icon fas fa-edit"></i>*@
+                                <p>
+                                    ODOO
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                    <a href="https://www.dataintelligence-group.com/" target="_blank" class="nav-link ">
+                                        <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                        <p style="color:#518bb3">
+                                            Inicio
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                    <a href="https://www.dataintelligence-group.com/abarcamos" target="_blank" class="nav-link ">
+                                        <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                        <p style="color:#518bb3">
+                                            Abarcamos
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                    <a href="https://www.dataintelligence-group.com/ofrecemos" target="_blank" class="nav-link ">
+                                        <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                        <p style="color:#518bb3">
+                                            Ofrecemos
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                    <a href="https://www.dataintelligence-group.com/datalab" target="_blank" class="nav-link ">
+                                        <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                        <p style="color:#518bb3">
+                                            DataLab
+                                        </p>
+                                    </a>
+                                </li>
+                                @*<li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                            <a href="https://www.dataintelligence-group.com/estadisticas" target="_blank" class="nav-link ">
+                                <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                <p style="color:#518bb3">
+                                    Estadísticas
+                                </p>
+                            </a>
+                        </li>*@
+                                <li class="nav-item menu-open" style=" border-bottom:1px solid #377db3">
+                                    <a href="#" target="_blank" class="nav-link ">
+                                        <i class="fas fa-circle mr-1" style="color:#518bb3; "></i>
+                                        <p style="color:#518bb3">
+                                            Somos
+                                        </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="nav-item mb-5" style="border:1px solid #377db3">
+                            <a onclick="mostrador('#trece');" href="#" class="nav-link ">
+                                <i class="nav-icon fa-question-circle-o"></i>
+                                <p>
+                                    AYUDA
+
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!--************************ altura de cuerpo para informes Content Wrapper. Contains page content ************************** -->
+        <div class="content-wrapper " style="height:5000px; overflow:hidden;">
+            <!-- Main content -->
+            <section class="content " style="padding:0px !important;">
+                <div class="container-fluid" style="padding:0px !important; height:1800px;">
+                    <div class="d-flex flex-column " id="content-wrapper">
+                        <div id="content">
+
+                            <div class="row d-flex " style="height:130px;background-color:#ededed;">
+                                @*Boton para esconder el menu lateral*@
+                                @*<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>*@
+                                @*Boton para esconder el menu lateral*@
+                                @**********************Scrollbar en usuario index*@
+                                <div class="col-md-12 col-sm-8 text-left offset-1 ">
+                                    <h5 class="offset-1" style="color:black; margin-top:10px;">¡Explora, busca y encuentra en todo nuestro universo de datos!</h5>
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                                        </div>
+                                        @*SEARCH BAR *@
+                                        <div class="col-md-4">
+                                            <div class="p-1 bg-light  shadow-sm mb-1 mt-1" style="border-radius:20px !important;">
+                                                <form class="input-group" onsubmit="BuscadorForm2(event);">
+                                                    <div class="input-group-prepend">
+                                                        <button id="button-addon2" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+                                                    </div>
+                                                    <input type="search" id="idBusqueda" name="id" placeholder="Búsqueda por palabras claves" aria-describedby="button-addon2" class="form-control rounded border-0 bg-light" style="border-radius:25px !important;">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            @*el id searchText enlaza los estilos para los efectos de este texto en la hoja de estilos se llama EstilosNuevoMenuLateral linea 70*@
+                                            <p id="searchText" style="font-size:13px;" class="mt-2">
+                                                Busca por la palabra clave en todos los sectores de Data Intelligence.<br /> Para buscar dentro de tus productos adquiridos
+                                                utiliza el buscador secundario de la izquierda.
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            @*Productos Datas*@
+                            <div class="container-fluid  " id="dos" style="display:none;">
+
+                                @*Productos Datas*@
+                                @{ Html.RenderAction("GraficoUsuario", "Usuario");}
+                            </div>
+                            @*Informes interactivos*@
+                            <div class="container-fluid offset-1 mt-2" id="tres" style="display:none;">
+                                @{ Html.RenderAction("InformesUsuario", "Usuario");}
+
+                            </div>
+                            @*Reportes 360*@
+                            <div class="container-fluid offset-1 mt-2" id="cuatro" style="display:none;">
+                                @{ Html.RenderAction("ReportesUsuario", "Usuario");}
+
+                            </div>
+
+                            <div class="container-fluid offset-1 mt-2" id="uno" style="display:none;">
+                                @{ Html.RenderAction("Bienvenido", "Usuario");}
+
+                            </div>
+
+                            <div class="container-fluid offset-1 mt-2" id="cinco" style="display:none;">
+
+                                @{ Html.RenderAction("Facturados", "Usuario");}
+
+                            </div>
+                            <div class="container-fluid offset-1 mt-2" id="seis" style="display:none;">
+
+                                @{ Html.RenderAction("PerfilUsuario", "Usuario");}
+
+                            </div>
+                            @*Aqui se despliega la seccion de las categorias del menu laeral usuario index*@
+                        <div class="container-fluid offset-1 mt-2" id="siete">
+                            <div class="row mt-5">
+
+                                <div class="col-md-8">
+                                    <h3 class="text-dark mb-0">Informes Interactivos</h3>
+                                    <hr style="border:0.5px solid #000000" />
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    @*<P><strong> Se muestran <span>@ViewBag.Resultado.Count </span>resultados de Informes Interactivos</strong></P>*@
+                                </div>
+                            </div>
+                            <div class="row responsive" style="overflow:scroll;height:300px;overflow-x:hidden; width:67%;">
+
+                                @foreach (var item in ViewBag.Resultado2)
+
+                                {
+                                    <div class="col-md-11">
+                                        <div class="row" style="display:flex !important; cursor: pointer;">
+
+                                            <div class="col-md-2">
+                                                <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_informeinteractivo_AZUL.png" />
+                                            </div>
+                                            <div class="col-md-9 text-dark font-weight-bold mb-0" style="color:#518bb3 !important;">
+                                                <a onclick="mostrador('#quince'); fnClick2('@item.id');">
+                                                    <h6 class="mt-3">@item.titulo</h6>
+                                                    @*@item.NOMBRE <br />
+                                @item.FECHA_CREADO*@
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                            @*@foreach (var item in ViewBag.Resultado2)
+        {
+            <p class="display-1">@item.titulo</p>
+
+        }*@
+
+                            <div class="row mt-5 ">
+
+                                <div class="col-8">
+                                    <h3 class="text-dark mb-0">Gráficos</h3>
+                                    <hr style="border:0.5px solid #000000" />
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    @*<P><strong> Se muestran <span>@ViewBag.Resultado.Count </span>resultados de Informes Interactivos</strong></P>*@
+                                </div>
+                            </div>
+                            <div class="row responsive" style="overflow:scroll;height:300px;overflow-x:hidden; width:67%; display:flex !important;">
+
+                                @foreach (var item in ViewBag.Resultado)
+
+                                {
+                                    <div class="col-md-11">
+                                        <div class="row" style="cursor: pointer;">
+
+                                            <div class="col-md-2 col-2">
+                                                <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_graficogratuito_NARANJA.png" />
+                                            </div>
+                                            <div class="col-md-9 text-dark font-weight-bold mb-0" style="color:#518bb3 !important;">
+                                                <a onclick="mostrador('#quince'); fnClick2('@item.id');">
+                                                    <h6 class="mt-3">@item.titulo</h6>
+                                                    @*@item.NOMBRE <br />
+                                @item.FECHA_CREADO*@
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--foreach (var item in ViewBag.Resultado)
+
+            {
+                <div class="col-md-8">
+                    <div class="row">
+                        <a onclick="ReescribirTest();" href="">
+                            <div class="col-md-2">
+                                <img class="img-fluid" src="~/Content/image_UsuarioIndex/logo_informeinteractivo.png" />
+                            </div>
+                            <div class="col-md-9 text-dark font-weight-bold mb-0" style="color:#518bb3 !important;">
+                                item.titulo-->
+                                    @*@item.NOMBRE <br />
+                @item.FECHA_CREADO*@
+                                    <!--</div>
+                        </a>
+                    </div>
+                </div>
+
+            }-->
+                                }
+                            </div>
+
+
+
+                            <!--<div class="row mt-5">
+        <div class="col-md-8">
+            <h3 class="text-dark mb-0">Reportes 360°</h3>
+            <hr style="border:0.5px solid #000000" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">-->
+                            @*<P><strong> Se muestran <span>@ViewBag.Resultado.Count </span>resultados de Repotes 360°</strong></P>*@
+                            <!--</div>
+    </div>
+    <div class="row responsive mb-5" style="overflow:scroll;height:300px;overflow-x:hidden; width:67%;">
+        foreach (var item in ViewBag.Resultado3)
+
+        {
+            <div class="col-md-11">
+                <div class="row " style="cursor: pointer;">
+
+                    <div class="col-md-2">
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+                    </div>
+
+                    <div class="col-md-9 text-dark font-weight-bold mb-0" style="color:#518bb3 !important;">
+                        <a onclick="mostrador('#diez'); ShowReporte('item.id'); ">
+                            <h6 class="mt-3">item.titulo</h6>-->
+                            @*@item.NOMBRE <br />
+        @item.FECHA_CREADO*@
+                            <!--</a>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div>-->
+                            @*@foreach (var item in ViewBag.Resultado3)
+        {
+            <p class="display-1">@item.titulo</p>
+
+        }*@
+
+                            @*<img class="mx-0" src="~/Content/image_UsuarioIndex/cargadatos_es.gif" />*@
+                        </div>
+
+                            <div class="container-fluid offset-1 mt-2" id="ocho" style="display:none;">
+
+                            </div>
+                            <div class="container-fluid mt-2 ml-2" id="nueve" style="display:none;padding-right:20px;">
+
+
+                            </div>
+                            <div class="container-fluid offset-1 mt-2" id="diez" style="display:none;">
+
+
+                            </div>
+                            <div class="container-fluid offset-1 mt-2" id="once" style="display:none;">
+
+
+                            </div>
+                            <div class="container-fluid offset-1 mt-2" id="doce" style="display:none; height:1000px;">
+
+
+                            </div>
+                            <div class="container-fluid offset-1 mt-2" id="catorce" style="display:none; height:1000px;">
+
+
+                            </div>
+                            @*Mis succripciones*@
+                            <div class="container-fluid mt-2 ml-2" id="quince" style="display:none;padding-right:20px;">
+
+
+                            </div>
+                            @*otra opciones en la pagina de bienvenido*@
+                            <div class="container mt-2" style="display:none">
+                                
+                                   
+                                        <style>
+                                            @@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+                                            * {
+                                                box-sizing: border-box;
+                                                margin: 0;
+                                                padding: 0;
+                                            }
+
+                                            body {
+                                                font-family: 'Lato', sans-serif;
+                                                height: 100vh;
+                                            }
+
+                                            .slider-container {
+                                                position: relative;
+                                                overflow: hidden;
+                                                width: 100vw;
+                                                height: 100vh;
+                                            }
+
+                                            .left-slide {
+                                                height: 100%;
+                                                width: 35%;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                transition: transform 0.5s ease-in-out;
+                                            }
+
+                                                .left-slide > div {
+                                                    height: 100%;
+                                                    width: 100%;
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    color: #fff;
+                                                }
+
+                                                .left-slide h1 {
+                                                    font-size: 40px;
+                                                    margin-bottom: 10px;
+                                                    margin-top: -30px;
+                                                }
+
+                                            .right-slide {
+                                                height: 100%;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 35%;
+                                                width: 65%;
+                                                transition: transform 0.5s ease-in-out;
+                                            }
+
+                                                .right-slide > div {
+                                                    background-repeat: no-repeat;
+                                                    background-size: cover;
+                                                    background-position: center center;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                }
+
+                                            button {
+                                                background-color: #fff;
+                                                border: none;
+                                                color: #aaa;
+                                                cursor: pointer;
+                                                font-size: 16px;
+                                                padding: 15px;
+                                            }
+
+                                                button:hover {
+                                                    color: #222;
+                                                }
+
+                                                button:focus {
+                                                    outline: none;
+                                                }
+
+                                            .slider-container .action-buttons button {
+                                                position: absolute;
+                                                left: 35%;
+                                                top: 50%;
+                                                z-index: 100;
+                                            }
+
+                                            .slider-container .action-buttons .down-button {
+                                                transform: translateX(-100%);
+                                                border-top-left-radius: 5px;
+                                                border-bottom-left-radius: 5px;
+                                            }
+
+                                            .slider-container .action-buttons .up-button {
+                                                transform: translateY(-100%);
+                                                border-top-right-radius: 5px;
+                                                border-bottom-right-radius: 5px;
+                                            }
+                                        </style>
+                                       
+                                        <div class="slider-container">
+                                            <div class="left-slide">
+                                                <div style="background-color: #fde">
+                                                    <h1>Pink Cherrish</h1>
+                                                    <p>to evolve into care</p>
+                                                </div>
+                                                <div style="background-color: rgb(254,160,0)">
+                                                    <h1>Yellow Luck</h1>
+                                                    <p>Shinning the clouds</p>
+                                                </div>
+                                                <div style="background-color: rgb(231, 58, 95)">
+                                                    <h1>Redness Lust</h1>
+                                                    <p>in the wilderness</p>
+                                                </div>
+                                                <div style="background-color: rgb(176, 136, 240)">
+                                                    <h1>Lavanda Love</h1>
+                                                    <p>in the sunset</p>
+                                                </div>
+                                            </div>
+                                            <div class="right-slide">
+                                                <div style="background-image: url('https://images.unsplash.com/photo-1528756514091-dee5ecaa3278?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2Vyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60');"></div>
+                                                <div style="background-image: url('https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2Vyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60');"></div>
+                                                <div style="background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8Zmxvd2Vyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60');"></div>
+                                                <div style="background-image: url('https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80');"></div>
+                                            </div>
+                                            <div class="action-buttons">
+                                                <button class="down-button">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                </button>
+                                                <button class="up-button">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            const sliderContainer = document.querySelector('.slider-container')
+                                            const slideRight = document.querySelector('.right-slide')
+                                            const slideLeft = document.querySelector('.left-slide')
+                                            const upButton = document.querySelector('.up-button')
+                                            const downButton = document.querySelector('.down-button')
+                                            const slidesLength = slideRight.querySelectorAll('div').length
+
+                                            let activeSlideIndex = 0
+
+                                            slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`
+
+                                            upButton.addEventListener('click', () => changeSlide('up'))
+                                            downButton.addEventListener('click', () => changeSlide('down'))
+
+                                            const changeSlide = (direction) => {
+                                                const sliderHeight = sliderContainer.clientHeight
+                                                if (direction === 'up') {
+                                                    activeSlideIndex++
+                                                    if (activeSlideIndex > slidesLength - 1) {
+                                                        activeSlideIndex = 0
+                                                    }
+                                                } else if (direction === 'down') {
+                                                    activeSlideIndex--
+                                                    if (activeSlideIndex < 0) {
+                                                        activeSlideIndex = slidesLength - 1
+                                                    }
+                                                }
+
+                                                slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`
+                                                slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
+                                            }
+                                        </script>
+                               
+                               
+                                
+                            </div>
+
+                            @*Seccion atencion al cliente*@
+                            <div class="container-fluid offset-1" id="trece" style="display:none;">
+                                <div class="row  mt-5">
+                                    <div class="col-8">
+                                        <p>Consultas o problemas con tu Cuenta</p>
+                                        <hr style="border:0.5px solid #000000" />
+                                    </div>
+                                </div>
+                                <div class="row mt-3 mb-5">
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img class="img-fluid" src="~/Content/image_UsuarioIndex/cuenta_promocional_contacto_1.jpg" />
+                                            </div>
+                                            <div class="col-10">
+                                                <p>
+                                                    En Data Intelligence hacemos todo lo posible para que la experiencia de uso de la información
+                                                    sea lo más grata posible. Puedes contactarnos y hablar con un ejecutivo, un experto o si lo prefieres
+                                                    comunicarte directamente en estas direcciones oficiales.<br />
+                                                    Estaremos encantados de solucionar cualquier inconveniente o aclarar toda duda:
+
+                                                </p>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-12 col-md-5" style="border:0.5px solid #808080; border-radius:15px;">
+                                                        <p class="mt-2" style="font-size:14px;">
+                                                            GENERAL <br />
+                                                            contacto@dataintelligence-group.com <br />
+                                                            +56 9 9438 5412 de 9:00 a 18:00 hrs (GMT-3)
+
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12 col-md-5" style="border:0.5px solid #808080; border-radius:15px;">
+                                                        <p class="mt-1" style="font-size:14px;">
+                                                            SOPORTE <br />
+                                                            soporte@dataintelligence-group.com <br />
+                                                            +56 9 9438 5412  06:00 a 00:00 hrs (GMT-3)
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-12 col-md-5" style="border:0.5px solid #808080; border-radius:15px;">
+                                                        <p class="mt-2" style="font-size:14px;">
+                                                            VENTAS CORPORATIVAS <br />
+                                                            ventas@dataintelligence-group.com <br />
+                                                            +56 9 9438 5412 de 9:00 a 18:00 hrs (GMT-3)
+
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+
+            <!-- /.content -->
+        </div>
+
+
+
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021 <a href="#">DATAINTELLIGENCE</a>.</strong>
+            All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    @*este script va con la funcion de cargar el gif en la seccion siete*@
+    <script>
+       @*Funcion que despliega categoria del menu lateral del Usuario index*@
+        function fnClick(categoria) {
+
+          
+            var id = "parametros de la funcion";
+            //$('#siete').load(function () {//para cargar el gif de la seccion siete
+            //    $("img").fadeOut("slow");
+            //});
+            $('#siete').html('<h2>Cargando Información...espere un momento por favor</h2>')
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + categoria + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/UsuarioSelectProducto2?id=' + categoria,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#siete").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+        @* Graficos de mis  *@
+        function ShowGrafico(Grafico) {
+            var id = "parametros de la funcion";
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + Grafico + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/UsuarioSelectProducto3?id=' + Grafico,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#ocho").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+
+        function ShowInforme(Informe) {
+
+            var id = "parametros de la funcion";
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + Informe + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/UsuarioSelectProducto3?id=' + Informe,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#nueve").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+
+        function ShowReporte(Reporte) {
+
+            var id = "parametros de la funcion";
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + Reporte + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/UsuarioSelectProducto3?id=' + Reporte,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#diez").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+
+        function formBusqueda() {
+            var id = $('#idBusqueda').val();
+            //$('#once').load(function () {//para cargar el gif de la seccion siete
+            //    $("img").fadeOut("slow");
+            //});
+
+            $('#once').html('<h2>Cargando Información...espere un momento por favor</h2>')
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + id + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/FormBuscador?id=' + id,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#once").html(result);
+
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+
+        }
+
+        function BuscadorForm2(e) {
+            e.preventDefault();
+            mostrador('#once');
+            formBusqueda();
+            return false;
+        }
+
+        function ProductoSuscripcion(id, NOMBRE) {
+
+            $('#doce').html('<h2>Cargando Información...espere un momento por favor</h2>')
+
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + id + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/InformeSuscription?id=' + id + '&nombre=' + NOMBRE,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#doce").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+
+        function InforReporSuscripcion(id, NOMBRE) {
+
+            $('#catorce').html('<h2>Cargando Información...espere un momento por favor</h2>')
+
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + id + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/InformeReporte?id=' + id + '&nombre=' + NOMBRE,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#catorce").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+        function fnClick2(Informe) {
+
+            var id = $('#idBusqueda2').val();
+            var id = "parametros de la funcion";
+            //$('#siete').load(function () {//para cargar el gif de la seccion siete
+            //    $("img").fadeOut("slow");
+            //});
+            $('#quince').html('<h2>Cargando Información...espere un momento por favor</h2>')
+            $.ajax(
+                {
+                    type: 'POST',
+                    data: "{'id':" + "'" + Informe + "'}", //datos o parametros enviados al servidor
+                    dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                    url: '/Usuario/UsuarioSelectProducto4?id=' + Informe,
+                    //URL del action result que cargara la vista parcial
+                    success: function (result) {
+                        // si la funcion se ejecuta lanzara un alert
+                        /*alert('Success');*/
+                        //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                        //que recibio del servidor
+                        $("#quince").html(result);
+                    },
+
+                    error: function (error) {
+                        // si hay un error lanzara el mensaje de error
+                        alert('Fail');
+                    }
+                });
+
+        }
+
+    </script>
+
+    
+</body>
+</html>

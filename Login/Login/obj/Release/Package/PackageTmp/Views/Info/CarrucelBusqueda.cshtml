@@ -1,0 +1,248 @@
+﻿<div class="py-5" id="hide">
+    <section class="pt-3 ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-8  mb-3" style="border:1px solid rgb(0 0 0 / 0.00); border-radius:10px; background-color:#bf1522;">
+                    <div class="row">
+                        <div class="col-6" style="margin-top:7px;">
+                            <span style="color:#fff;">Más información de esta colección</span>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-primary mb-1 mt-1 " href="#carouselExampleIndicators2" role="button" data-slide="next" style="text-decoration: none; border: none !important; background-color: #c6c6c6; padding: 3px 5px 5px 5px; float: right;  ">
+                                <i class="fa fa-arrow-right align-baseline" style="color:red;font-size:0.8rem;"></i>
+                            </a>
+                            <a class="btn btn-primary mb-1 mt-1 " href="#carouselExampleIndicators2" role="button" data-slide="prev" style="text-decoration: none; border: none !important; background-color: #c6c6c6; padding: 3px 5px 5px 5px; float: right; margin-right: 4px; ">
+                                <i class="fa fa-arrow-left align-baseline" style="color:red;font-size:0.8rem;"></i>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center text-center">
+                @*imagenes de carrusel*@
+                <style>
+                    .line-clamp3 {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        width: 100%;
+                        border: 1px solid #6988a5;
+                        font-family: sans-serif;
+                        font-size: 1rem;
+                    }
+
+                        /*.line-clamp3:hover {
+                            -webkit-line-clamp: 100;
+                            cursor: pointer;
+                        }*/
+                </style>
+                <div class="col-md-10 col-8">
+                    <div id="carouselExampleIndicators2" class="carousel" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[0].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[0].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; color: #000; padding:0px !important; ">
+                                                @ViewBag.Carrusel[0].titulo
+                                            </div>
+                                            <div class="card" style="border:none;">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[0]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[0].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[0].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[1].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[1].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[1].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[1]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[1].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[1].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[2].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[2].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[2].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[2]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[2].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[2].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[3].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[3].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[3].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[3]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[3].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[3].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[4].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[4].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[4].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[4]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[4].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[4].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[5].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[5].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[5].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[5]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[5].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[5].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[6].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[6].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[6].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[6]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[6].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[6].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[7].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[7].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[7].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[7]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[7].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[7].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[8].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[8].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[8].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[8]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[8].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[8].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[9].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[9].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[9].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[9]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[9].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[9].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[10].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[10].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[10].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[10]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[10].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[10].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <a class="link-card" href="/info/Index2?id=@ViewBag.Carrusel[11].id" style="text-decoration:none;">
+                                            <div data-toggle="tooltip" data-placement="top" title="@ViewBag.Carrusel[11].titulo" class="card-header mb-1 text-center line-clamp3" style="border-radius: 10px; background-color: transparent; border: 0.5px solid #000; color: #000; padding: 0px !important;">
+                                                @ViewBag.Carrusel[11].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="@ViewBag.Carrusel[11]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Carrusel[11].CATEGORIA.PRODUCTO.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Carrusel[11].CATEGORIA.PRODUCTO.SECTOR.nombre</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

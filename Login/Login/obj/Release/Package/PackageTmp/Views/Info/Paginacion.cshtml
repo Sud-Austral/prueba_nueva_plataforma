@@ -1,0 +1,110 @@
+﻿@{
+    int i = 0;
+}
+@foreach (var item in ViewBag.Resultado)
+{
+    {
+        i++;
+    }
+    <tr>
+        <td style="border:none !important;">
+            <div class="row d-flex">
+                <div class="col-md-2 col-12">
+
+                    @{
+                        string RutaImagen2 = "/Content/img/iconos_TipoProducto/" + item.TIPO_GRAFICO_id + ".png";
+                    }
+                    <img class="img-fluid" style="width:140px;" src="@RutaImagen2" />
+                </div>
+                @if (item.TIPO_GRAFICO_id == 4)
+                {
+
+
+                    <div id="test1" class="col-md-8 col-12">
+                        <a href="#" type="button" data-toggle="modal" data-target="#myModal2" data-backdrop="True" style="cursor: pointer; text-decoration: blink; color: black;">
+                            @item.titulo <br />
+                            @item.TIPO_GRAFICO.nombre <br />
+                            @item.TEMPORALIDAD.nombre
+                            <p style="display:none;">@item.TERRITORIO.auxiliar </p>
+                            <p style="display:none;">@item.TERRITORIO.nombre </p>
+                            <p style="display:none;">@item.PARAMETRO.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre  </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.nombre </p>
+                        </a>
+                    </div>
+
+                }
+                else if (item.TIPO_GRAFICO_id == 3)
+                {
+                    <div id="test1" class="col-md-8 col-12">
+                        <a href="#" type="button" data-toggle="modal" data-target="#myModal1" data-backdrop="True" style=" cursor: pointer; text-decoration:blink; color:black;">
+                            @item.titulo <br />
+                            @item.TIPO_GRAFICO.nombre <br />
+                            @item.TEMPORALIDAD.nombre
+                            <p style="display:none;">@item.TERRITORIO.auxiliar </p>
+                            <p style="display:none;">@item.TERRITORIO.nombre </p>
+                            <p style="display:none;">@item.PARAMETRO.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre  </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.nombre </p>
+                        </a>
+                    </div>
+
+                }
+                else if (item.TIPO_GRAFICO_id < 3)
+                {
+
+                    <div id="test1" class="col-md-8 col-12">
+                        @*<a href="~/info/index?id=@item.id" style=" cursor: pointer;">*@
+                        <a href="#" onclick="mostrador2('#PBdos','#PBcuatro','#PBcinco'); PBGrafico('@item.id'),PBGrafico2('@item.id'),PBGrafico3('@item.id') ;" style="cursor: pointer; text-decoration: blink; color: black;">
+                            @item.titulo <br />
+                            @item.TIPO_GRAFICO.nombre <br />
+                            @item.TEMPORALIDAD.nombre
+                            <p style="display:none;">@item.TERRITORIO.auxiliar </p>
+                            <p style="display:none;">@item.TERRITORIO.nombre </p>
+                            <p style="display:none;">@item.PARAMETRO.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.nombre </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre  </p>
+                            <p style="display:none;">@item.CATEGORIA.PRODUCTO.nombre </p>
+                        </a>
+                    </div>
+
+                }
+
+                <div class="col-md-2 col-12">
+                    @if (item.TIPO_GRAFICO_id == 4)
+                    {
+                        <a class=" btn btn-danger btn-sm" href="#" type="button" data-toggle="modal" data-target="#myModal2" data-backdrop="True" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                            Adquirir
+                        </a>
+
+
+                    }
+                    else if (item.TIPO_GRAFICO_id == 3)
+                    {
+                        <a class=" btn btn-danger btn-sm" href="#" type="button" data-toggle="modal" data-target="#myModal1" data-backdrop="True" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                            Adquirir
+                        </a>
+
+
+                    }
+                    else if (item.TIPO_GRAFICO_id < 3)
+                    {
+                        <a onclick="mostrador('#PBdos'); PBGrafico('@item.id');" class=" btn btn-danger btn-sm" href="#" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                            Ver Gráfico
+                        </a>
+                    }
+
+                </div>
+                @*<h1>
+                        @item.mostrar
+                    </h1>*@
+            </div>
+
+
+
+        </td>
+
+    </tr>
+}

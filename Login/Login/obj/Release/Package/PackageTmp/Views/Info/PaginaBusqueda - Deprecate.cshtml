@@ -1,0 +1,917 @@
+﻿@*
+    @{
+        Layout = "~/Views/Shared/_LayoutStatista.cshtml";
+    }
+*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!--Meta Tags-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bundles rederizados-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*fontawesome*@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2f08016506.js" crossorigin="anonymous"></script>
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />*@
+    @*estilos*@
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    <link href="~/Content/StylePagBusqueda.css" rel="stylesheet" />
+    @*Titulo de la pagina*@
+    <title>Estadística</title>
+    @*Script para cargar charts*@
+    @*<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
+    <!--carrucel-->
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+    <!-- pdf descargar-->
+    <!--megamenu-->
+    <script>
+        $(document).ready(function () {
+            $(".megamenu").on("click", function (e) {
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+
+</head>
+<body onresize="recargar();">
+    @*Menu principal*@
+
+
+    <style>
+        /*Hover contenido de paginaBusqueda contenido*/
+        div.table-responsive:hover {
+            overflow-y: auto !important;
+        }
+        /*Scroll de checkbox de filtro covertura*/
+        div.side:hover {
+            overflow-y: auto !important;
+        }
+    </style>
+    <div class="container-fluid mt-5 " style="margin-top:100px;">
+        <h2 class="text-center">Resultados de la búsqueda</h2>
+        <div class="row justify-content-center">
+            <!-- Comienzo de rsultados de Busqueda -->
+            <div class="col-md-10">
+                <div class="grid search">
+                    <div class="grid-body">
+                        <!-- Comienzo de Fila que contiene botón borrar filtro y buscador -->
+                        <div class="row mt-5">
+                            <div class="col-md-3 text-center">
+                                @*Boton para borrar los filtros*@
+                                <label class="btn btn-primary">
+                                    <input style="display:none;" type="checkbox" onClick="ActivarCasilla(this), LimpiarTodo();" /> Borrar filtro
+                                </label>
+                                @*<button type="button" class="btn btn-secondary" style="border-radius:10px;">Borrar filtro</button>*@
+                                <script type="text/javascript">
+                                    function ActivarCasilla(casilla) {
+                                        miscasillas = document.getElementsByTagName('input'); //Rescatamos controles tipo Input
+                                        for (i = 0; i < miscasillas.length; i++) //Ejecutamos y recorremos los controles
+                                        {
+                                            if (miscasillas[i].type == "checkbox") // Ejecutamos si es una casilla de verificacion
+                                            {
+                                                miscasillas[i].checked = casilla.checked; // Si el input es CheckBox se aplica la funcion ActivarCasilla
+                                            }
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            @*fin  Boton para borrar los filtros*@
+                            @*<label class="btn btn-primary">
+                                    <input style="display:none;" type="checkbox" onClick="ActivarCasilla(this); " /> Marcar / Desmarcar Todos
+                                </label>*@
+
+                            <!--fin de Fila que contiene botón borrar filtro y buscador -->
+                            <div class="col-md-8 pr-0">
+                                <div class="p-1 bg-transparent rounded-pill shadow-sm mb-4" style="border: 0.5px solid #bbc1c5; border-radius: 25px;">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button id="button-addon2" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        <input id="search" type="search" placeholder="Búsqueda por palabras claves" aria-describedby="button-addon2" class="form-control rounded rounded-pill border-0 bg-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Final de Fila que contiene botón borrar filtro y buscador -->
+                        <div class="row" style="border:hidden !important;">
+                            <!-- Comienzo filtros -->
+                            <div class="tags col-md-3 dropdown sidebar sidebar-md" style="border: 0.5px solid #bbc1c5; border-radius: 20px; padding-top: 12px;">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Filtros
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu1" style="position:relative !important; transform:none !important; will-change:scroll-position !important;">
+
+                                
+
+                                    @*Este script es para hacer el filtro de la tabla*@
+                                    <script>
+                                        $(document).ready(function () {
+                                            $(".name").on("click", function () {
+                                                name_list = []
+                                                $("#myTable tr").hide()
+                                                var flag = 1
+                                                $("input:checkbox[name=name]:checked").each(function () {
+                                                    flag = 0;
+                                                    var value = $(this).val().toLowerCase();
+                                                    $("#myTable tr").filter(function () {
+                                                        if ($(this).text().toLowerCase().indexOf(value) > -1)
+                                                            $(this).show()
+                                                    });
+                                                });
+                                                if (flag == 1)
+                                                    $("#myTable tr").show()
+                                            });
+                                        });
+                                    </script>
+
+                                    @*Este script es para hacer el filtro de la tabla*@
+                                    <!-- Comienzo filtros por Pais-->
+                                    @*<h5 style="color:black;" class="text-center mt-3">ÁREA DE BÚSQUEDA</h5>*@
+                                    @*<div>
+                @foreach (var item7 in ViewBag.TipoGrafico)
+                {
+                    <div>
+                        <label><input type="checkbox" class="name" name="name" value="@item7"> @item7</label>
+                    </div>
+                }
+            </div>
+            <div>
+                @foreach (var item8 in ViewBag.TipoGrafico)
+                {
+                    <div>
+                        <label><input type="checkbox" class="name" name="name" value="@item8"> Informes Interactivos</label>
+                    </div>
+                }
+            </div>
+            <div>
+                @foreach (var item7 in ViewBag.TipoGrafico)
+                {
+                    <div>
+                        <label><input type="checkbox" class="name" name="name" value="@item7"> Reportes 360°</label>
+                    </div>
+                }
+            </div>*@
+                                    <h4 class="mt-3 dropdown-header">ÁREA DE BÚSQUEDA</h4>
+                                    <div class="side mb-5" style="overflow:scroll; max-height:80px; overflow:hidden;">
+                                        <div>
+                                            <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value=""> Solo Suscripción </label>
+                                        </div>
+                                        <div>
+                                            <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value=""> En todo Data Intelligence</label>
+                                        </div>
+
+                                        @*@foreach (var item in ViewBag.Sector)
+                {
+                    <div>
+                        <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                    </div>
+
+                }*@
+                                    </div>
+
+                                    <h4 class="mt-3 dropdown-header">COLECCIÓN</h4>
+                                    <div class="side mb-5" style="overflow:scroll; max-height:250px; overflow:hidden;">
+                                        @foreach (var item in ViewBag.Sector)
+                                        {
+                                            <div>
+                                                <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                                            </div>
+
+                                        }
+                                    </div>
+                                    <h4 class="mt-3 dropdown-header">TIPO DE PRODUCTO</h4>
+
+
+                                    <div class="side mb-5" style="overflow:scroll; max-height:120px; overflow:hidden;">
+                                        @foreach (var item7 in ViewBag.TipoGrafico)
+                                        {
+                                            <div>
+                                                <label><input type="checkbox" class="name" name="name" value="@item7"> @item7</label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    @*<h4>TEMA</h4>
+            <div class="side" style="overflow:scroll; height:100px; overflow:hidden;">
+                @foreach (var item in ViewBag.Industria)
+                {
+                    <div>
+                        <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                    </div>
+
+                }
+            </div>*@
+                                    <h4 class="dropdown-header">TERRITORIO</h4>
+                                    <div class="side mb-5" style="overflow:scroll; max-height:250px; overflow:hidden;">
+                                        @foreach (var item in ViewBag.Paises)
+                                        {
+                                            <div>
+                                                <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                                            </div>
+
+                                        }
+                                    </div>
+
+                                    <h4 class="dropdown-header">TEMPORALIDAD</h4>
+                                    <div class="side mb-5" style="overflow:scroll; max-height:100px; overflow:hidden;">
+                                        @foreach (var item in ViewBag.Temporalidad)
+                                        {
+                                            <div>
+                                                <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                                            </div>
+
+                                        }
+                                    </div>
+
+
+                                    <!-- FINAL FILTROS POR SECTOR -->
+                                    <div class="padding"></div>
+                                    <!-- COMIENZO FILTROS POR PRODUCTO -->
+                                    @*<h4>Producto:</h4>
+            <div class="side mb-5" style="overflow:scroll; height:100px; overflow:hidden;">
+                @foreach (var item in ViewBag.Producto)
+                {
+                    <div>
+                        <label style="margin-bottom:0 !important;"><input type="checkbox" class="name" name="name" value="@item"> @item</label>
+                    </div>
+
+                }
+            </div>*@
+
+
+                                    <!-- FINAL FILTROS POR PRODUCTO -->
+                                    @*
+            <!-- FINAL FILTROS POR ANIO -->
+            <div class="padding"></div>
+
+            <!-- COMIENZO FILTROS POR INDUSTRIA -->
+            <h4>Industria:</h4>
+            @foreach (var item5 in ViewBag.Industria)
+            {
+                <div class="checkbox">
+                    <label><input type="checkbox" class="name icheck" name="name" value="@item5"> @item5</label>
+                </div>
+            }
+
+            <!-- FINAL DE FILTRO POR INDUSTRIA -->
+            <div class="padding"></div>
+            <!-- COMIENZO FILTROS POR SECTOR -->
+            <h4>Sector:</h4>
+            @foreach (var item4 in ViewBag.Sector)
+            {
+                <div class="checkbox">
+                    <label><input type="checkbox" class="name icheck" name="name" value="@item4"> @item4</label>
+                </div>
+            }
+
+            <!-- FINAL FILTROS POR SECTOR -->
+            <div class="padding"></div>
+            <!-- COMIENZO FILTROS POR PRODUCTO -->
+            <h4>Producto:</h4>
+            @foreach (var item2 in ViewBag.Producto)
+            {
+                <div class="checkbox">
+                    <label><input type="checkbox" class="name icheck" name="name" value="@item2"> @item2</label>
+                </div>
+            }
+
+            <!-- FINAL FILTROS POR PRODUCTO -->
+            <div class="padding"></div>
+                                    *@
+                                    <!-- COMIENZO FILTROS POR CATEGORIA -->
+                                    @*
+            <h4>Categoria:</h4>
+            @foreach (var item6 in ViewBag.Categoria)
+            {
+                <div class="checkbox">
+                    <label><input type="checkbox" class="name icheck" name="name" value="@item6"> @item6</label>
+                </div>
+            }
+                                    *@
+                                    <!-- FINAL FILTROS POR CATEGORIA -->
+                                    @*
+                <div class="padding"></div>
+
+                <!-- FILTROS POR FECHA -->
+
+                <h4>Por fecha:</h4>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            Fecha inicial:
+                        </div>
+                        <input id="startDate" width="220" />
+                        <div class="col-12">
+                            Fecha término:
+                        </div>
+                        <input id="endDate" width="220" />
+                    </div>
+                </div>
+                <script>
+                    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+                    $('#startDate').datepicker({
+                        uiLibrary: 'bootstrap4',
+                        iconsLibrary: 'fontawesome',
+                        minDate: today,
+                        maxDate: function () {
+                            return $('#endDate').val();
+                        }
+                    });
+                    $('#endDate').datepicker({
+                        uiLibrary: 'bootstrap4',
+                        iconsLibrary: 'fontawesome',
+                        minDate: function () {
+                            return $('#startDate').val();
+                        }
+                    });
+                </script>
+                <!-- FINAL FILTROS POR FECHA -->
+
+                <div class="padding"></div>
+
+                <!-- COMIENZO FILTRO POR PRECIOS -->
+                <h4>Por precio:</h4>
+                Entre <div id="price1">$300</div> y <div id="price2">$800</div>
+                <div class="slider-primary">
+                    <div class="slider slider-horizontal" style="width: 152px;"><div class="slider-track"><div class="slider-selection" style="left: 30%; width: 50%;"></div><div class="slider-handle round" style="left: 30%;"></div><div class="slider-handle round" style="left: 80%;"></div></div><div class="tooltip top hide" style="top: -30px; left: 50.1px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">300 : 800</div></div><input type="text" class="slider" value="" data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="[300,800]" data-slider-tooltip="hide"></div>
+                </div>
+                <!-- FINAL FILTROS POR PRECIOS -->
+            </div>
+            <!-- FINAL FILTROS -->
+                                    *@
+                            </div>
+                            </div>
+                            <!-- COMIENZO RESULTADOS -->
+                            <div class="col-md-8 pr-0 ml-2" style="border: 0.5px solid #bbc1c5;border-radius:20px; ">
+
+
+                                @*
+                                    <div class="padding"></div>
+
+                                    <div class="row">
+                                        <!-- COMIENZO ORDENAR RESULTADOS -->
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                        <!-- FINAL ORDENAR RESULTADOS -->
+
+                                        <div class="col-md-6 text-right">
+
+                                        </div>
+                                    </div>
+                                *@
+                                @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>*@
+                                <script>
+                                    // Write on keyup event of keyword input element
+                                    $(document).ready(function () {
+                                        $("#search").keyup(function () {
+                                            _this = this;
+                                            // Show only matching TR, hide rest of them
+                                            $.each($("#mytable tbody tr"), function () {
+                                                if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                                                    $(this).hide();
+                                                else
+                                                    $(this).show();
+                                            });
+                                        });
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        var nrows = 0; var nres = 0;
+                                        $("table tr").each(function () {
+                                            nrows++;
+                                        })
+                                        $("#nrows").html(nrows);
+                                        $(".isres").each(function () {
+                                            nres++;
+                                        })
+                                        $("#nres").html(nres);
+                                    });
+                                </script>
+                                <!-- COMIENZO TABLA RESULTADOS -->
+                                <h5 class="ml-3 mt-4" style="color:black"> @ViewBag.Resultado.Count resultados</h5>
+                                <div class="table-responsive display" style="height:750px; overflow-x:hidden !important; border-radius: 20px !important; ">
+                                    <table id="mytable" class="table" style=" border:none !important;">
+
+                                        <thead id="stud_body" style="border:none;">
+                                            <tr style="border:none;">
+                                                <th style="border:none;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="myTable" style="border: none !important;">
+                                            @foreach (var item in ViewBag.Resultado)
+                                            {
+                                                <tr>
+                                                    <td style="border:none !important;">
+                                                        <div class="row d-flex">
+                                                            <div class="col-md-2 col-12">
+                                                                @{
+                                                                    string RutaImagen2 = "/Content/img/iconos_TipoProducto/" + item.TIPO_GRAFICO_id + ".png";
+                                                                }
+                                                                <img class="img-fluid" style="width:140px;" src="@RutaImagen2" />
+                                                            </div>
+                                                            @if (item.TIPO_GRAFICO_id == 4)
+                                                            {
+                                                                <div class="col-md-8 col-12">
+                                                                    <a href=""  type="button" data-toggle="modal" data-target="#myModal2" data-backdrop="True" style="cursor: pointer;">
+                                                                        @item.titulo <br />
+                                                                        @item.TIPO_GRAFICO_id
+                                                                        @item.TIPO_GRAFICO.nombre <br />
+                                                                        @item.TEMPORALIDAD.nombre
+                                                                        <p style="display:none;">@item.TERRITORIO.nombre </p>
+                                                                    </a>
+                                                                </div>
+
+                                                            }
+                                                            else if (item.TIPO_GRAFICO_id == 3)
+                                                            {
+                                                                <div class="col-md-8 col-12">
+                                                                    <a href=""  type="button" data-toggle="modal" data-target="#myModal2" data-backdrop="True" style=" cursor: pointer;">
+                                                                        @item.titulo <br />
+                                                                        @item.TIPO_GRAFICO_id
+                                                                        @item.TIPO_GRAFICO.nombre <br />
+                                                                        @item.TEMPORALIDAD.nombre
+                                                                        <p style="display:none;">@item.TERRITORIO.nombre </p>
+                                                                    </a>
+                                                                </div>
+
+                                                            }
+                                                            else if (item.TIPO_GRAFICO_id == 1)
+                                                            {
+
+                                                                <div class="col-md-8 col-12">
+                                                                    <a href="~/info/index?id=@item.id"  style=" cursor: pointer;">
+                                                                        @item.titulo <br />
+                                                                        @item.TIPO_GRAFICO_id
+                                                                        @item.TIPO_GRAFICO.nombre <br />
+                                                                        @item.TEMPORALIDAD.nombre
+                                                                        <p style="display:none;">@item.TERRITORIO.nombre </p>
+                                                                    </a>
+                                                                </div>
+
+                                                            }
+
+                                                            <div class="col-md-2 col-12">
+                                                                @if (item.TIPO_GRAFICO_id == 4)
+                                                                {
+                                                                    <a onclick="mostrador('#ocho'); ShowGrafico('@item.id');" class=" btn btn-danger btn-sm" href="" type="button" data-toggle="modal" data-target="#myModal2" data-backdrop="True" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                                                                        Adquirir
+                                                                    </a>
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="myModal2" role="dialog">
+                                                                        <div class="modal-dialog modal-lg">
+
+                                                                            <!-- Modal content-->
+                                                                            <div class="modal-content" style="background-color:black;">
+                                                                                <div class="modal-header">
+                                                                                    <p style="color:white">
+                                                                                        Este REPORTE 360º es posible adquirirlo de dos formas:
+                                                                                    </p>
+                                                                                    <button type="button" class="close" style="color:white" data-dismiss="modal">&times;</button>
+
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="row m-1" style="background-color:white; border-radius: 5px;">
+                                                                                        <div class="col-5 p-1">
+                                                                                            <div class="col-12">
+                                                                                                <img style="height:80%; width:80%" src="~/Content/image_estadistica/logo_reporte360.png" /> <br> <br>
+                                                                                            </div>
+                                                                                            <div class="col-12 ">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                                                        <span> USD </span><span style="color:red; font-size:22px;">200</span>
+                                                                                                        pago único
+                                                                                                    </div>
+                                                                                                    <div class="col-7">
+                                                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                                                Adquirir
+                                                                                                            </button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-7 p-1">
+                                                                                            <p style="color:red;"> Con un único pago, puede interactuar  en los filtros activos durante todo 1 año.</p>
+
+                                                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                                                            <ul style="color:black;">
+                                                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row m-1" style="background-color:white; border-radius:5px; margin-top:2%;">
+                                                                                        <div class="col-5 p-1">
+                                                                                            <div class="col-12">
+                                                                                                <img style="height:80%; width:80%" src="~/Content/image_estadistica/imagenpromocion_2.png" /><br><br><br><br><br><br>
+                                                                                            </div>
+                                                                                            <div class="col-12 ">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                                                        <span> USD </span><span style="color:red; font-size:22px;">35</span>
+                                                                                                        mensuales
+                                                                                                    </div>
+                                                                                                    <div class="col-7">
+                                                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                                                Adquirir
+                                                                                                            </button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-7 p-1">
+                                                                                            <p style="color:red;">
+                                                                                                Cuenta suscripción anual con acceso  la colección completa de los temas de un sector.
+                                                                                            </p>
+                                                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                                                            <ul style="color:black;">
+                                                                                                <li>Acceso a miles de Gráficos, Mapas interactivos y diagramas.</li>
+                                                                                                <li>Acceso a todos los Informes Interactivos.</li>
+                                                                                                <li>Acceso a Reportes 360º con 30% de descuento.</li>
+                                                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer text-center">
+                                                                                    <img class="mx-0 pull-left" style="width:35%; height:35%;" src="~/Content/img/blanco-trans - copia.png" />
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                }
+                                                                else if (item.TIPO_GRAFICO_id == 3)
+                                                                {
+                                                                    <a class=" btn btn-danger btn-sm" href="" type="button" data-toggle="modal" data-target="#myModal1" data-backdrop="True" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                                                                        Adquirir
+                                                                    </a>
+                                                                    <div class="modal fade" id="myModal1" role="dialog">
+                                                                        <div class="modal-dialog modal-lg">
+
+                                                                            <!-- Modal content-->
+                                                                            <div class="modal-content" style="background-color:black;">
+                                                                                <div class="modal-header">
+                                                                                    <p style="color:white">
+                                                                                        Este INFORME INTERACTIVO es posible adquirirlo de dos formas:
+                                                                                    </p>
+                                                                                    <button type="button" class="close" style="color:white" data-dismiss="modal">&times;</button>
+
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="row m-1" style="background-color:white; border-radius: 5px;">
+                                                                                        <div class="col-5 p-1">
+                                                                                            <div class="col-12">
+                                                                                                <img style="height:80%; width:80%" src="/Content/image_estadistica/logo_informeinteractivo.png" /><br> <br>
+                                                                                            </div>
+                                                                                            <div class="col-12 ">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                                                        <span> USD </span><span style="color:red; font-size:22px;">10</span>
+                                                                                                        pago único
+                                                                                                    </div>
+                                                                                                    <div class="col-7">
+                                                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                                                Adquirir
+                                                                                                            </button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-7 p-1">
+                                                                                            <p style="color:red;"> Con un único pago, puede interactuar  en los filtros activos durante todo 1 año.</p>
+
+                                                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                                                            <ul style="color:black;">
+                                                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row m-1" style="background-color:white; border-radius:5px; margin-top:2%;">
+                                                                                        <div class="col-5 p-1">
+                                                                                            <div class="col-12">
+                                                                                                <img style="height:80%; width:80%" src="/Content/image_estadistica/imagenpromocion_2.png" /><br><br><br><br><br><br>
+                                                                                            </div>
+                                                                                            <div class="col-12 ">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                                                        <span> USD </span><span style="color:red; font-size:22px;">35</span>
+                                                                                                        mensuales
+                                                                                                    </div>
+                                                                                                    <div class="col-7">
+                                                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                                                Adquirir
+                                                                                                            </button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-7 p-1">
+                                                                                            <p style="color:red;">
+                                                                                                Cuenta suscripción anual con acceso  la colección completa de los temas de un sector.
+                                                                                            </p>
+                                                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                                                            <ul style="color:black;">
+                                                                                                <li>Acceso a miles de Gráficos, Mapas interactivos y diagramas.</li>
+                                                                                                <li>Acceso a todos los Informes Interactivos.</li>
+                                                                                                <li>Acceso a Reportes 360º con 30% de descuento.</li>
+                                                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer text-center">
+                                                                                    <img class="mx-0 pull-left" style="width:35%; height:35%;" src="/Content/img/blanco-trans - copia.png" />
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                }
+                                                                else if (item.TIPO_GRAFICO_id == 1)
+                                                                {
+                                                                    <a class=" btn btn-danger btn-sm" href="~/info/index?id=@item.id" style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor: pointer;">
+                                                                        Ver Gráfico
+                                                                    </a>
+                                                                }
+
+                                                            </div>
+                                                            @*<h1>
+                                                                @item.mostrar
+                                                            </h1>*@
+                                                        </div>
+
+
+
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+                                        </tbody>
+
+                                    </table>
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal2" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content" style="background-color:black;">
+                                                <div class="modal-header">
+                                                    <p style="color:white">
+                                                        Este REPORTE 360º es posible adquirirlo de dos formas:
+                                                    </p>
+                                                    <button type="button" class="close" style="color:white" data-dismiss="modal">&times;</button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row m-1" style="background-color:white; border-radius: 5px;">
+                                                        <div class="col-5 p-1">
+                                                            <div class="col-12">
+                                                                <img style="height:80%; width:80%" src="~/Content/image_estadistica/logo_reporte360.png" /> <br> <br>
+                                                            </div>
+                                                            <div class="col-12 ">
+                                                                <div class="row">
+                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                        <span> USD </span><span style="color:red; font-size:22px;">200</span>
+                                                                        pago único
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                Adquirir
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-7 p-1">
+                                                            <p style="color:red;"> Con un único pago, puede interactuar  en los filtros activos durante todo 1 año.</p>
+
+                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                            <ul style="color:black;">
+                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-1" style="background-color:white; border-radius:5px; margin-top:2%;">
+                                                        <div class="col-5 p-1">
+                                                            <div class="col-12">
+                                                                <img style="height:80%; width:80%" src="~/Content/image_estadistica/imagenpromocion_2.png" /><br><br><br><br><br><br>
+                                                            </div>
+                                                            <div class="col-12 ">
+                                                                <div class="row">
+                                                                    <div class="col-5" style="border-right:0.5px solid #b5a7a7; text-align:right ">
+                                                                        <span> USD </span><span style="color:red; font-size:22px;">35</span>
+                                                                        mensuales
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <form action="https://dataintelligence.store/products/feminicidios-de-mujeres-y-ninas-2016-2019-el-salvador">
+                                                                            <button class="sub btn btn-danger btn-sm mt-2" style="border-radius:20px; font-size:12px;">
+                                                                                Adquirir
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-7 p-1">
+                                                            <p style="color:red;">
+                                                                Cuenta suscripción anual con acceso  la colección completa de los temas de un sector.
+                                                            </p>
+                                                            <p class="font-weight-bold" style="color:black;"> Incluye:</p>
+                                                            <ul style="color:black;">
+                                                                <li>Acceso a miles de Gráficos, Mapas interactivos y diagramas.</li>
+                                                                <li>Acceso a todos los Informes Interactivos.</li>
+                                                                <li>Acceso a Reportes 360º con 30% de descuento.</li>
+                                                                <li>Descargas en PDF, PNG y Excel.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer text-center">
+                                                    <img class="mx-0 pull-left" style="width:35%; height:35%;" src="~/Content/img/blanco-trans - copia.png" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--script1 para la paginacion-->
+                                    <script type="text/javascript">
+                                        Paginador = function (divPaginador, tabla, tamPagina) {
+                                            this.miDiv = divPaginador; //un DIV donde irán controles de paginación
+                                            this.tabla = tabla;           //la tabla a paginar
+                                            this.tamPagina = tamPagina; //el tamaño de la página (filas por página)
+                                            this.pagActual = 1;         //asumiendo que se parte en página 1
+                                            this.paginas = Math.floor((this.tabla.rows.length - 1) / this.tamPagina); //¿?
+
+                                            this.SetPagina = function (num) {
+                                                if (num < 0 || num > this.paginas)
+                                                    return;
+
+                                                this.pagActual = num;
+                                                var min = 1 + (this.pagActual - 1) * this.tamPagina;
+                                                var max = min + this.tamPagina - 1;
+
+                                                for (var i = 1; i < this.tabla.rows.length; i++) {
+                                                    if (i < min || i > max)
+                                                        this.tabla.rows[i].style.display = 'none';
+                                                    else
+                                                        this.tabla.rows[i].style.display = '';
+                                                }
+                                                this.miDiv.firstChild.rows[0].cells[1].innerHTML = this.pagActual;
+                                            }
+
+                                            this.Mostrar = function () {
+                                                //Crear la tabla
+                                                var tblPaginador = document.createElement('table');
+
+                                                //Agregar una fila a la tabla
+                                                var fil = tblPaginador.insertRow(tblPaginador.rows.length);
+
+                                                //Como ya tengo mi tabla, puedo agregarla al DIV de los controles
+                                                this.miDiv.appendChild(tblPaginador);
+
+                                                //¿y esto por qué?
+                                                if (this.tabla.rows.length - 1 > this.paginas * this.tamPagina)
+                                                    this.paginas = this.paginas + 1;
+
+                                                this.SetPagina(this.pagActual);
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div id="paginador"></div>
+                            @*script2 para paginacion*@
+                            <script type="text/javascript">
+                                var p = new Paginador(
+                                    document.getElementById('paginador'),
+                                    document.getElementById('mytable')
+                                );
+                                /*p.Mostrar();*/
+                                function LimpiarTodo() {
+                                    var p = new Paginador(
+                                        document.getElementById('paginador'),
+                                        document.getElementById('mytable')
+                                    );
+                                    /*p.Mostrar();*/
+                                }
+                            </script>
+
+                            <!-- FINAL TABLA DE RESULTADOS -->
+
+                        </div>
+                        <!-- FINAL RESULTADOS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL RESULTADOS DE BUSQUEDA -->
+    </div>
+
+
+    @*Jquery, Popper bootstrap.min.js*@
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    @*este script es para la tabla y filtro de buscado agrupar y paginacion de tabla  el codigo dentro de language es para traducir elementos de la tabla*@
+    @*script3 para la paginacion y selector de filas*@
+    <script>
+        var table = '#mytable'
+        $('#maxRows').on('change', function () {
+            /*alert('Hola');*/
+            $('.pagination').html('')
+            var trnum = 0;
+            var maxRows = parseInt($(this).val())
+            var totalRows = $(table + ' tbody tr').length
+            $(table + ' tr:gt(0)').each(function () {
+                trnum++
+                if (trnum > maxRows) {
+                    $(this).hide()
+                }
+                if (trnum <= maxRows) {
+                    $(this).show()
+                }
+            })
+            if (totalRows > maxRows) {
+                var pagenum = Math.ceil(totalRows / maxRows)
+                for (var i = 1; i <= pagenum;) {
+                    $('.pagination').append('<li class="btn" data-page="' + i + '">\<span>' + i++ + '<span class="page-item  sr-only">(current)</span></span>\</li>').show()
+                }
+            }
+
+            $('.pagination li:first-child').addClass('active')
+            $('.pagination li').on('click', function () {
+                var pageNum = $(this).attr('date-page')
+                var trIndex = 0;
+                $('.pagination li').removeClass('active')
+                $(this).addClass('active')
+                $(table + ' tr:gt(0)').each(function () {
+                    trIndex++
+                    if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                        $(this).hide()
+                    } else {
+                        $(this).show()
+                    }
+
+                })
+            })
+        })
+
+
+
+        @*
+        $(function () {
+            $('table tr:eq(0)').prepend('<th>ID</th>')
+            var id = 0;
+            $('table tr:gt(0)').each(function () {
+                id++
+                $(this).prepend('<td>' + id + '</td>')
+            })
+        })
+        *@
+    </script>
+    <script>
+        var index = 0;
+        function recargar() {
+            if (index > 0) {
+                location.reload();
+            }
+            index++
+        }
+        
+    </script>
+</body>
+</html>
+

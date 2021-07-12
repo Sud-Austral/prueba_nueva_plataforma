@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163367570-1"></script>
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163367570-1');
+    </script>
+    <style>
+
+        .nav-link{
+            color: #858277;
+        }
+        .nav-link:hover{
+            color:white;
+        }
+    </style>
+</head>
+<body style="padding-top:0px !important;">
+
+    <div class="conteiner-fluid mb-2" style="background-color:black;">
+        <div class="row">
+            <div class="col-5 pt-2 text-center align-content-center">
+                <img class="img-fluid" style="width:60%; height:85%" src="~/Images/DataImpacto/logoDataIntelligence_transparente_Blanco.png" />
+            </div>
+            <div class="col-7">
+                <ul class="nav justify-content-center" >
+                    <li class="nav-item" >
+                        <a class="nav-link active" href="https://www.dataintelligence-group.com">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.dataintelligence-group.com/data-intelligence">Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.dataintelligence-group.com/abarcamos">Abarcamos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="https://www.dataintelligence-group.com/ofrecemos">Ofrecemos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.dataintelligence-group.com/datalab">DataLab</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Account/login">Acceso</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

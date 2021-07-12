@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Honduras - Departamentos</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex">
+    @Scripts.Render("~/bundles/jquery")
+</head>
+
+<body>
+
+
+    <script type="text/javascript" src="~/Scripts/mapas/jsapi.js"></script>
+    <script type="text/javascript">
+
+
+        url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/" + "@ViewBag.URL";
+        // alert(url);
+
+        $.get(url, function (data) {
+
+            var lines = data.split("\n");
+            // var a = lines[0].split(",");
+
+            var datos = [];
+            // alert(datos);
+
+            for (var i = 0; i < lines.length; i++) {
+                try {
+
+                    var valores = lines[i].split(",");
+                    var listAux = [{f:valores[0], v:valores[1]}, Number.parseFloat(valores[2])];
+
+                    datos.push(listAux);
+
+                } catch (error) {
+                    //console.error(error);
+                    // expected output: ReferenceError: nonExistentFunction is not defined
+                    // Note - error messages will vary depending on browser
+                }
+
+            }
+
+            //google.load('visualization', '1', { 'packages': ['geochart'], 'mapsApiKey': 'AIzaSyAQj-OIz0qwamGox5PZmLNtCC85Vi0lhBE'});
+
+            google.charts.load('current', {
+                'packages': ['geochart'],
+                // Note: you will need to get a mapsApiKey for your project.
+                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                'mapsApiKey': 'AIzaSyAQj-OIz0qwamGox5PZmLNtCC85Vi0lhBE'
+            });
+
+            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Country');
+                data.addColumn('number', 'Popularity');
+
+                /*datos.push([{f:'Atlántida', v:'HN-AT'},2],[{f:'Choluteca', v:'HN-CH'},3])*/
+
+                /*data.addRows([[{ f: 'Atlántida', v: 'HN-AT' }, 2], [{ f: 'Choluteca', v: 'HN-CH' }, 3],
+                [{ f: 'Colón', v: 'HN-CL' }, 8], [{ f: 'Comayagua', v: 'HN-CM' }, 8], [{ f: 'Copán', v: 'HN-CP' }, 8],
+                [{ f: 'Cortés', v: 'HN-CR' }, 6], [{ f: 'El Paraíso', v: 'HN-EP' }, 10], [{ f: 'Francisco Morazán', v: 'HN-FM' }, 7],
+                [{ f: 'Gracias a Dios', v: 'HN-GD' }, 5], [{ f: 'Intibucá', v: 'HN-IN' }, 3], [{ f: 'Islas de la Bahía', v: 'HN-IB' }, 2],
+                [{ f: 'La Paz', v: 'HN-LP' }, 7], [{ f: 'Lempira', v: 'HN-LE' }, 9], [{ f: 'Ocotepeque', v: 'HN-OC' }, 3], [{ f: 'Olancho', v: 'HN-OL' }, 3],
+                [{ f: 'Santa Bárbara', v: 'HN-SB' }, 7],
+                [{ f: 'Valle', v: 'HN-VA' }, 8], [{ f: 'Yoro', v: 'HN-YO' }, 6]]);*/
+
+                data.addRows(datos)
+                var options = {
+                    'title': 'Map',
+                    'width': 850, 'height': 400, 'region': 'HN', 'resolution': 'provinces'
+                };
+
+                var container = document.getElementById('map_canvas');
+                var geochart = new google.visualization.GeoChart(container);
+                geochart.draw(data, options);
+            };
+        });
+
+    </script>
+
+    <div id="map_canvas"></div>
+
+</body>
+</html>

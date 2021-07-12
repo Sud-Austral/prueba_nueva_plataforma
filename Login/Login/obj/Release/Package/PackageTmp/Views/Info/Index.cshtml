@@ -1,0 +1,864 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutStatista.cshtml"; 
+}
+
+<!doctype html>
+<html lang="es">
+<head>
+    <!--Meta Tags-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bundles rederizados-->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*fontawesome*@
+    <script src="https://kit.fontawesome.com/2f08016506.js" crossorigin="anonymous"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @*estilos*@
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    @*<link href="~/Content/StyleBuscador.css" rel="stylesheet" />*@
+    <link href="~/Content/StylePagBusqueda.css" rel="stylesheet" />
+    @*Titulo de la pagina*@
+    <title>Estadística</title>
+    @*Script para cargar charts*@
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--carrucel-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- pdf descargar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--megamenu-->
+    <script>
+        $(document).ready(function () {
+            $(".megamenu").on("click", function (e) {
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+
+</head>
+
+<body style="font-family: 'MYRIADPRO-REGULAR' " >
+    @*stilos tamaño de texto *@
+    <style>
+        h6{
+            font-size:17px;
+        }
+        h5{
+            font-size:15px;
+        }
+        h4{
+            font-size:14px;
+        }
+        h2{
+            font-size:34px;
+        }
+        p{
+            font-size:17px;
+        }
+    </style>
+   
+    
+    @*contnedor de seccion breadcrums, titulo carrusel pequeñ0,aside, contenido y carrusel grande de graficos *@
+    <div class="container mt-5">
+        <style>
+        .breadcrumb-item + .breadcrumb-item::before { content: "∙"; }
+        </style>
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:transparent;">
+                    <li class="breadcrumb-item"><a href="/info/homeOdoo">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA_id&id2=1">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre</a></li>
+                    <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR_id&id2=2">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.nombre</a></li>
+                    <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO_id&id2=3">@ViewBag.Elemento.CATEGORIA.PRODUCTO.nombre</a></li>
+                    <li class="breadcrumb-item"><a href="#">@ViewBag.Elemento.CATEGORIA.nombre</a></li>
+                    @*<li class="breadcrumb-item active" aria-current="page">@ViewBag.Elemento.titulo</li>*@
+                </ol>
+            </nav>
+        </div>
+        
+
+        <!--descargar pdf iframe-->
+        @*<button style="cursor: -webkit-grab; cursor: grab; margin-bottom:10px;">Descargar PDF</button>*@
+        <script type="text/javascript">
+            $("#verPdf").click(function () {
+                var myIframe = document.getElementById("inlineFrameExample").contentWindow;
+                myIframe.focus();
+                myIframe.print();
+                return false;
+            });
+        </script>
+     @*seccion iframe grafico*@
+        <section class="contenedor-main row mr-md-2">
+            <main class="col-md-12" style="border:1px solid #e6e6e6; border-radius:10px; border-top:none; height:800px !important;" >
+                <div class="row bg-dark mb-2" style="border:1px solid; border-top-left-radius:10px; border-top-right-radius:10px;">
+                    <div class="col-md-1 col-2">
+                        <img class="img-fluid m-2" width="40" src="~/Content/img/Icono_dataIntelligence_Rojo.png" alt="Alternate Text" />
+                    </div>
+                    <div class="col">
+                        <p class="mt-3" style="color:#fff;">@ViewBag.Elemento.titulo</p>
+                    </div>
+                </div>
+                <!--Iframe de grafico-->
+                <iframe id="inlineFrameExample"
+                        style=" width:100%;height:95%;"
+                        scrolling="no"
+                       @* src="~/Grafico/@ViewBag.grafico?id=@ViewBag.Resultado.URL&id=3=@ViewBag.file">*@
+                       
+                        @{ 
+                            //string rutaGrafico = "/Grafico/" + ViewBag.Elemento.TIPO_GRAFICO.nombre + "?id=" + ViewBag.Elemento.id;// "&id=3=" + ViewBag.file;
+                        }
+                      
+                        src="/info/dashboard?id=@ViewBag.Elemento.id">
+
+                </iframe>
+                
+                <div class="row no-gutters" style="color:blue; font-size:10px;">
+                    
+                        <div class="col-2 mr-3">
+                            <button type="button" class="btn btn-primary" id="boton" style="margin-bottom:20px;">Información del Gráfico</button>
+                        </div>
+                  
+                                    @*<div class="col-md-2 col-3 text-center mt-2 mb-5" style="border-right:1px solid #d9d9d9;">
+                            <a href="#"><span>Ver información</span></a>
+                        </div>
+                        <div class=" col-md-1 col-2 text-center mt-2 mb-5 ml-md-1 mr-md-1" style="border-right:1px solid #d9d9d9;">
+                            <a href="#"><span>Ver fuentes</span></a>
+
+                        </div>*@
+
+                    <div class="col-md-1 col-2 text-center mt-2 mb-5 ml-md-1 mr-md-1" style="border-right:1px solid #d9d9d9;">
+                        <a href="javascript:void(0);">
+                            <span id="verPdf" style="font-size:14px;">Ver en Pdf</span>
+                        </a>
+                        <script type="text/javascript">
+                            $("#verPdf").click(function () {
+                                var myIframe = document.getElementById("inlineFrameExample").contentWindow;
+                                myIframe.focus();
+                                myIframe.print();
+                                return false;
+                            });
+                        </script>
+                    </div>
+                    <div class="col">
+                        <div class="row d-flex">
+                            <div class="col-5 mb-1 ml-auto p-1">
+                                <img class="img-fluid " src="~/Content/img/logosDataIntelligence_creadopor.png" alt="Logo transparente" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </main>
+           @*sidde*@
+            @*
+            <aside class="col-md-4 align-self-start" style=" background-color: white">
+                <!--efecto flotante de esta seccion
+                <div class="sticky-top" style="z-index:1;">
+                    <h6 style="margin:8px; color:black; "><strong>∙</strong> Descargar informe</h6>
+                    <section style="background:#fff; border-radius:15px; background-color:#f0f3f5;">
+                        <div class="contenedor ">
+                            <div class="row d-sm-flex mx-sm-auto" style="padding:10px; margin-bottom:10px;">
+                                <div class=" col-3 col-md-3 text-center ">
+                                    <button type="button" class="btn2"  data-toggle="modal" data-target="#myModal" data-backdrop="false"><img class="img-fluid" src="~/Content/img/boton_archivo_pdf.png" /></button>
+                                    <!-- Modal 
+                                    <div class="modal " id="myModal" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+
+                                            <!-- Modal content
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <section class="pricing py-5 mb-md-5">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <!-- Free 
+                                                                <div class="col-lg-4">
+                                                                    <div class="card mb-5 mb-lg-0">
+                                                                        <div class="card-body">
+                                                                            <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
+                                                                            <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                                                                            <hr>
+                                                                            <ul class="fa-ul">
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                                <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+                                                                                <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Dedicated Phone Support</li>
+                                                                                <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+                                                                                <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                                                            </ul>
+                                                                            <a href="https://dataintelligence.store/products/avance-del-covid-19-cl" target="_blank" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Plus  
+                                                                <div class="col-lg-4">
+                                                                    <div class="card mb-5 mb-lg-0">
+                                                                        <div class="card-body">
+                                                                            <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+                                                                            <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
+                                                                            <hr>
+                                                                            <ul class="fa-ul">
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                                                                                <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                                                            </ul>
+                                                                            <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Pro 
+                                                                <div class="col-lg-4">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+                                                                            <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
+                                                                            <hr>
+                                                                            <ul class="fa-ul">
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
+                                                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                                                            </ul>
+                                                                            <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3 text-center">
+                                    <button type="button" class="btn2" data-toggle="modal" data-target="#myModal2" data-backdrop="true"><img class="img-fluid" src="~/Content/img/boton_archivo_exe.png" /></button>
+                                    <!-- Modal 
+                                    <div class="modal fade" id="myModal2" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+
+                                            <!-- Modal content
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="columns">
+                                                        <ul class="price">
+                                                            <li class="header">Basic</li>
+                                                            <li class="grey">$ 9.99 / year</li>
+                                                            <li>10GB Storage</li>
+                                                            <li>10 Emails</li>
+                                                            <li>10 Domains</li>
+                                                            <li>1GB Bandwidth</li>
+                                                            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="columns">
+                                                        <ul class="price">
+                                                            <li class="header" style="background-color:#4CAF50">Pro</li>
+                                                            <li class="grey">$ 24.99 / year</li>
+                                                            <li>25GB Storage</li>
+                                                            <li>25 Emails</li>
+                                                            <li>25 Domains</li>
+                                                            <li>2GB Bandwidth</li>
+                                                            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="columns">
+                                                        <ul class="price">
+                                                            <li class="header">Premium</li>
+                                                            <li class="grey">$ 49.99 / year</li>
+                                                            <li>50GB Storage</li>
+                                                            <li>50 Emails</li>
+                                                            <li>50 Domains</li>
+                                                            <li>5GB Bandwidth</li>
+                                                            <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3   text-center">
+                                    <button type="button" class="btn2" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="false">
+                                        <img class="img-fluid" src="~/Content/img/boton_archivo_jpg.png" />
+                                    </button>
+                                    <!-- Modal 
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>
+                                                        Función exclusiva de la Cuenta Corporativa
+                                                        Esta función se reserva a los usuarios con cuentas profesionales.
+                                                        Si desea recibir más información sobre este tipo de cuenta, póngase en contacto con nosotros. Solicitar información.
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-3  text-center">
+                                    <button type="button" class="btn2" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <img class="img-fluid" src="~/Content/img/boton_archivo_ppt.png" />
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--Seccion Iconos descargas
+                    <h6 style="padding-left:3%; padding-top:5%; font-family:'MYRIADPRO-REGULAR'; color:black;"><strong>∙</strong> Información</h6>
+                    <section class="widgets1" style="background:#FFF; margin-top:10px; margin-bottom:10px; border-radius:15px; background-color:#f0f3f5; padding-top:5%; padding-bottom:2%;">
+                        <div style="padding-left: 3%;">
+                            <p style="color:black;" href="#"><ion-icon name="return-down-forward-outline"></ion-icon><strong>∙</strong> Ver Información de la Fuente</p>
+                            <p style="color:black;" href="#"><ion-icon name="return-down-forward-outline"></ion-icon><strong>∙</strong> Ver Información del Editor</p>
+                            @*<p>
+                                <strong>Abrir esta estadística en...</strong><br>
+                                @ViewBag.ELEMENTO.idioma
+                            </p>
+                            
+                        </div>
+
+                    </section>
+                    <h6 style="padding-left:3%; padding-top:5%; color:black"><strong>∙</strong> Información General</h6>
+                    <section class="widgets2 text-right" style="font-size:17px;  background:#FFF;color:black; padding-left:5%; padding-right:30%; padding-top: 5%; padding-bottom:2%; margin-top:10px; border-radius:15px; background-color:#f0f3f5; ">
+                        <p>
+                            <strong>Publicado: </strong>
+                            @*
+                                  @ViewBag.Resultado.FECHA_PUBLICACION
+                            *@
+                            @*ViewBag.ELEMENTO._fecha_publicacion
+                        </p>
+
+                        <p>
+                            <strong>Región: </strong>
+
+                            @ViewBag.ELEMENTO.TERRITORIO.nombre
+                        </p>
+
+                        <p>
+                            <strong>Periodo de estudio: </strong>
+
+                            @ViewBag.ELEMENTO.TEMPORALIDAD._fecha_inicio y @ViewBag.ELEMENTO.TEMPORALIDAD._fecha_termino
+                        </p>
+
+                        <p>
+                            <strong>Grupo de edad: </strong>
+
+                            @ViewBag.ELEMENTO.rango_edad
+                        </p>
+
+                    </section>
+                    @*<button type="button" class="btn btn-primary" id="boton" > Más Información</button>
+                </div>
+                
+            </aside>
+            *@
+        </section>
+        @*<section class="container" >
+            <div class="row justify-content-end">
+                <div class="col-2 mr-3">
+                    <button type="button" class="btn btn-primary" id="boton" style="margin-bottom:20px;">Información del Gráfico</button>
+                </div>
+             </div>
+        </section>*@
+        
+        <section class="container widgets mb-5" id="leerMas" style="display:none; background:#fff;">
+            <div class="row" style="border:2px solid #e6e6e6; border-radius:15px; ">
+                <div class="col-4 m-3" style="border-right:0.5px solid #e6e6e6;">
+                    <p style="margin-bottom:0px !important;"><strong>Detalle:</strong></p>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                </div>
+                <div class="col-3 m-3" style="border-right:0.5px solid #e6e6e6;">
+                    <p class="mb-5"><strong>Fuente de Datos:</strong></p>
+                    <p class="mb-5">
+                        <strong>Periodo: </strong>
+
+                        @ViewBag.ELEMENTO.TEMPORALIDAD._fecha_inicio y @ViewBag.ELEMENTO.TEMPORALIDAD._fecha_termino
+                    </p>
+                    <p>
+                        <strong>Región: </strong>
+
+                        @ViewBag.ELEMENTO.TERRITORIO.nombre
+                    </p>
+                </div>
+                <div class="col-4">
+                    <div class="row justify-content-between">
+                        <p class="mb-4 mt-3"><strong>Ver más información de estos gráficos:</strong></p>
+                        <div class="col-6">
+                            <img class="img-fluid mb-4" src="~/Content/image_UsuarioIndex/logo_informeinteractivo.png" />
+                            <button class="btn btn-danger" style="font-size:13px; width:160px; border-radius:25px;">
+                                Ver Informe Interactivo
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid mb-4 mt-1 pt-1" src="~/Content/image_UsuarioIndex/logo_reporte360.png" />
+                            <button class="btn btn-danger" style="font-size:13px; width:160px; border-radius:25px;">
+                                Ver Reporte 360°
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @*Seccion de contenidos*@
+        <div class="col-12 pl-2">
+            <h6 style="font-weight:bold">Información disponible sobre el tema</h6>
+        </div>
+        <section class="container widgets" style="background:#fff; border:solid #e6e6e6; border-radius:15px;">
+            <div class="col-md-12 pt-md-3">
+                <div class="row" style="border-bottom: 2px solid #e6e6e6;">
+                    <div class="col-md-2 col-sm-12">
+                        <img style="width:90%;" class="img-fluid rounded mx-auto d-block mt-4 mb-4" src="~/Content/img/portadaPowerBi_DataCLIMA_PlataformaDeAnalisisYMonitoreoDelClima_BELICE.jpg" alt="Alternate Text" />
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <p style="padding-top:10px;">
+                            <span style="font-size:20px;"><strong> @ViewBag.ELEMENTO.titulo</strong></span> <br />
+                            <span style="font-size:17px; padding-top:10px;">@ViewBag.ELEMENTO.descripcion </span><br />
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                        </p>
+                    </div>
+                </div>
+
+                <span id="leerMas" style="display:none;">
+
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in
+                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p> <br />
+
+
+                </span>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row" style="border-bottom: 2px solid #e6e6e6;">
+                    <div class="col-md-2 col-sm-12">
+                        <img style="width:90%;" class="img-fluid rounded mx-auto d-block mt-4 mb-4" src="~/Content/img/portadaPowerBi_DataCLIMA_PlataformaDeAnalisisYMonitoreoDelClima_BELICE.jpg" alt="Alternate Text" />
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <p style="padding-top:10px;">
+                            <span style="font-size:20px;"><strong> @ViewBag.ELEMENTO.titulo</strong></span> <br />
+                            <span style="font-size:17px; padding-top:10px;">@ViewBag.ELEMENTO.descripcion </span><br />
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                        </p>
+                    </div>
+                </div>
+                <span id="leerMas" style="display:none;">
+
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in
+                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p> <br />
+
+
+                </span>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2 col-sm-12" >
+                        <img style="width:90%;" class="img-fluid rounded mx-auto d-block mt-4 mb-4" src="~/Content/img/portadaPowerBi_DataCLIMA_PlataformaDeAnalisisYMonitoreoDelClima_BELICE.jpg" alt="Alternate Text" />
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <p style="padding-top:10px;">
+                            <span style="font-size:20px;"><strong> @ViewBag.ELEMENTO.titulo</strong></span> <br />
+                            <span style="font-size:17px; padding-top:10px;">@ViewBag.ELEMENTO.descripcion </span><br />
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                        </p>
+                    </div>
+                </div>
+
+                <span id="leerMas" style="display:none;">
+
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in
+                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p> <br />
+                </span>
+            </div>
+
+        </section>
+
+    </div>
+    <!--seccion de suscripciones-->
+        <div class="container-fluid text-center" style=" background-image: url('/Content/img/Promociones/imagenpromocion_fondo.jpg');padding-bottom:40px; background-size:cover;">
+
+            <div class="row" style="padding-left:20%; padding-right:20%">
+                <div class="col-12">
+                    <h3 style="color:#fff; padding:40px 0px;">
+                        ¡Imagina toda la información pública
+                        de un país en una sola plataforma!
+                    </h3>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center" style="padding-left:20%; padding-right:20%">
+                <div class="col-12">
+                    <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_1.png" alt="100%x280" />
+                </div>
+            </div>
+        </div>
+    <div class="container-fluid text-center" style=" background-color: black;padding-bottom:40px; background-size:cover;">
+
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <h3 style="color:#fff; padding:40px 0px; margin-bottom:10px;">
+                    ¡Y para los que necesitan más información!
+                </h3>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-4" style="padding-left:35%; padding-right:35%">
+            <div class="col-12">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_2.png" />
+            </div>
+        </div>
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3.png" />
+            </div>
+        </div>
+        <div class="row mb-1" style="padding-left:20%; padding-right:20%">
+
+            <div class="col-12">
+                <h3 style="color:#fff; padding:40px 0px;">
+                    La suscripción anual Cuenta Profesional fue diseñada especialmente para potenciar las investigaciones, proyectos o planificaciones de quienes requieren una mayor cantidad de información.
+
+                </h3>
+            </div>
+
+        </div>
+        <div class="row mb-4" style="padding-left:20%; padding-right:20%">
+            <h3 style="color:#009fcf">
+                INCLUYE
+            </h3>
+            <div class="col-3">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_1.png" />
+            </div>
+            <div class="col-3">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_2.png" />
+            </div>
+            <div class="col-3">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_3.png" />
+            </div>
+            <div class="col-3">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_4.png" />
+            </div>
+        </div>
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-6" style="border-right:0.5px solid #b5a7a7;font-size:9px;text-align:right;">
+                <span style="color:white; font-size:18px;">USD</span>
+                <span style="color:red; font-size:22px;">$35</span>
+                <br />
+                <span style="color:white; font-size:18px;"> mensuales</span>
+            </div>
+            <div class="col-6" style="text-align:left;">
+                <button class="btn btn-danger btn-sm mt-2 text-left" style="border-radius:20px; font-size:20px;">
+                    Adquirir
+                </button>
+            </div>
+        </div>
+    </div>
+
+            <!--carrucel-->
+    <div class="py-5 bg-light " >
+        <section class="pt-3 ">
+            <div class="container-fluid" >
+                <div class="row justify-content-center text-center">
+
+                    <div class="col-8 text-right mb-3 ml-1 mr-1" style="border:1px solid rgb(0 0 0 / 0.00); border-radius:10px; background-color:#bf1522;" >
+                        <span class="float-left mt-2" style="color:#fff;">Este es un texto de prueba</span>
+                        <a class="btn btn-primary mb-1 mr-1 mt-1" href="#carouselExampleIndicators2" role="button" data-slide="prev" style="text-decoration: none; border:none !important; background-color: #c6c6c6; padding: 3px 5px 5px 5px;">
+                            <i class="fa fa-arrow-left align-baseline" style="color:red;font-size:0.8rem;"></i>
+                        </a>
+                        <a class="btn btn-primary mb-1 mt-1 " href="#carouselExampleIndicators2" role="button" data-slide="next" style="text-decoration: none; border:none !important; background-color: #c6c6c6; padding: 3px 5px 5px 5px;">
+                            <i class="fa fa-arrow-right align-baseline" style="color:red;font-size:0.8rem;"></i>
+                        </a>
+                    </div>
+
+                   
+                    <div class="col-8">
+                        <div id="carouselExampleIndicators2" class="carousel" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <a class="link-card" href="/info/Index?id=@ViewBag.Graficos[0].id">
+                                                <div class="card-header mb-1 text-center" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[0].titulo</div>
+                                                <div class="card" style="border:none;">
+                                                    <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[0]._url_Image">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title" style="color:#000">@ViewBag.Graficos[0].CATEGORIA.nombre</h4>
+
+                                                        <p class="card-text" style="color:#000">@ViewBag.Graficos[0].CATEGORIA.descripcion</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1 text-center" style="border-radius:10px; background-color:transparent; border:0.5px solid #000; color:#000;">
+                                                @ViewBag.Graficos[1].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[1]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[1].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[1].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1 text-center" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">
+                                                @ViewBag.Graficos[2].titulo
+                                            </div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[2]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[2].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[2].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000; color:#000;">@ViewBag.Graficos[3].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[3]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[3].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[3].CATEGORIA.descripcion</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[4].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[4]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[4].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[4].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[5].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[5]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[5].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[5].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[6].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[6]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[6].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[6].CATEGORIA.descripcion</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[7].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[7]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[7].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[7].CATEGORIA.descripcion</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[8].titulo</div>
+                                            <div class="card" style="border-radius:10px;">
+                                                <img class="img-fluid" alt="100%x280" style="border-top-left-radius:10px; border-top-right-radius:10px;" src="@ViewBag.Graficos[8]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[8].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[8].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[9].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[9]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[9].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[9].CATEGORIA.descripcion</p>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[9].titulo</div>
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280" src="@ViewBag.Graficos[10]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[10].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[10].CATEGORIA.descripcion</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card-header mb-1" style="border-radius:10px; background-color:transparent; border:0.5px solid #000;color:#000;">@ViewBag.Graficos[11].titulo</div>
+                                            <div class="card" style="border-radius:10px;">
+                                                <img class="img-fluid" alt="100%x280" style="border-top-left-radius:10px; border-top-right-radius:10px;" src="@ViewBag.Graficos[11]._url_Image">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color:#000">@ViewBag.Graficos[11].CATEGORIA.nombre</h4>
+                                                    <p class="card-text" style="color:#000">@ViewBag.Graficos[11].CATEGORIA.descripcion</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+       
+   
+    @* Seccion de buscador*@
+        <section class="call-to-action">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-8 m-text-center" style="background-color:#000; height:300px;">
+                        <div class="p-1 bg-light  shadow-sm mb-4 mt-5 offset-2" style="border-radius:25px !important; width:60%;">
+                            <form class="input-group" action="~/info/PaginaBusqueda" method="get" >
+                                <div class="input-group-prepend pt-1">
+                                    <button id="button-addon2" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+                                </div>
+                                <input class="typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:15px;">
+                            </form>
+                        </div>
+                        <p id="last" style="color:#fff;" class="offset-2">
+                            ¿Encontraste lo que buscabas?<br />
+                            Si necesitas un informe interactivo, reporte o plataforma en particular o te gustaría adecuar alguno de nuestros productos, OFRECEMOS SERVICOS PERSONALIZADOS.<br />
+                            Solo tienes que contactarnos y te ayudaremos a evaluar su factibilidad.
+                        </p>
+                       
+                    </div>
+                    <div class="col-md-6 col-sm-4" style="background-image: url('/Content/img/ofrecemos_fondo_busqueda.jpg'); background-size: cover;">
+                        <img class="img-fluid offset-6" style="width:50%;" src="~/Content/img/blanco-trans - copia.png" alt="Alternate Text" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    @*Footer*@
+    @*<footer class="row">
+        <div class="col">
+            <h4 style="padding-left:50px;">Footer</h4>
+        </div>
+
+    </footer>*@
+    <!--test highchart
+    <script src="~/Scripts/highcharts.js"></script>
+    <!--script de buscador
+    <script src="~/Scripts/ScriptBuscador.js"></script>
+    <!--Script de ocultar texto-->
+    <script src="~/Scripts/OcultarBoton.js"></script>
+    <!--Jquery, popper y Bootstrap
+    <script src="~/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    -->
+
+
+</body>
+</html>

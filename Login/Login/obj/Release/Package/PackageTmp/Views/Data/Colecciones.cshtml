@@ -1,0 +1,188 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutPublico.cshtml"; }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<script>
+    function mostrador(seccion1) {
+        var arreglo = [
+            '#glaciares',
+            '#ganaderia',
+            '#salud_e',
+            '#violencia',
+            '#pesca',
+            '#agricultura',
+            '#educacion',
+            '#emisiones',
+            '#salud_p',
+            '#elecciones',
+            '#contaminacion',
+            '#ingresoscasen'
+        ];
+        //arreglo.forEach
+        jQuery.each(arreglo, function (i, val) {
+            $(val).hide();
+        });
+        $(seccion1).show();
+    }
+</script>
+
+<main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
+    <div class="row flex-grow-sm-1 flex-grow-0">
+        <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3 d-none d-md-block">
+            <div class="border rounded-3 p-1 ulcolecciones" sstyle="background-color: #dbdde9 !important;">
+                <h6 class="h6colecciones">COLECCIONES</h6>
+                <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate ">
+                    <li class="nav-item licolecciones">
+                        <a onclick="mostrador('#glaciares');" class="nav-link px-2 text-truncate liacolecciones ">
+                            <i class="bi bi-house fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Glaciares</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#ganaderia');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-speedometer fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Ganadería</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#salud_e');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-card-text fs-4 icolecciones"></i>
+                            <span class=" lispancolecciones">Salud: Enfermedades</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#violencia');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-bricks fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Violencia contra la mujer</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#pesca');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-people fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Pesca</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#agricultura');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-bricks fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Agricultura</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#educacion');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-people fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Educación</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#emisiones');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-bricks fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Emisiones</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#salud_p');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-people fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Salud: Pandemia</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#elecciones');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-bricks fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Elecciones</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#contaminacion');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-people fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Contaminación</span>
+                        </a>
+                    </li>
+                    <li class="licolecciones">
+                        <a onclick="mostrador('#ingresoscasen');" class="nav-link px-2 text-truncate liacolecciones">
+                            <i class="bi bi-bricks fs-4 icolecciones"></i>
+                            <span class="lispancolecciones">Ingresos según CASEN</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col overflow-auto">
+            @*Dropdaown MENU PARA MOVIL*@
+            <div class="conteiner-fluid d-block d-md-none">
+                <div class="row">
+                    <div class="col-12 ddcolecciones">
+                        <div class="dropdown ">
+                            <a class="btn dropdown-toggle ddcolecciones" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                COLECCIONES
+                            </a>
+                            <ul class="dropdown-menu ddcolecciones" aria-labelledby="dropdownMenuLink">
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#glaciares');" class="dropdown-item btn btn-light ddhcolecciones">Glaciares</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#ganaderia');" class="dropdown-item btn btn-light ddhcolecciones">Ganadería</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#salud_e');" class="dropdown-item btn btn-light ddhcolecciones">Salud: Enfermedades</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#violencia');" class="dropdown-item btn btn-light ddhcolecciones">Violencia contra la mujer</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#pesca');" class="dropdown-item btn btn-light ddhcolecciones">Pesca</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#agricultura');" class="dropdown-item btn btn-light ddhcolecciones">Agricultura</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#educacion');" class="dropdown-item btn btn-light ddhcolecciones">Educación</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#emisiones');" class="dropdown-item btn btn-light ddhcolecciones">Emisiones</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#salud_p');" class="dropdown-item btn btn-light ddhcolecciones">Salud: Pandemia</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#elecciones');" class="dropdown-item btn btn-light ddhcolecciones">Elecciones</a></li>
+                                <li style="border-bottom:1px solid #d1d3de"><a onclick="mostrador('#contaminacion');" class="dropdown-item btn btn-light ddhcolecciones">Contaminación</a></li>
+                                <li><a onclick="mostrador('#ingresoscasen');" class="dropdown-item btn btn-light ddhcolecciones">Ingresos según CASEN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*FIN MENU PARA MOVIL*@
+            <div class="bg-light border rounded-3 p-3">
+
+                <div id="agricultura" >
+                    @{ Html.RenderAction("Agricultura", "Data");}
+                </div>
+                <div id="glaciares" style="display:none">
+                    @{ Html.RenderAction("Glaciares", "Data");}
+                </div>
+                <div id="ganaderia" style="display:none">
+                    @{ Html.RenderAction("Ganaderia", "Data");}
+                </div>
+                <div id="salud_e" style="display:none">
+                    @{ Html.RenderAction("Salud_Enfermedades", "Data");}
+                </div>
+                <div id="violencia" style="display:none">
+                    @{ Html.RenderAction("Violencia", "Data");}
+                </div>
+                <div id="pesca" style="display:none">
+                    @{ Html.RenderAction("Pesca", "Data");}
+                </div>
+                <div id="educacion" style="display:none">
+                    @{ Html.RenderAction("Educacion", "Data");}
+                </div>
+                <div id="emisiones" style="display:none">
+                    @{ Html.RenderAction("Emisiones", "Data");}
+                </div>
+                <div id="salud_p" style="display:none">
+                    @{ Html.RenderAction("Salud_Pandemia", "Data");}
+                </div>
+                <div id="elecciones" style="display:none">
+                    @{ Html.RenderAction("Elecciones", "Data");}
+                </div>
+                <div id="contaminacion" style="display:none">
+                    @{ Html.RenderAction("Contaminacion", "Data");}
+                </div>
+                <div id="ingresoscasen" style="display:none">
+                    @{ Html.RenderAction("IngresosCasen", "Data");}
+                </div>
+   
+                
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+

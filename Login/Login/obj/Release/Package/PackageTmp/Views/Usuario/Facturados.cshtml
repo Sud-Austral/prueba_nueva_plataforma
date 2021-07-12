@@ -1,0 +1,100 @@
+﻿
+
+@*Este script para trabajar con fecha*@
+<!--<script src="~/Scripts/moment.min.js"></script>-->
+
+@*<div class="col-8">
+        <h3 class="text-dark mb-0">Productos Facturados</h3>
+        <hr style="border:0.5px solid #000000" />
+    </div>*@
+<div class="col-md-8">
+    <h5 class="text-dark mb-0">Suscripción Profesional</h5>
+    <hr style="border:0.5px solid #000000" />
+</div>
+<div class="row responsive" style="overflow: scroll; height: 600px; overflow-x: hidden; width:67%;">
+
+    @foreach (var item in ViewBag.Facturados)
+    {
+        <div class="col-md-2">
+            <img class="img-fluid" src="~/Content/image_UsuarioIndex/imagenpromocion_2.png" />
+        </div>
+        <div class="col-md-9 mb-md-3 ml-md-3" style=" border: 0.5px solid #808080; border-radius: 10px;">
+            <p>Nombre: @item.NOMBRE</p>
+
+            <p> Descripción: @item.DESCRIPCION</p>.stripTags()
+
+            <ul>
+                <li>
+                    Tema 1
+                </li>
+                <li>
+                    Tema 2
+                </li>
+                <li>
+                    Tema 3
+                </li>
+            </ul>
+            <hr />
+
+            <p style="color:blue">Adquirido el dia @item.FECHA_CREADO2.ToString("D") <a href="@item.COMPROBANTE" target="_blank" style="border-radius:25px;" class="btn btn-outline-dark">Ver Factura</a></p>
+            @*<p>Comprobante: @item.COMPROBANTE</p>*@
+
+            @*<p>Product Id: @item.PRODUCT_ID</p>*@
+            @*<p>Fecha de Compra: @item.FECHA_CREADO</p>*@
+
+
+            @*<p>Imagen: @item.URL_IMAGEN</p>*@
+
+            @*<p>
+            Descripción: @item.DESCRIPCION  @{ IHtmlString str = new HtmlString(item.DESCRIPCION); }
+            @Html.Raw(str)
+        </p>*@
+            <p>Dias desde la compra:@item.DIAS_DESDE_COMPRA</p>
+        </div>
+
+
+    }
+</div>
+<div class="col-8 mt-5">
+    <h5 class="text-dark mb-0">Informes Interactivos</h5>
+    <hr style="border:0.5px solid #000000" />
+</div>
+
+<div class="row responsive" style="overflow: scroll; height: 450px; overflow-x: hidden; width:67%;">
+
+    @foreach (var item in ViewBag.Facturados)
+    {
+        <div class="col-md-2">
+            <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_informeinteractivo_AZUL.png" />
+        </div>
+        <div class="col-md-9 mb-md-3 ml-md-3" style=" border: 0.5px solid #808080; border-radius: 10px;">
+            <p>Nombre: @item.NOMBRE</p>
+            <p> Descripción: @item.DESCRIPCION</p>
+            <p style="color:blue">Adquirido el dia @item.FECHA_CREADO2.ToString("D") <a href="@item.COMPROBANTE" target="_blank" style="border-radius:25px;" class="btn btn-outline-dark">Ver Factura</a></p>
+            <p>Dias desde la compra:@item.DIAS_DESDE_COMPRA</p>
+        </div>
+    }
+</div>
+<div class="col-md-8 mt-5">
+    <h5 class="text-dark mb-0">Reportes 360°</h5>
+    <hr style="border:0.5px solid #000000" />
+</div>
+
+<div class="row responsive" style="overflow: scroll; height: 450px; overflow-x: hidden; width:67%;">
+
+    @foreach (var item in ViewBag.Facturados)
+    {
+        <div class="col-md-2">
+            <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+        </div>
+        <div class="col-md-9 mb-md-3 ml-md-3" style=" border: 0.5px solid #808080; border-radius: 10px;">
+            <p>Nombre: @item.NOMBRE</p>
+            <p> Descripción: @item.DESCRIPCION</p>
+            <p style="color:blue">Adquirido el dia @item.FECHA_CREADO2.ToString("D") <a href="@item.COMPROBANTE" target="_blank" style="border-radius:25px;" class="btn btn-outline-dark">Ver Factura</a></p>
+            <p>Dias desde la compra:@item.DIAS_DESDE_COMPRA</p>
+
+        </div>
+
+
+    }
+</div>

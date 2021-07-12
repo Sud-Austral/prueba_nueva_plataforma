@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Restriccion";
+    Layout = null;
+}
+
+@*Esta vista es cuando la persona está logeada pero no tiene acceso al dashboard*@
+
+@*
+    <h2>
+        Lo sentimos @ViewBag.user, aun no tiene acceso a este Dashboard.
+        <br />
+        <a href="http://52.173.85.103:8069/">Volver a la página principal</a>
+    </h2>
+*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Soporte</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-top:0;">
+
+    
+    <div class="container" align="center">
+        <div class="jumbotron" style="background-color:transparent;padding:0;">
+            
+            <img class="img-fluid" src="~/Images/Error/SINaccesoalDashboard.jpg" style="width:100%;" />
+        </div>
+        <h2> No tiene acceso a este dashboard </h2>
+
+        <br /> <br />
+
+        <h2>Problema:</h2>
+        <p>
+            <font size="5">
+                No superó el proceso de validación para visualizar el dashboard.
+            </font>
+        </p>
+        <br />
+
+        <h2>
+            Solución:
+        </h2>
+        <p>
+            <font size="5">
+                Para solucionarlo, diríjase al correo que recibió al comprar el dashboard, y haga clic en el link que este contiene.<br />
+                <a href="https://dataintelligence.store/collections/all" target="_blank">Tienda en línea.</a>
+            </font>
+        </p>
+
+        <br />
+        <h2>
+            Consulte también:
+        </h2>
+        <p>La pagina de <a href="https://dataintelligence.store/pages/preguntas-frecuentes" target="_blank">preguntas frecuentes </a>en la seccion de PROCESO DE COMPRA Y DEVOLUCIÓN/párrafo #4 ¿Qué puedo hacer si una plataforma que compré no funciona correctamente?</p>
+
+        <br />
+        <br />
+
+        <div class="jumbotron">
+            <h3>¿No has encontrado lo que estabas buscando?</h3>
+            <hr class="my-4">
+            <br />
+            <p>
+                Nuestro centro de ayuda (Help Center) contiene las soluciones para casi cada falla técnica conocida. Si no puedes encontrar la respuesta a tu pregunta, por favor envía una solicitud de soporte utilizando el enlace a continuación.
+            </p>
+            <p class="lead">
+                <br /> <br />
+                <a class="btn btn-primary btn-lg" href="https://dataintelligence.store/pages/contacto-1" target="_blank" role="button">
+                    Centro de Ayuda
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,507 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPublico.cshtml";
+}
+
+<!--sección content-cabecera-->
+<div class="container-fluid content-header">
+    <div class="row justify-content-center" style="background-color: black">
+        <div class="col-12 col-md-8">
+            @*<H3 id="titulo1">¡Cientos de estadísticas!</H3>*@
+            <style>
+                /* Basic styles */
+                *,
+                *::before,
+                *::after {
+                    box-sizing: border-box;
+                }
+
+                :root {
+                    --bg-color: #D8D8D8;
+                }
+
+                h3 {
+                    font-size: 2em;
+                    font-weight: normal;
+                }
+
+                /* title styles */
+                .home-title span {
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    line-height: 1.2;
+                }
+
+                    .home-title span::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                        animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
+                        transform: translateX(-101%);
+                    }
+
+                    .home-title span::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: var(--bg-color);
+                        animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
+                        transform: translateX(0);
+                    }
+
+                    .home-title span:nth-of-type(1)::before,
+                    .home-title span:nth-of-type(1)::after {
+                        animation-delay: 1s;
+                    }
+
+                    .home-title span:nth-of-type(2)::before,
+                    .home-title span:nth-of-type(2)::after {
+                        animation-delay: 1.5s;
+                    }
+
+                @@keyframes a-ltr-after {
+                    0% {
+                        transform: translateX(-100%)
+                    }
+
+                    100% {
+                        transform: translateX(101%)
+                    }
+                }
+
+                @@keyframes a-ltr-before {
+                    0% {
+                        transform: translateX(0)
+                    }
+
+                    100% {
+                        transform: translateX(200%)
+                    }
+                }
+            </style>
+            <h3 class="home-title">
+                <span style="color:white">¡Cientos de estadísticas!</span>
+
+            </h3>
+            <p style="padding-left:5%; padding-right:5%;">
+                Generamos día a día información histórica, actual y proyectada
+            </p>
+        </div>
+    </div>
+</div>
+<!--seccion slider o carrusel-->
+<div class="container slide-big" style="margin-bottom: 10px; margin-top: 10px;">
+    @{ Html.RenderAction("CarruselVetical", "Info");}
+</div>
+<div class="col-s-12 col-s-12 col-md-8 d-s-block d-md-none ">
+    @{ Html.RenderAction("CarruselVetical2", "Info");}
+</div>
+<!--seccion contenido y buscador debajo de carrusel-->
+<div class="container-fluid content1">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8" id="centerbox">
+            <H3>¡Explora, busca y encuentra!</H3>
+
+                <p>
+                    Todos nuestros <span>gráficos son gratuitos</span> gráficos son gratuitos. Ingresa una <span>palabra clave y busca</span>  en nuetra base de datos.
+                </p>
+
+        </div>
+    </div>
+    <div class="row content-buscador justify-content-center">
+        <div class="col-12 col-md-8">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form action="~/info/PaginaBusqueda" method="get">
+                        <input class="buscador typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:10px;">
+                    </form>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p id="content1-p2">
+                        las cuales contenian pasajes de Lorem Ipsum, y más
+                        recientemente con software de autoedición, como por ejemplo
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--seccion contenido e icnos de nuestras metas-->
+<div class="container content2">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9">
+            <p style="font-size:20px; color:#2c77b4; font-weight:bolder;">
+                Imagina toda la información de un país en una sola plataforma
+            </p>
+        </div>
+        <div class="col-12 d-xs-block d-sm-none d-md-none d-xl-none">
+            <h3 style="padding-bottom:5%;">Esa es nuestra meta, crear el mayor centro de información en línea de todos los sectores del ámbito nacional.</h3>
+            <h3 style="padding-bottom:5%; font-weight:bold;">¡Busca en nuestra Colección!</h3>
+
+            <div class="carousel slide" id="carousel3" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center" style="padding-left:5%; padding-right:5%;">
+                            <diV class="col-6">
+                                <a href="/info/ResultadoNiveles?id=10&id2=1">
+                                    <img class="img-fluid" src="~/Content/image_estadistica/1_boton_agropecuario_normal.png" onmouseover="this.src='/Content/image_estadistica/1_boton_agropecuario_on.png'" onmouseout="this.src='/Content/image_estadistica/1_boton_agropecuario_normal.png'" />
+                                </a>
+                            </diV>
+                            <diV class="col-6">
+                                <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                            </diV>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center" style="padding-left:5%; padding-right:5%;">
+                            <diV class="col-6">
+                                <a href="/info/ResultadoNiveles?id=22&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/5_boton_mediosocial_normal.png" onmouseover="this.src = '/Content/image_estadistica/5_boton_mediosocial_on.png'" onmouseout="this.src='/Content/image_estadistica/5_boton_mediosocial_normal.png'" /></a>
+                            </diV>
+                            <diV class="col-6">
+                                <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                            </diV>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 justify-content-center" style="display:none;">
+                <div class="col-12">
+                    <a class="btn btn-primary mb-3 mr-1" href="#carousel3" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-primary mb-3 " href="#carousel3" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 d-none d-md-block">
+            <h3 style="padding-bottom:5%;">Esa es nuestra meta, crear el mayor centro de información en línea de todos los sectores del ámbito nacional.</h3>
+            <h3 style="padding-bottom:2%; font-weight:bold;">¡Busca en nuestra Colección!</h3>
+            <div class="row justify-content-center" style="padding-left:5%; padding-right:5%;">
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=10&id2=1">
+                        <img class="img-fluid" src="~/Content/image_estadistica/1_boton_agropecuario_normal.png" onmouseover="this.src='/Content/image_estadistica/1_boton_agropecuario_on.png'" onmouseout="this.src='/Content/image_estadistica/1_boton_agropecuario_normal.png'" />
+                    </a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=13&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/2_boton_construccion_normal.png" onmouseover="this.src = '/Content/image_estadistica/2_boton_construccion_on.png'" onmouseout="this.src='/Content/image_estadistica/2_boton_construccion_normal.png'" /></a>
+                </diV>
+            </div>
+            <div class="row justify-content-center" style="padding-left:5%; padding-right:5%; margin-bottom:5%;">
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=22&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/5_boton_mediosocial_normal.png" onmouseover="this.src = '/Content/image_estadistica/5_boton_mediosocial_on.png'" onmouseout="this.src='/Content/image_estadistica/5_boton_mediosocial_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                </diV>
+                <diV class="col-2">
+                    <a href="/info/ResultadoNiveles?id=24&id2=1"><img class="img-fluid" src="~/Content/image_estadistica/6_boton_turismo_normal.png" onmouseover="this.src = '/Content/image_estadistica/6_boton_turismo_on.png'" onmouseout="this.src='/Content/image_estadistica/6_boton_turismo_normal.png'" /></a>
+                </diV>
+            </div>
+
+        </div>
+    </div>
+    <div class="row justify-content-center d-flex" style="background-color:#c6ccda;">
+        <div class="col-12 col-md-9">
+            <p style="font-size:20px; color:#2c77b4; font-weight:bolder;">
+                ¿Y cómo se visualiza la información?
+            </p>
+            <h3 style="padding-bottom:5%;">Es muy sencillo, no tienes que instalar , ordenar o sistematizar datos.</h3>
+            <h3 style="padding-bottom:8%;">A diferencia de otras plataformas nuestra información es interactiva. Es rápida, se encuentra verificada y proviene de todas las bases públicas del país.</h3>
+            <h3>GRÁFICO</h3>
+            <hr />
+            <h3>Pensado para todo público, esta visualización es gratuita.</h3>
+            <div id="carousel4" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="height:30vh;">
+                        <img class="d-block w-100" src="~/Content/image_UsuarioIndex/icono_graficogratuito_NARANJA.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:white; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#404040;">
+                            Se accede a la información gráfico por gráfico.
+                        </p>
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:white; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#404040;">
+                            La información es simple y clara. Es extraida con diferentes variables y cruces de datos.
+                        </p>
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:red; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#fdfbfa;">
+                            Modalidad
+                            <br />
+                            Gratuita
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 justify-content-center" style="padding-bottom:8%; display:none;">
+                <div class="col-12">
+                    <a class="btn btn-primary mb-3 mr-1" href="#carousel4" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-primary mb-3" href="#carousel4" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <h3>SUBSCRIPCIÓN</h3>
+            <hr />
+            <h3>Pensado para académicos, estudiantes o empresas que requieren información procesada y detallada de su sector.</h3>
+            <div id="carousel5" class="carousel slide mb-3" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="~/Content/image_UsuarioIndex/imagenpromocion_2.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:white; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#404040;">
+                            La Cuenta Profesional visualiza los datos en prácticos informes interactivos.
+                        </p>
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:white; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#404040;">
+                            Acceso a toda la información de una coleccion por el periodo de un año.
+                            <br />
+                            Prueba gratis por 7 dias.
+                        </p>
+                    </div>
+                    <div class="carousel-item" style="height:30vh;">
+                        <p style="border-radius:15px; background-color:red; height:20vh; padding-top:10%; padding-bottom:10%; padding-left:5%; padding-right:5%; color:#fdfbfa;">
+                            Modalidad
+                            <br />
+                            USD 10 mensuales por colección
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 justify-content-center" style="padding-bottom:8%; display:none;">
+                <div class="col-12">
+                    <a class="btn btn-primary mb-3 mr-1" href="#carousel5" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-primary mb-3" href="#carousel5" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @*la otra propuesta*@
+    @*<div class="row justify-content-center">
+            <div class="col-s-12 col-md-9">
+                <div class="row mb-md-5 quotes">
+                    <div class="content2-cuadros box box1 col-s-7 col-md-2">
+                        <p>
+                            Fue popularizado en los 60s con la creación de las hojas
+
+                        </p>
+                    </div>
+                    <div class="content2-cuadros box box2 col-s-7 col-md-2">
+                        <p>
+                            Fue popularizado en los 60s con la creación de las hojas
+
+                        </p>
+                    </div>
+                    <div class="content2-cuadros box box3  col-s-7 col-md-2">
+                        <p>
+                            Fue popularizado en los 60s con la creación de las hojas
+
+                        </p>
+                    </div>
+                    <div class="content2-cuadros box box1 col-s-7 col-md-2">
+                        <p>
+                            Fue popularizado en los 60s con la creación de las hojas
+
+                        </p>
+                    </div>
+                    <div class="content2-cuadros box box2  col-s-7 col-md-2">
+                        <p>
+                            Fue popularizado en los 60s con la creación de las hojas
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+<!--</div>-->
+<!--seccion nuestros productos-->
+<!--<div class="container-fluid content3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <h3>Conoce nuestros productos</h3>
+            <hr />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 mb-md-5 ">
+            <div class="row justify-content-center ">
+                @*@{ Html.RenderAction("IndexProductos", "Data");}*@
+                <div class="col-7 col-md-2 bg-dark">
+                    <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_graficogratuito_NARANJA.png" alt="" />
+                    <div>
+                        <p style="color:snow">Lorem Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <h3>Gráficos</h3>
+                </div>
+                <div class="col-12 col-md-3">
+                    <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                </div>
+                <div class="col-12 col-md-3">
+                    <p>Lorem Ipsum is simply</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row justify-content-center">
+
+        <div class="col-12 col-md-8 mb-md-5">
+            <hr />
+            <div class="row justify-content-center">
+                <div class="col-7 col-md-2">
+                    <img class="img-fluid" src="~/Content/image_UsuarioIndex/imagenpromocion_2.png" alt="" />
+                    <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                </div>
+                <div class="col-12 col-md-3">
+                    <h3>Gráficos</h3>
+                </div>
+                <div class="col-12 col-md-3">
+                    <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                </div>
+                <div class="col-12 col-md-3">
+                    <p>Lorem Ipsum is simply</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!--seccion content4 mapa  -->
+<!--<div class="container content4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <img class="img-fluid" src="~/Content/image_UsuarioIndex/mapa-Chile.png" alt="" />
+        </div>
+        <div class="col-12 col-md-9">
+            <h3>Imagina todo la información de un país en una sola plataforma</h3>
+            <hr />
+        </div>
+        <div class="col-12 col-md-9">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+            <p>Lorem Ipsum is simply dummy text of</p>
+            <p>Lorem Ipsum is simply</p>
+        </div>
+        <div class="col-12 col-md-9 mt-md-3 sibling-fade ">
+            <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+            <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+        </div>
+
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9 mb-md-4">
+            <h3>¡Explora,busca y encuentra!</h3>
+        </div>
+        <div class="row content-buscador justify-content-center">
+            <div class="col-12 col-md-9">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <form action="~/info/PaginaBusqueda" method="get">
+                            <input class="buscador typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:10px;">
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-6 ">
+                        <p id="content4-p1">
+                            las cuales contenian pasajes de Lorem Ipsum, y más
+                            recientemente con software de autoedición, como por ejemplo
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>-->
+<!--seccion content5 comentarios de clientes ultima seccion  -->
+@*<div class="container content5">
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9">
+            <div class="row content5-secciones justify-content-center">
+                <div class="col-8 col-md-4 contenedor">
+                    <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                    <img class="img-fluid" src="~/Content/image_UsuarioIndex/female-executive.jpg" alt="" />
+                    <p>The standard chunk of Lorem Ipsum used since the</p>
+                </div>
+                <div class="col-8 col-md-4">
+                    <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                    <img class="img-fluid" src="~/Content/image_UsuarioIndex/senior.jpg" alt="" />
+
+                    <p>The standard chunk of Lorem Ipsum used since the</p>
+                </div>
+                <div class="col-8 col-md-4 ">
+                    <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                    <img class="img-fluid" src="~/Content/image_UsuarioIndex/female-executive.jpg" alt="" />
+                    <p>The standard chunk of Lorem Ipsum used since the</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>*@
+

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h1 class="">Hola @ViewBag.User, esperamos poder ayudarte</h1>
+
+<br />
+<h2>Estos son tus productos:</h2>
+<table class="table table-bordered table-dark" align="center">
+    <thead class="thead-dark">
+        <tr>
+            <th> Nombre </th>
+            <th> Producto </th>
+            <th> Descripcion </th>
+            <th> Comprobante </th>
+            <th> SKU </th>
+            <th> Product ID </th>
+            <th> Fecha </th>
+            <th> Imagen </th>
+            <th> Dias </th>
+            <th> JSON </th>
+        </tr>
+    </thead>
+    @foreach (var item in ViewBag.Resultado)
+    {
+        <tbody>
+            <tr>
+                <th>
+                    @item.NOMBRE
+                </th>
+
+                <td>
+                    <a href="~/Pagina/ValidadorProductosInternos/@item.ID" style="color:lightblue;">
+                        @item.ID
+                    </a>
+                </td>
+                <td>
+                    @{ 
+                        IHtmlString str = new HtmlString(item.DESCRIPCION);
+                    }
+                    @Html.Raw(str)
+
+                    @*@item.DESCRIPCION*@
+                </td>
+
+                <td>
+                    <a href="@item.COMPROBANTE" target="_blank" style="color:lightblue;">
+                        @item.COMPROBANTE
+                    </a>
+                </td>
+                <td>
+
+                    @item.SKU
+
+                </td>
+                <td>
+                    @item.PRODUCT_ID
+                </td>
+                <td>
+                    @item.FECHA_CREADO2;
+                </td>
+                <td>
+                    <img src="@item.URL_IMAGEN" alt="Girl in a jacket" width="500" height="600">
+
+
+                </td>
+                <td>
+                    @item.DIAS_DESDE_COMPRA
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+<br /><br /><br /><br />
+
+<p data-mce-fragment="1"><strong>AGROSTAT</strong> - Estadísticas Agrícolas reúne estadísticas del mundo agrícola, relacionadas principalmente al rendimiento y superficie ocupada por tipo de cultivo, pudiendo ser analizadas a distintos niveles, ya sea nacional o regional.<br></p>
+<h2><span data-mce-fragment="1"> Características </span></h2>
+<ul data-mce-fragment="1"> <li data-mce-fragment="1"> <b data-mce-fragment="1">Tipo de producto:</b><span data-mce-fragment="1"><span data-mce-fragment="1"> </span></span>Gratuito</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Variantes disponibles:<span data-mce-fragment="1"> </span></b></b>Chile, Todas las regiones de Chile</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Periodo: </b></b>2005 – 2020</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Proveedor:<span data-mce-fragment="1"> </span></b></b>Data Intelligence</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Colección:<span data-mce-fragment="1"> </span></b></b>DATAAGRO</li> </ul>
+<h2 data-mce-fragment="1"><span data-mce-fragment="1">Especificaciones </span></h2>
+<ul data-mce-fragment="1"> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Herramientas utilizadas en su desarrollo:<span data-mce-fragment="1"> </span></b></b>Power BI</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Incluye: </b></b>Mapas, gráficos y tableros interactivos, glosario</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Uso: </b></b>Desktop/Laptop, Tablet, Celular</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Fuente datos utilizados:<span data-mce-fragment="1"> </span></b></b>Instituto Nacional de Estadísticas (INE) y Oficina de Estudios y Políticas Agrarias (ODEPA) del Ministerio de Agricultura</li> </ul>
+<h2 data-mce-fragment="1"><span data-mce-fragment="1">Acceso</span></h2>
+<ul data-mce-fragment="1"> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Recibirás: </b></b>1 credencial</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Licencia de uso por:<span data-mce-fragment="1"> </span></b></b>12 meses</li> <li data-mce-fragment="1"> <b data-mce-fragment="1"><b data-mce-fragment="1">Actualizaciones: </b></b>Sin actualizaciones</li> <li data-mce-fragment="1"> <b data-mce-fragment="1">N° de usuarios: </b>1</li> </ul>
+
+<h1>Esto es solo para separar</h1>
+
+<p>La plataforma <strong>Avance del COVID-19</strong> te permitirá hacer un monitoreo constante de la evolución del COVID-19 en el país, identificando contagiados, fallecidos, recuperados y activos, a nivel nacional y regional. Incluye estadísticas de exámenes PCR realizados, hospitalizados, así como camas y ventiladores disponibles.</p>
+<h2><span style="color: #000000; background-color: #ffffff;"> Características </span></h2>
+<ul> <li> <b>Tipo de producto:</b> Gratuito</li> <li> <b>Variantes disponibles: </b>Chile</li> <li> <b>Periodo: </b>2020-2021</li> <li> <b>Proveedor:<span> </span></b>Data Intelligence</li> <li> <b>Colección: </b>DATASALUD</li> </ul>
+<h2><span style="color: #000000; background-color: #ffffff;">Especificaciones </span></h2>
+<ul> <li> <b>Herramientas utilizadas en su desarrollo:<span> </span></b>Power BI</li> <li> <b><b>Incluye: </b></b>Mapas, tableros y gráficos interactivos, glosario</li> <li> <b>Uso: </b>Desktop/Laptop, Tablet, Celular</li> <li> <b>Fuente datos utilizados: </b>Ministerio de Salud</li> </ul>
+<h2><span style="color: #000000; background-color: #ffffff;">Acceso</span></h2>
+<ul> <li> <b>Recibirás: </b>1 credencial</li> <li> <b>Licencia de uso por:<span> </span></b>12 meses</li> <li> <b>Actualizaciones: </b>Diarias</li> <li> <b>N° de usuarios: </b>1</li> </ul>
+<img src="~/Images/csm_trainings_01_8a14e43b84.png" class="img-fluid" alt="Responsive image">

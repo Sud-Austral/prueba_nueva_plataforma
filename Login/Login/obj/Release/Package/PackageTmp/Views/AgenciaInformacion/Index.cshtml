@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAgencia.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-md-between">
+            <div class="col-12 col-md-4 text-left ">
+                <div class="row mt-2">
+                    <div class="col-12 col-md-7 text-center">
+                        <form action="~/AgenciaInformacion/PaginaBusqueda" method="get">
+                            <input type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="padding: 6px; border: 1px solid #C6CCDC; border-top-left-radius: 3px; border-bottom-left-radius: 3px; font-size:0.8rem;">
+                            <button id="search-button" type="submit" value="Submit" class="btn btn-danger">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-4 mt-1 text-center">
+                        <a class="btn btn-danger btn-sm " style="font-size: 14px; margin: 0px; width: 100px; cursor: pointer" href="javascript:history.back()"> Volver Atrás</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-8 text-center ">
+                <h5 class="mt-3">@ViewBag.Grafico.titulo</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-2 d-none d-md-block" style="text-align: right !important;">
+                <button type="button" class="btn  btn-secondary m-1" style="font-size: 0.8rem; width: 70%; ">Colección</button>
+                <button type="button" class="btn  btn-secondary btr-md m-1" style="font-size: 0.8rem; width: 70%; ">Sectores</button>
+                <button type="button" class="btn  btn-success m-1" style="font-size: 0.8rem; width: 70%;">Temas</button>
+                <button type="button" class="btn  btn-danger m-1" style="font-size: 0.8rem; width: 70%;"> Contenidos</button>
+                <button type="button" class="btn  btn-warning m-1" style="font-size: 0.8rem; width: 70%;">País</button>
+                <button type="button" class="btn  btn-info m-1" style="font-size: 0.8rem; width: 70%;">Escala</button>
+                <button type="button" class="btn  btn-primary m-1" style="font-size: 0.8rem; width: 70%;">Territorio</button>
+                <button type="button" class="btn  btn-dark m-1" style="font-size: 0.8rem; width: 70%;">Temporalidad</button>
+                <button type="button" class="btn  btn-primary m-1" style="font-size: 0.8rem; width: 70%;">Unidad Medida</button>
+            </div>
+            <div class="col-11 col-md-2 mx-auto d-none d-md-block">
+                <button type="button" class="btn  btn-outline-secondary m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.coleccion</button>
+                <button type="button" class="btn  btn-outline-secondary m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.sector</button>
+                <button type="button" class="btn  btn-outline-success m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.tema</button>
+                <button type="button" class="btn  btn-outline-danger m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.contenido</button>
+                <button type="button" class="btn  btn-outline-warning m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.pais</button>
+                <button type="button" class="btn  btn-outline-info m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.escala</button>
+                <button type="button" class="btn  btn-outline-primary m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.territorio</button>
+                <button type="button" class="btn  btn-outline-dark m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.temporalidad</button>
+                <button type="button" class="btn  btn-outline-primary m-1" style="font-size: 0.8rem; width: 100%;">@ViewBag.Grafico.unidad_medida </button>
+
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @*<h2>@ViewBag.Grafico.titulo</h2>*@
+                        <iframe id="Imprimeme" 
+                                class="pruebarara" 
+                                style="width:100%; height:460px;" 
+                                src="@ViewBag.Grafico.url">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <style>
+                        .line-clamp2 {
+                            display: -webkit-box;
+                            -webkit-line-clamp: 10;
+                            -webkit-box-orient: vertical;
+                            overflow-wrap: normal;
+                            overflow-y: hidden;
+                            width: 98%;
+                            margin: auto;
+                            font-family: sans-serif;
+                            line-height: 1.4;
+                        }
+
+                            .line-clamp2:hover {
+                                -webkit-line-clamp: 100;
+                                cursor: pointer;
+                            }
+                    </style>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-12" style="border:2px solid #e6e6e6; border-radius:15px; ">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-10 mt-3 mb-2 d-none d-md-block" style="border-right:0.5px solid #e6e6e6; white-space:normal;">
+                                    <p style="margin-bottom:0px !important; "><strong>Descripción:</strong></p>
+
+                                    <p class='line-clamp2'>
+                                        @ViewBag.Grafico.descripcion_larga
+                                    </p>
+
+                                </div>
+                                <div class="col-md-4 col-sm-10" style="border-right: 0.5px solid #e6e6e6; white-space: normal;">
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Colección: </strong>
+                                        @ViewBag.Grafico.coleccion
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Sectores: </strong>
+                                        @ViewBag.Grafico.sector
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Temas: </strong>
+                                        @ViewBag.Grafico.tema
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Contenidos: </strong>
+                                        @ViewBag.Grafico.contenido
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>País:</strong> Chile-
+                                        @ViewBag.Grafico.pais
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Escala: </strong>
+                                        @ViewBag.Grafico.escala
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Territorio:</strong>
+
+                                        @ViewBag.Grafico.territorio
+
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none">
+                                        <strong>Temporalidad:</strong>
+                                        @ViewBag.Grafico.temporalidad
+                                    </p>
+                                    <p class="mb-md-1 d-block d-md-none" style="margin-bottom:0px !important; "><Strong>Unidad de Medida:</Strong></p>
+                                    <p class="d-block d-md-none" style="white-space: normal;">@ViewBag.Grafico.unidad_medida @*(@ViewBag.Grafico.unidad_medida)*@</p>
+
+                                    <p class="mt-md-3 mb-md-0" style="margin-bottom:0px !important; "><strong>Fuente de Datos:</strong></p>
+                                    <p class="mb-md-1">@ViewBag.Grafico.fuente</p>
+
+                                    <p class="mb-md-0 d-none d-md-block" style="margin-bottom:0px !important;"><strong>Título:</strong></p>
+                                    <p class="mb-md-0 d-none d-md-block">@ViewBag.Grafico.titulo</p>
+
+                                    <p style="margin-bottom:0px !important; " class="d-block d-md-none"><strong>Descripción:</strong></p>
+                                    <p class="line-clamp2 d-block d-md-none mb-md-1">
+                                        @ViewBag.Grafico.descripcion_larga
+                                    </p>
+                                    <p class="mt-md-3 mb-md-0 d-none d-md-block" style="margin-bottom:0px !important;"><strong>Visualización:</strong></p>
+                                    <p class="mb-md-1 d-none d-md-block">@ViewBag.Grafico.visualizacion</p>
+                                </div>
+
+                                <div class="col-md-4 col-10">
+                                    <p class="mt-md-3 d-none d-md-block"><strong>Ver más información</strong></p>
+                                    <div class="row justify-content-center mb-md-3">
+                                        <!--<div class="col-md-5 col-10 text-center">-->
+                                        @*  <a href="https://dataintelligence.store/collections">*@
+                                        <!--<img class="img-fluid mb-4" src="~/Content/image_UsuarioIndex/icono_informeinteractivo_AZUL.png" />
+                                        <button onclick="mostrador('#PBuno'); FiltrarII();" class="btn btn-danger" data-backdrop="True" style="font-size: 12px; width: 165px; border-radius: 25px; margin-left: 5px;">
+                                            Ver Informe Interactivo
+                                        </button>-->
+                                        @* </a>*@
+                                        <!--</div>
+                                        <div class="col-md-5 col-10 text-center">-->
+                                        @*
+                                            <a href="https://dataintelligence.store/collections">*@
+                                        <!--<img class="img-fluid mb-4 " src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+                                        <button onclick="mostrador('#PBuno'); FiltrarReporte360();" class="btn btn-danger" data-backdrop="True" style="font-size:12px; width:165px; border-radius:25px;margin-left:5px;">
+                                            Ver Reporte 360°
+                                        </button>-->
+                                        @*
+                                            </a>*@
+                                        <!--</div>-->
+                                        @*estilos para cortar los tags en 3 filas y ocultar los demas con la clase line-clam *@
+                                        <style>
+                                            .line-clamp {
+                                                display: -webkit-box;
+                                                -webkit-line-clamp: 3;
+                                                -webkit-box-orient: vertical;
+                                                overflow-wrap: normal;
+                                                overflow-y: hidden;
+                                                width: 98%;
+                                                margin: auto;
+                                                font-family: sans-serif;
+                                                line-height: 1.4;
+                                            }
+
+                                                .line-clamp:hover {
+                                                    -webkit-line-clamp: 100;
+                                                    cursor: pointer;
+                                                }
+                                        </style>
+
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                               
+                                                @*<button class="btn-primary">Descargar</button>
+                                                    <button class="btn-success ml-md-2" onclick="compartir('@ViewBag.Grafico.url')">Compartir</button>*@
+                                                <p class="mt-md-3 mb-md-1" style="margin-bottom:0px !important;"><strong>Tags:</strong></p>
+                                                <p id="tagsGrafico" class='line-clamp'>@ViewBag.Grafico.tag</p>
+                                                 <button type="button" class="btn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Compartir
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Compartir
+    </button>-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compartir</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            @*<div class="col-md-10">.col-md-4</div>*@
+                            <div class="col-md-12 ms-auto">
+                                <input style="width: 100%; height: 100px;" type="text" id="urliframe" name="urliframe" value="@ViewBag.Grafico.url">
+                            </div>
+                            <div class="col-md-3">
+                                <button onclick="copiarurlIframe()" class="btn-primary">Copiar</button>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            @*<div class="col-md-10">.col-md-4</div>*@
+                            <div class="col-md-12 ms-auto">
+                                <input style="width: 100%; height: 100px;" type="text" id="codigoIframe" name="codigoIframe" value='<iframe width="600" height="373.5" <span></span> src="@ViewBag.Grafico.url" frameborder="0" allowFullScreen="true"></iframe>'>
+                            </div>
+                            <div class="col-md-3">
+                                <button onclick="copiarcodigoIframe()" class="btn-primary">Copiar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    @*script para el modal con el codigo de iframe y el link de grafico*@
+    <script>
+        function copiarcodigoIframe() {
+            $("#codigoIframe").focus();
+            $("#codigoIframe").select();
+            document.execCommand("copy")
+        }
+        function copiarurlIframe() {
+            $("#urliframe").focus();
+            $("#urliframe").select();
+            document.execCommand("copy");
+        }
+    </script>
+    @*script para el modal con el codigo de iframe y el link de grafico*@
+</body>
+</html>
+
+
+
+

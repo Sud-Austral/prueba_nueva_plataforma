@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "gustavo";
+    Layout = "~/Views/Shared/_LayoutStatista.cshtml";
+}
+
+<h2>gustavo</h2>
+@ViewBag.test
+@foreach (var testMenu in ViewBag.test)
+{
+    <h3>
+        El nombre de la industria es : 
+    </h3>
+
+    <h1>
+        @testMenu.nombre
+    </h1>
+
+    //Colocar:
+    //ViewBag.Lista=dbGrafico.INDUSTRIA.ToList() En elcontrolador
+<div>
+    @ViewBag.Lista.Count
+</div>
+}

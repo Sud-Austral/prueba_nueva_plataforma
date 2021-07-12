@@ -1,0 +1,652 @@
+﻿@{
+    Layout = null;
+
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <title>Home</title>
+   
+</head>
+<body>
+    <!--seccion navbar menu principal-->
+    <nav class="navbar navbar-expand-lg navbar navbar-light bg-dark ">
+        <!--seccion logo navbar -->
+        <div class="container-fluid">
+            <a class="navbar-brand content-logo" href="#">
+                <img class="img-fluid" src="~/Content/img/RRSS/logoDataIntelligence.png" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:#fff;">ESTADÍSTICAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:#fff;">BÚSQUEDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:#fff;">DATALAB</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="color:#fff;">ACCESO</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--sección content-cabecera-->
+    <div class="container-fluid content-header">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                @*<H3 id="titulo1">¡Cientos de estadísticas!</H3>*@
+                <style>
+                    /* Basic styles */
+                    *,
+                    *::before,
+                    *::after {
+                        box-sizing: border-box;
+                    }
+
+                    :root {
+                        --bg-color: #D8D8D8;
+                    }
+
+                    h3 {
+                        font-size: 2em;
+                        font-weight: normal;
+                    }
+
+                    /* title styles */
+                    .home-title span {
+                        position: relative;
+                        overflow: hidden;
+                        display: block;
+                        line-height: 1.2;
+                    }
+
+                        .home-title span::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: white;
+                            animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
+                            transform: translateX(-101%);
+                        }
+
+                        .home-title span::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: var(--bg-color);
+                            animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
+                            transform: translateX(0);
+                        }
+
+                        .home-title span:nth-of-type(1)::before,
+                        .home-title span:nth-of-type(1)::after {
+                            animation-delay: 1s;
+                        }
+
+                        .home-title span:nth-of-type(2)::before,
+                        .home-title span:nth-of-type(2)::after {
+                            animation-delay: 1.5s;
+                        }
+
+                    @@keyframes a-ltr-after {
+                        0% {
+                            transform: translateX(-100%)
+                        }
+
+                        100% {
+                            transform: translateX(101%)
+                        }
+                    }
+
+                    @@keyframes a-ltr-before {
+                        0% {
+                            transform: translateX(0)
+                        }
+
+                        100% {
+                            transform: translateX(200%)
+                        }
+                    }
+                </style>
+                <h3 class="home-title">
+                    <span>¡Cientos de estadísticas!</span>
+
+                </h3>
+                <p>
+                    Generamos día a día información histórica, actual y proyectada
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--seccion slider o carrusel-->
+    <!--Todos los estilos y script de este carrusel estan en una sola carpeta con nombre carrusel14-->
+    <div class="col-12 col-md-12 d-none d-sm-none  d-md-block" style="margin-bottom: 10px; margin-top: 10px;">
+            @{ Html.RenderAction("CarruselVetical", "Info");}
+    </div>
+    <div class="col-12 col-md-8 d-sm-block d-md-none mt-3 mb-5 ">
+        @{ Html.RenderAction("CarruselVetical2", "Info");}
+    </div>
+    <!--seccion contenido y buscador debajo de carrusel-->
+    <div class="container-fluid content1">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8" id="centerbox">
+                <H3>¡Explora, busca y encuentra!</H3>
+                <article class="highlight">
+                    <p>
+                        Todos nuestros <span>gráficos son gratuitos</span> gráficos son gratuitos. Ingresa una <span>palabra clave y busca</span>  en nuetra base de datos.
+                    </p>
+                </article>
+            </div>
+        </div>
+        <div class="row content-buscador justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <form action="~/info/PaginaBusqueda" method="get">
+                            <input class="buscador typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:10px;">
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p id="content1-p2">
+                            las cuales contenian pasajes de Lorem Ipsum, y más
+                            recientemente con software de autoedición, como por ejemplo
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--seccion contenido e icnos de nuestras metas-->
+    <div class="container content2">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9">
+                <p>
+                    las cuales contenian pasajes de Lorem Ipsum, y más
+                    recientemente con software de autoedición, como por ejemplo Aldus
+                    PageMaker, el cual incluye versiones de Lorem Ipsum.
+                </p>
+            </div>
+            <div class="col-12 col-md-9">
+                <h3>Nuestra meta es generar la mayor fuente de datos públicos del país</h3>
+                <hr />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-s-12 col-md-9">
+                <div class="row mb-md-5">
+                    <div class="content2-cuadros col-s-7 col-md-3">
+                        <div class="card">
+                            <div class="face face1">
+                                <div class="content">
+                                    <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
+                                    <h3>Test1</h3>
+                                </div>
+                            </div>
+                            <div class="face face2">
+                                <div class="content">
+                                    <p>
+                                        Fue popularizado en los 60s con la creación de las hojas
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content2-cuadros  col-s-7 col-md-3">
+                        <div class="card">
+                            <div class="face face1">
+                                <div class="content">
+                                    <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
+                                    <h3>Test2</h3>
+                                </div>
+                            </div>
+                            <div class="face face2">
+                                <div class="content">
+                                    <p>
+                                        Fue popularizado en los 60s con la creación de las hojas
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content2-cuadros box box3  col-s-7 col-md-3">
+                        <div class="card">
+                            <div class="face face1">
+                                <div class="content">
+                                    <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
+                                    <h3>test3</h3>
+                                </div>
+                            </div>
+                            <div class="face face2">
+                                <div class="content">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content2-cuadros box box1 col-s-7 col-md-3">
+                        <div class="card">
+                            <div class="face face1">
+                                <div class="content">
+                                    <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/launch_128.png?raw=true">
+                                    <h3>test4</h3>
+                                </div>
+                            </div>
+                            <div class="face face2">
+                                <div class="content">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @*la otra propuesta*@
+        @*<div class="row justify-content-center">
+                <div class="col-s-12 col-md-9">
+                    <div class="row mb-md-5 quotes">
+                        <div class="content2-cuadros box box1 col-s-7 col-md-2">
+                            <p>
+                                Fue popularizado en los 60s con la creación de las hojas
+
+                            </p>
+                        </div>
+                        <div class="content2-cuadros box box2 col-s-7 col-md-2">
+                            <p>
+                                Fue popularizado en los 60s con la creación de las hojas
+
+                            </p>
+                        </div>
+                        <div class="content2-cuadros box box3  col-s-7 col-md-2">
+                            <p>
+                                Fue popularizado en los 60s con la creación de las hojas
+
+                            </p>
+                        </div>
+                        <div class="content2-cuadros box box1 col-s-7 col-md-2">
+                            <p>
+                                Fue popularizado en los 60s con la creación de las hojas
+
+                            </p>
+                        </div>
+                        <div class="content2-cuadros box box2  col-s-7 col-md-2">
+                            <p>
+                                Fue popularizado en los 60s con la creación de las hojas
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>*@
+    </div>
+    <!--seccion nuestros productos-->
+    <div class="container-fluid content3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h3>Conoce nuestros productos</h3>
+                <hr />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 mb-md-5 ">
+                <div class="row justify-content-center ">
+                    <div class="col-s-7 col-md-2 bg-dark">
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_graficogratuito_NARANJA.png" alt="" />
+                        <div>
+                            <p style="color:snow">Lorem Ipsum is simply dummy text of the printing and</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <h3>Gráficos</h3>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Lorem Ipsum is simply</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-md-8 mb-md-5">
+                <hr />
+                <div class="row justify-content-center">
+                    <div class="col-7 col-md-2">
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/imagenpromocion_2.png" alt="" />
+                        <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <h3>Gráficos</h3>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Lorem Ipsum is simply</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Boton flotante-->
+        @*<style>
+            .flotante {
+                display: scroll;
+                position: fixed;
+                bottom: 100px;
+                right: 15px;
+                z-index:100;
+            }
+        </style>
+        <a class="flotante btn btn-dark" href="#">Suscribirse</a>*@
+
+    </div>
+    <!--seccion content4 mapa  -->
+    <div class="container content4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <img class="img-fluid" src="~/Content/image_UsuarioIndex/mapa-Chile.png" alt="" />
+            </div>
+            <div class="col-12 col-md-9">
+                <h3>Imagina todo la información de un país en una sola plataforma</h3>
+                <hr />
+            </div>
+            <div class="col-12 col-md-9">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                <p>Lorem Ipsum is simply dummy text of</p>
+                <p>Lorem Ipsum is simply</p>
+            </div>
+            <div class="col-12 col-md-9 mt-md-3 sibling-fade ">
+                <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo4</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo5</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo6</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo1</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo2</a>
+                <a class="btn btn-outline-success" href="">Hola Mundo3</a>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 mb-md-4">
+                <h3>¡Explora,busca y encuentra!</h3>
+            </div>
+            <div class="row content-buscador justify-content-center">
+                <div class="col-12 col-md-9">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <form action="~/info/PaginaBusqueda" method="get">
+                                <input class="buscador typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:10px;">
+                            </form>
+                        </div>
+                        <div class="col-12 col-md-6 ">
+                            <p id="content4-p1">
+                                las cuales contenian pasajes de Lorem Ipsum, y más
+                                recientemente con software de autoedición, como por ejemplo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--seccion content5 comentarios de clientes ultima seccion  -->
+    <div class="container content5">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9">
+                <div class="row content5-secciones justify-content-center">
+                    <div class="col-8 col-md-4 contenedor">
+                        <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/female-executive.jpg" alt="" />
+                        <p>The standard chunk of Lorem Ipsum used since the</p>
+                    </div>
+                    <div class="col-8 col-md-4">
+                        <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/senior.jpg" alt="" />
+
+                        <p>The standard chunk of Lorem Ipsum used since the</p>
+                    </div>
+                    <div class="col-8 col-md-4 ">
+                        <blockquote><p>The standard chunk of Lorem Ipsum used since the</p></blockquote>
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/female-executive.jpg" alt="" />
+                        <p>The standard chunk of Lorem Ipsum used since the</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--seccion Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example2" class="form-control" />
+                                <label class="form-label" for="form5Example2">Email address</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+            <!-- Section: Text -->
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

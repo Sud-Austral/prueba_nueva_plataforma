@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+
+    <div id="image-box">
+        <div id="myframe" class="embed-responsive">
+        </div>
+    </div>
+
+    <script>
+        //alert("Hola");
+        //saludo();
+        OcultarURL("@ViewBag.url");
+    </script>
+   
+</body>
+</html>
+
+

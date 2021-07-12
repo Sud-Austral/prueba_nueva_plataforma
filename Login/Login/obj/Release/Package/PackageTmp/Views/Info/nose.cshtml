@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>nose</title>
+</head>
+<body>
+    @foreach (var item in ViewBag.resultado)
+    {
+        <h1>@item.id</h1>
+    }
+    <h1>
+        @ViewBag.time1
+    </h1>
+    <h1>
+        @ViewBag.time2
+    </h1>
+    <div>
+    </div>
+</body>
+</html>

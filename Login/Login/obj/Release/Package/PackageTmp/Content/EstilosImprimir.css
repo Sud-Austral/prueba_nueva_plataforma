@@ -1,0 +1,94 @@
+﻿/*
+body, h1, h2, h3, ol, ul, div {
+    width: auto !important;
+    border: 0 !important;
+    margin: 0 5% !important;
+    padding: 0 !important;
+    float: none !important;
+    position: static !important;
+    overflow: visible !important;
+}
+@page {
+    size: landscape !important;
+    transform: scale(.7) !important;
+}
+
+#test1 {
+    overflow: visible !important;
+    display: block !important;
+}
+
+#inlineFrameExample {
+    overflow: visible !important;
+    display: block !important;
+}
+
+@media print {
+    .container {
+        display: inline !important;
+    }
+}
+#test3{
+    color:red !important;
+}*/
+
+/*@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact;
+    }
+}
+
+#hola{
+    color:red !important;
+}
+@page {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+
+#pruebaGrafico{
+    color:red !important;
+}
+@page {
+    size: landscape !important;
+transform: scale(.7) !important;
+}
+@media print {
+   
+   *#inlineFrameExample {
+        width: 50% !important;
+        height: 90% !important;
+        transform: scale(.7) !important;
+        display: block !important;
+    }
+    #chart_wrap {
+        display: block !important;
+    }
+    desabilita las opcion de print de pdf
+  * {
+        -webkit-print-color-adjust: exact !important;
+         
+    }
+}
+@media print {
+    body {
+        transform: scale(.7) !important;
+    }
+
+    iframe {
+        page-break-inside: avoid;
+    }
+}
+@media (max-width:576px) {
+    .marca-de-agua {
+        background-image: url('../Images/DataImpacto/logoDataIntelligence_transparente_Blanco.png');
+       
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        background-position: 0px 60px !important;
+    }
+}*/

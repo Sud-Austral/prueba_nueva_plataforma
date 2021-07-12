@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Login.Models.GRAFICO>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subtitulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.iso_pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nivel_administrativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion_larga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_publicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idioma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.responsable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shopify)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.auxiliar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rango_edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unidad_medida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tamanio_muestra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.caracteristica_especial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.auxiliar_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CATEGORIA.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DETALLE.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FUENTE.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PARAMETRO.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RESPONSABLE1.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEMPORALIDAD.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TERRITORIO.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPO_GRAFICO.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UNIDAD_MEDIDA1.nombre)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subtitulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iso_pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nivel_administrativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion_larga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_publicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idioma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.responsable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shopify)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.auxiliar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rango_edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unidad_medida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tamanio_muestra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.caracteristica_especial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.auxiliar_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CATEGORIA.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DETALLE.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FUENTE.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PARAMETRO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RESPONSABLE1.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEMPORALIDAD.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TERRITORIO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_GRAFICO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UNIDAD_MEDIDA1.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

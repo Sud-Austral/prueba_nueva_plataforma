@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="agenciaModelStoreContainer" CdmEntityContainer="agenciaEntities1">
+    <EntitySetMapping Name="AGENCIA_INFORMACION">
+      <EntityTypeMapping TypeName="agenciaModel.AGENCIA_INFORMACION">
+        <MappingFragment StoreEntitySet="AGENCIA_INFORMACION">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="coleccion" ColumnName="coleccion" />
+          <ScalarProperty Name="sector" ColumnName="sector" />
+          <ScalarProperty Name="tema" ColumnName="tema" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="escala" ColumnName="escala" />
+          <ScalarProperty Name="territorio" ColumnName="territorio" />
+          <ScalarProperty Name="temporalidad" ColumnName="temporalidad" />
+          <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion_larga" ColumnName="descripcion_larga" />
+          <ScalarProperty Name="visualizacion" ColumnName="visualizacion" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

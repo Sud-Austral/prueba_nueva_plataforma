@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+@*Usuario no logeado*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Soporte</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-top:0;">
+    
+    <div class="container" align="center">
+        <div class="jumbotron" style="background-color:transparent;padding:0;">
+            <!-- <h1 class="display-4">Error - Licencia caducada</h1>-->
+            <img class="img-fluid" src="~/Images/Error/NOHAYSESIONACTIVA.jpg" style="width:100%;" />
+        </div>
+        <h2>No hay sesión activa</h2>
+
+        <br /> <br />
+        <h2>Problema:</h2>
+        <p>
+            <font size="5">
+                El usuario no ha iniciado sesión
+            </font>
+        </p>
+        <br />
+
+        <h2>
+            Solución:
+        </h2>
+        <p>
+            <font size="5">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>Si es un usuario nuevo, puede <b>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</b></li>
+                    <li>Si ya tiene una cuenta, puede <b>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</b></li>
+                    <li>Para recuperar la contraseña puede enviar un correo a la siguiente <b><a href="mailto:soporte@dataintelligence-group.com">Dirección</a></b></li>
+                </ul>
+                <a href="https://dataintelligence.store/collections/all" target="_blank">Tienda en línea</a>
+            </font>
+        </p>
+        <br />
+        <h2>
+            Consulte también:
+        </h2>
+        <p>La pagina de <a href="https://dataintelligence.store/pages/preguntas-frecuentes" target="_blank">preguntas frecuentes </a>en la seccion de PROCESO DE COMPRA Y DEVOLUCIÓN/párrafo #4 ¿Qué puedo hacer si una plataforma que compré no funciona correctamente?</p>
+
+
+
+
+        <br />
+        <br />
+
+        <div class="jumbotron">
+            <h3>¿No has encontrado lo que estabas buscando?</h3>
+            <hr class="my-4">
+            <br />
+            <p>
+                Nuestro centro de ayuda (Help Center) contiene las soluciones para casi cada falla técnica conocida. Si no puedes encontrar la respuesta a tu pregunta, por favor envía una solicitud de soporte utilizando el enlace a continuación.
+            </p>
+            <p class="lead">
+                <br /> <br />
+                <a class="btn btn-primary btn-lg" href="https://dataintelligence.store/pages/contacto-1" target="_blank" role="button">
+                    Centro de Ayuda
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+

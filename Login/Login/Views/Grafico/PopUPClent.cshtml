@@ -1,0 +1,666 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable = no, initial-scale=1.0 , maximun-scale=1.0, minimum-scale=1.0" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/2f08016506.js" crossorigin="anonymous"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <title>PopUp</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--test megamenu-->
+    <script>
+        $(document).ready(function () {
+            $(".megamenu").on("click", function (e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
+
+    <script>
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawAxisTickColors);
+
+        function drawAxisTickColors() {
+            var data = google.visualization.arrayToDataTable([
+                ['City', '2010 Population', '2000 Population'],
+                ['New York City, NY', 8175000, 8008000],
+                ['Los Angeles, CA', 3792000, 3694000],
+                ['Chicago, IL', 2695000, 2896000],
+                ['Houston, TX', 2099000, 1953000],
+                ['Philadelphia, PA', 1526000, 1517000]
+            ]);
+
+            var options = {
+                title: 'Population of Largest U.S. Cities',
+                chartArea: { width: '50%' },
+                hAxis: {
+                    title: 'Total Population',
+                    minValue: 0,
+                    textStyle: {
+                        bold: true,
+                        fontSize: 12,
+                        color: '#4d4d4d'
+                    },
+                    titleTextStyle: {
+                        bold: true,
+                        fontSize: 18,
+                        color: '#4d4d4d'
+                    }
+                },
+                vAxis: {
+                    title: 'City',
+                    textStyle: {
+                        fontSize: 14,
+                        bold: true,
+                        color: '#848484'
+                    },
+                    titleTextStyle: {
+                        fontSize: 14,
+                        bold: true,
+                        color: '#848484'
+                    }
+                }
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+    <!-- megamenu-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded">
+                    <a class="navbar-brand" href="#" style="color:#fff">Data Intelligence</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown megamenu-li">
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff">Mega Menu 1</a>
+                                <div class="dropdown-menu megamenu" aria-labelledby="dropdown01">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>Links</h5>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Something else here</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Something else here</a>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>More Links</h5>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Something else here</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>Paragraph</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus in veritatis, facilis eligendi sunt, culpa autem harum porro earum.</p>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>Image</h5>
+                                            <img src="https://source.unsplash.com/250x150/?sig=4" alt="..." style="width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown megamenu-li">
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff">Mega Menu 2</a>
+                                <div class="dropdown-menu megamenu" aria-labelledby="dropdown02">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-4">
+                                            <h5>Image Slider</h5>
+                                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block w-100" src="~/Content/img/home.png" alt="...">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block w-100" src="~/Content/img/ICVU.jpeg" alt="...">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block w-100" src="~/Content/img/Porta_ISMT.jpg" alt="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>Links</h5>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Something else here</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Another action</a>
+                                            <a class="dropdown-item" style="color:#424242;" href="#">Something else here</a>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-5">
+                                            <h5>Paragraph</h5>
+                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam impedit itaque minus distinctio possimus reiciendis et repellat. Voluptate, temporibus veniam et praesentium alias, maxime repudiandae aliquid, natus omnis animi iste!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown megamenu-li">
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff">Mega Menu 3</a>
+                                <div class="dropdown-menu megamenu" aria-labelledby="dropdown02">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-4">
+                                            <h5>Image Slider</h5>
+                                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block w-100" src="~/Content/img/home.png" alt="...">
+
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block w-100" src="~/Content/img/ICVU.jpeg" alt="...">
+
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block w-100" src="~/Content/img/Porta_ISMT.jpg" alt="...">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-lg-3">
+                                            <h5>Links</h5>
+                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                                                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-sm-6 col-lg-5">
+                                            <div class="tab-content" id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                                                    a type specimen book. It has survived not only five centuries,
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <header class="row">
+            <div class="col">
+                <h3></h3>
+            </div>
+        </header>
+
+
+        <section class="contenedor-main row">
+            <main class="col-md-7">
+                <!--Insertar grafico-->
+                <iframe id="inlineFrameExample"
+                        style="width:90%;height:90%"
+                        scrolling="no"
+                        src="~/Grafico/@ViewBag.grafico?id=@ViewBag.URL">
+                </iframe>                        
+                
+                <a style="color:blue" href="/Grafico/PopUPClent?id2=Grafico&id=@ViewBag.URL">
+                   Lineal
+                </a>
+                <a style="color:blue" href="~/Grafico/PopUPClent?id2=Grafico2&id=@ViewBag.URL">
+                    Torta
+                </a>
+                <a style="color:blue" href="~/Grafico/PopUPClent?id2=Grafico3&id=@ViewBag.URL">
+                    Barra
+                </a>
+            </main>
+
+            <aside class="col-md-4 align-self-start">
+                <h6 style="margin:8px;">Descargas</h6>
+                <section style="background:#fff;">
+                    <div class="row">
+                        <div class="row " style="padding:10px;">
+                            <div class="col-md-2 ">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><a href="#"><img src="~/Content/iconos_PopUp/pdf_download.png" /></a></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                <section class="pricing py-5 mb-md-5">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <!-- Free Tier -->
+                                                            <div class="col-lg-4">
+                                                                <div class="card mb-5 mb-lg-0">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
+                                                                        <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                                                                        <hr>
+                                                                        <ul class="fa-ul">
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+                                                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Dedicated Phone Support</li>
+                                                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+                                                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                                                        </ul>
+                                                                        <a href="https://dataintelligence.store/products/avance-del-covid-19-cl" target="_blank" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Plus Tier -->
+                                                            <div class="col-lg-4">
+                                                                <div class="card mb-5 mb-lg-0">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+                                                                        <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
+                                                                        <hr>
+                                                                        <ul class="fa-ul">
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                                                                            <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                                                        </ul>
+                                                                        <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Pro Tier -->
+                                                            <div class="col-lg-4">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+                                                                        <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
+                                                                        <hr>
+                                                                        <ul class="fa-ul">
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
+                                                                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                                                        </ul>
+                                                                        <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#myModal2"><a href="#"><img src="~/Content/iconos_PopUp/png.png" /></a></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal2" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="columns">
+                                                    <ul class="price">
+                                                        <li class="header">Basic</li>
+                                                        <li class="grey">$ 9.99 / year</li>
+                                                        <li>10GB Storage</li>
+                                                        <li>10 Emails</li>
+                                                        <li>10 Domains</li>
+                                                        <li>1GB Bandwidth</li>
+                                                        <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="columns">
+                                                    <ul class="price">
+                                                        <li class="header" style="background-color:#4CAF50">Pro</li>
+                                                        <li class="grey">$ 24.99 / year</li>
+                                                        <li>25GB Storage</li>
+                                                        <li>25 Emails</li>
+                                                        <li>25 Domains</li>
+                                                        <li>2GB Bandwidth</li>
+                                                        <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="columns">
+                                                    <ul class="price">
+                                                        <li class="header">Premium</li>
+                                                        <li class="grey">$ 49.99 / year</li>
+                                                        <li>50GB Storage</li>
+                                                        <li>50 Emails</li>
+                                                        <li>50 Domains</li>
+                                                        <li>5GB Bandwidth</li>
+                                                        <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <a href="#"><img src="~/Content/iconos_PopUp/ppt.png" /></a>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    Función exclusiva de la Cuenta Corporativa
+                                                    Esta función se reserva a los usuarios con cuentas profesionales.
+                                                    Si desea recibir más información sobre este tipo de cuenta, póngase en contacto con nosotros. Solicitar información.
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <a href="#"><img src="~/Content/iconos_PopUp/xls.png" /></a>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section style="background:#FFF; margin-top:20px;">
+                    <h3 style="padding-left:3%; padding-top:5%;">Fuente</h3>
+
+                    <div style="padding-left:3%;">
+                        <a style="color:blue" href="#"><ion-icon name="return-down-forward-outline"></ion-icon>Ver información de las fuentes</a> <br>
+                        <a style="color:blue" href="#"><ion-icon name="return-down-forward-outline"></ion-icon>Ver información del editor</a>
+
+                        <p>
+                            <strong>Fecha de publicación</strong><br>
+                            Diciembre 2020
+                        </p>
+
+                        <p>
+                            <strong>Región</strong><br>
+                            España
+                        </p>
+
+                        <p>
+                            <strong>Periodo de estudio</strong><br>
+                            enero - noviembre de 2020
+                        </p>
+
+                        <p>
+                            <strong>Grupo de edad</strong><br>
+                            14 años o más
+                        </p>
+
+                        <p>
+                            <strong>Abrir esta estadística en...</strong><br>
+                            Inglés
+                        </p>
+                    </div>
+
+                </section>
+
+            </aside>
+        </section>
+        <section class="row widgets">
+            <div class="col-md-12 pt-md-3">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book. It has survived not only five centuries, but also the leap into
+                    electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including
+                    versions of Lorem Ipsum.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type specimen book. It has survived
+                    not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                    Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+                    including versions of Lorem Ipsum.
+                </p>
+                <span id="leerMas" style="display:none;">
+                    <p>
+                        <strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong> <br />
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in
+                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p>
+
+                    <p>
+                        <strong> Lorem Ipsum is simply dummy text.</strong> <br />
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in
+                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p>
+                </span>
+
+                <button type="button" class="btn btn-primary" id="boton" style="margin-bottom:20px;"> Más Información</button>
+            </div>
+        </section>
+        <section class="row" style="color:#424242;">
+            <div class="col-md-12">
+                <strong><p>MÁS ESTADÍSTICAS SOBRE EL TEMA</p></strong>
+                <h4>
+                    Uso de los medios de comunicación en España
+                </h4>
+            </div>
+        </section>
+        <!--Secccion editoriales-->
+        <section class="row editorial justify-content-between">
+            <div class="col-md-6 pt-md-3" style="background:#ffffff; box-shadow: 0px 0px 10px 10px rgba(128, 128, 128, 0.20);">
+                <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book.
+                </p>
+            </div>
+            <div class="col-md-6 pt-md-3" style="background:#ffffff; box-shadow: 0px 0px 10px 10px rgba(128, 128, 128, 0.20);">
+                <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book.
+                </p>
+            </div>
+        </section>
+        <section class="row widgets justify-content-between">
+            <div class="col-md-6 pt-md-3" style="background:#ffffff; box-shadow: 0px 0px 10px 10px rgba(128, 128, 128, 0.20);">
+                <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book.
+                </p>
+            </div>
+            <div class="col-md-6 pt-md-3" style="background:#ffffff; box-shadow: 0px 0px 10px 10px rgba(128, 128, 128, 0.20);">
+                <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book.
+                </p>
+            </div>
+        </section>
+        <!--search bar-->
+        <div class="row justify-content-center mb-5" style="background:#fff;">
+            <div class="col-12 col-md-10 col-lg-8">
+                <h4 style="color:#424242;">Descubra Data Intelligence</h4>
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-search h4 text-body"></i>
+                        </div>
+                        <!--end of col-->
+                        <div class="col">
+                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Encuentre informes y topicos">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <button class="btn btn-lg btn-success" type="submit">Search</button>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </form>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--Precio-->
+        <section class="pricing py-5 mb-md-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Free Tier -->
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
+                                <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Dedicated Phone Support</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                </ul>
+                                <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plus Tier -->
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+                                <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+                                </ul>
+                                <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pro Tier -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+                                <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                </ul>
+                                <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <footer class="row">
+        <div class="col">
+            <h4 style="padding-left:50px;">Footer</h4>
+        </div>
+
+    </footer>
+    <script src="~/Scripts/OcultarBoton.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

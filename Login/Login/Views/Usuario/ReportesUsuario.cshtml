@@ -1,0 +1,55 @@
+﻿
+
+<div class="row">
+    
+        <div class="col-8">
+            <h3 class="text-dark mb-0">Reportes 360°</h3>
+            <hr style="border:0.5px solid #000000" />
+        </div>
+    
+</div>
+
+<div class="row mt-5">
+    <div class="col">
+        @*<P><strong> Se muestran <span>@ViewBag.Resultado.Count </span>resultados de Repotes 360°</strong></P>*@
+    </div>
+</div>
+<div class="row responsive" style="overflow:scroll;height:350px;overflow-x:hidden; width:67%;">
+    @if (ViewBag.Reporte360 == null)
+    {
+        <div class="col-8">
+
+            <div class="row">
+                
+                <div class="col-8 text-dark font-weight-bold mb-0" style="color:#518bb3 !important; cursor: pointer;">
+                    No existen Reportes 360.
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        foreach (var item in ViewBag.Reporte360)
+
+        {
+            <div class="col-8">
+
+                <div class="row">
+                    <div class="col-2">
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+                    </div>
+                    <div class="col-8 text-dark font-weight-bold mb-0" style="color:#518bb3 !important; cursor: pointer;">
+                        <a onclick="mostrador('#catorce'); InforReporSuscripcion('@item.url', '@item.nombre');">
+                            @item.nombre <br />
+                            @item.TEMPORALIDAD.nombre
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    }
+
+
+</div>

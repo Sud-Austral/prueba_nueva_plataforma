@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="graficosModelStoreContainer" CdmEntityContainer="graficosEntities">
+    <EntitySetMapping Name="CATEGORIA">
+      <EntityTypeMapping TypeName="graficosModel.CATEGORIA">
+        <MappingFragment StoreEntitySet="CATEGORIA">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="PRODUCTO_id" ColumnName="PRODUCTO_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE">
+      <EntityTypeMapping TypeName="graficosModel.DETALLE">
+        <MappingFragment StoreEntitySet="DETALLE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUENTE">
+      <EntityTypeMapping TypeName="graficosModel.FUENTE">
+        <MappingFragment StoreEntitySet="FUENTE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRAFICO">
+      <EntityTypeMapping TypeName="graficosModel.GRAFICO">
+        <MappingFragment StoreEntitySet="GRAFICO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="subtitulo" ColumnName="subtitulo" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="iso_pais" ColumnName="iso_pais" />
+          <ScalarProperty Name="nivel_administrativo" ColumnName="nivel_administrativo" />
+          <ScalarProperty Name="descripcion_larga" ColumnName="descripcion_larga" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="idioma" ColumnName="idioma" />
+          <ScalarProperty Name="responsable" ColumnName="responsable" />
+          <ScalarProperty Name="shopify" ColumnName="shopify" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="rango_edad" ColumnName="rango_edad" />
+          <ScalarProperty Name="CATEGORIA_id" ColumnName="CATEGORIA_id" />
+          <ScalarProperty Name="PARAMETRO_id" ColumnName="PARAMETRO_id" />
+          <ScalarProperty Name="DETALLE_id" ColumnName="DETALLE_id" />
+          <ScalarProperty Name="TERRITORIO_id" ColumnName="TERRITORIO_id" />
+          <ScalarProperty Name="TEMPORALIDAD_id" ColumnName="TEMPORALIDAD_id" />
+          <ScalarProperty Name="TIPO_GRAFICO_id" ColumnName="TIPO_GRAFICO_id" />
+          <ScalarProperty Name="FUENTE_id" ColumnName="FUENTE_id" />
+          <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+          <ScalarProperty Name="tamanio_muestra" ColumnName="tamanio_muestra" />
+          <ScalarProperty Name="caracteristica_especial" ColumnName="caracteristica_especial" />
+          <ScalarProperty Name="auxiliar_1" ColumnName="auxiliar_1" />
+          <ScalarProperty Name="RESPONSABLE_id" ColumnName="RESPONSABLE_id" />
+          <ScalarProperty Name="UNIDAD_MEDIDA_id" ColumnName="UNIDAD_MEDIDA_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INDUSTRIA">
+      <EntityTypeMapping TypeName="graficosModel.INDUSTRIA">
+        <MappingFragment StoreEntitySet="INDUSTRIA">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PARAMETRO">
+      <EntityTypeMapping TypeName="graficosModel.PARAMETRO">
+        <MappingFragment StoreEntitySet="PARAMETRO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="graficosModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="SECTOR_id" ColumnName="SECTOR_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESPONSABLE">
+      <EntityTypeMapping TypeName="graficosModel.RESPONSABLE">
+        <MappingFragment StoreEntitySet="RESPONSABLE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SECTOR">
+      <EntityTypeMapping TypeName="graficosModel.SECTOR">
+        <MappingFragment StoreEntitySet="SECTOR">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="INDUSTRIA_id" ColumnName="INDUSTRIA_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEMPORALIDAD">
+      <EntityTypeMapping TypeName="graficosModel.TEMPORALIDAD">
+        <MappingFragment StoreEntitySet="TEMPORALIDAD">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_termino" ColumnName="fecha_termino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TERRITORIO">
+      <EntityTypeMapping TypeName="graficosModel.TERRITORIO">
+        <MappingFragment StoreEntitySet="TERRITORIO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="iso_pais" ColumnName="iso_pais" />
+          <ScalarProperty Name="nivel_administrativo" ColumnName="nivel_administrativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_GRAFICO">
+      <EntityTypeMapping TypeName="graficosModel.TIPO_GRAFICO">
+        <MappingFragment StoreEntitySet="TIPO_GRAFICO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNIDAD_MEDIDA">
+      <EntityTypeMapping TypeName="graficosModel.UNIDAD_MEDIDA">
+        <MappingFragment StoreEntitySet="UNIDAD_MEDIDA">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATA_GRAFICO">
+      <EntityTypeMapping TypeName="graficosModel.DATA_GRAFICO">
+        <MappingFragment StoreEntitySet="DATA_GRAFICO">
+          <ScalarProperty Name="UNIDAD_MEDIDA_id" ColumnName="UNIDAD_MEDIDA_id" />
+          <ScalarProperty Name="RESPONSABLE_id" ColumnName="RESPONSABLE_id" />
+          <ScalarProperty Name="auxiliar_1" ColumnName="auxiliar_1" />
+          <ScalarProperty Name="caracteristica_especial" ColumnName="caracteristica_especial" />
+          <ScalarProperty Name="tamanio_muestra" ColumnName="tamanio_muestra" />
+          <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+          <ScalarProperty Name="FUENTE_id" ColumnName="FUENTE_id" />
+          <ScalarProperty Name="TIPO_GRAFICO_id" ColumnName="TIPO_GRAFICO_id" />
+          <ScalarProperty Name="TEMPORALIDAD_id" ColumnName="TEMPORALIDAD_id" />
+          <ScalarProperty Name="TERRITORIO_id" ColumnName="TERRITORIO_id" />
+          <ScalarProperty Name="DETALLE_id" ColumnName="DETALLE_id" />
+          <ScalarProperty Name="PARAMETRO_id" ColumnName="PARAMETRO_id" />
+          <ScalarProperty Name="CATEGORIA_id" ColumnName="CATEGORIA_id" />
+          <ScalarProperty Name="rango_edad" ColumnName="rango_edad" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="shopify" ColumnName="shopify" />
+          <ScalarProperty Name="responsable" ColumnName="responsable" />
+          <ScalarProperty Name="idioma" ColumnName="idioma" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="descripcion_larga" ColumnName="descripcion_larga" />
+          <ScalarProperty Name="nivel_administrativo" ColumnName="nivel_administrativo" />
+          <ScalarProperty Name="iso_pais" ColumnName="iso_pais" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="subtitulo" ColumnName="subtitulo" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

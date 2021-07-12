@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="948faeef54f74702b53b12f2018c9a2c" Name="Diagram1">
+        <EntityTypeShape EntityType="graficosModel.CATEGORIA" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.DETALLE" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.FUENTE" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.GRAFICO" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.INDUSTRIA" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.PARAMETRO" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.RESPONSABLE" Width="1.5" PointX="7.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.SECTOR" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.TEMPORALIDAD" Width="1.5" PointX="7.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.TERRITORIO" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.TIPO_GRAFICO" Width="1.5" PointX="7.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="graficosModel.UNIDAD_MEDIDA" Width="1.5" PointX="7.5" PointY="28.375" IsExpanded="true" />
+        <AssociationConnector Association="graficosModel.CATEGORIA_PRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_CATEGORIA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_DETALLE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_FUENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_PARAMETRO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_RESPONSABLE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_TEMPORALIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_TERRITORIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_TIPO_GRAFICO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.GRAFICO_UNIDAD_MEDIDA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.SECTOR_INDUSTRIA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="graficosModel.PRODUCTO_SECTOR_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="graficosModel.DATA_GRAFICO" Width="1.5" PointX="9.75" PointY="13.25" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_CATEGORIA_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_DETALLE_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_FUENTE_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_PARAMETRO_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_RESPONSABLE_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_TEMPORALIDAD_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_TERRITORIO_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_TIPO_GRAFICO_FK" />
+        <AssociationConnector Association="graficosModel.DATA_GRAFICO_UNIDAD_MEDIDA_FK" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

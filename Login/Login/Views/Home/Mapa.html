@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Visor simple con Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <style type="text/css">
+        #mapid {
+            height: 600px;
+            width: 600px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script>
+        //Creamos el objeto mapa.
+        var map = L.map('mapid').setView([-33, -70.67505], 3);
+        
+        var wmsTopoIcgc = L.tileLayer.wms('https://ide.dataintelligence-group.com/geoserver/chile/wms', {
+            layers: 'chile:Datos_Censo_2017__Comuna',
+            CQL_FILTER: 'region = 4',
+            format: 'image/png',
+            transparent: true
+        }).addTo(map);
+        
+        var wmsTopoIcgc2 = L.tileLayer.wms('https://ide.dataintelligence-group.com/geoserver/chile/wms', {
+            layers: 'Microdatos_Censo_2017_Entidad_Coordenadas',
+            CQL_FILTER: 'cod_region = 4',
+            format: 'image/png',
+            transparent: true
+        }).addTo(map);
+
+        var mapBox = L.tileLayer.wms('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',{
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+        var baseMaps = {            
+            "Mapbox": mapBox
+        };
+        var overlayMaps = {
+            "Comunas": wmsTopoIcgc,
+            "Zonas": wmsTopoIcgc2
+        };
+       
+
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+    </script>
+</body>
+</html>

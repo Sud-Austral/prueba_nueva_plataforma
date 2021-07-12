@@ -1,0 +1,146 @@
+﻿@model Login.Models.AGENCIA_INFORMACION
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>AGENCIA_INFORMACION</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.coleccion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.coleccion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sector)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sector)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tema)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tema)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.contenido)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.contenido)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pais)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pais)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.escala)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.escala)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.territorio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.territorio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.temporalidad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.temporalidad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.unidad_medida)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.unidad_medida)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fuente)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fuente)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.titulo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.titulo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.descripcion_larga)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.descripcion_larga)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.visualizacion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.visualizacion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tag)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tag)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.url)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.url)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

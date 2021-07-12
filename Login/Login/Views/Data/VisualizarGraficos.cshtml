@@ -1,0 +1,296 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <!-- Bootstrap CSS -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/EstilosImprimir.css" media="print" />*@
+    <title>Visualizador Graficos</title>
+
+    @*descargar grafico*@
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+
+        function descargarPDF(theObject) {
+            window.print()
+        }
+
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('html').animate({ scrollTop: 0 }, 'slow'); // para IE, FF
+            $('body').animate({ scrollTop: 0 }, 'slow'); // Para Chrome
+        });
+    </script>
+
+    <div class="container" id="btnAtras">
+        @*boton para ir atras*@
+        <div class="row justify-content-center mb-3 borrar">
+            <div class="col-md-1 te">
+                <input type="button" class="btn btn-danger btn-sm " style="font-size: 14px; margin: 0px; width: 100px; cursor: pointer" ; onclick="mostrador('#PBuno')" name="volver atrás" value="Atrás">
+            </div>
+            <div class="col-md-9" style="background-color:#A0A6B6">
+
+            </div>
+        </div>
+        @*fin boton para ir atras*@
+        <div id="hide" class="container">
+            <style>
+                .breadcrumb-item + .breadcrumb-item::before {
+                    content: "∙";
+                }
+            </style>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background-color:transparent;">
+                            <li class="breadcrumb-item"><a href="/info/homeOdoo">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA_id&id2=1">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR_id&id2=2">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO_id&id2=3">@ViewBag.Elemento.CATEGORIA.PRODUCTO.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA_id&id2=4">@ViewBag.Elemento.CATEGORIA.nombre</a></li>
+                            @*<li class="breadcrumb-item active" aria-current="page">@ViewBag.Elemento.titulo</li>*@
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+
+        @*seccion iframe grafico*@
+        <section class="contenedor-main row mr-md-2 justify-content-center">
+            <main class="col-md-10" style="border:1px solid #e6e6e6; border-radius:10px; border-top:none; max-height:590px !important;">
+                <div class="row bg-dark mb-2" style="border: 1px solid; border-top-left-radius: 10px; border-top-right-radius: 10px; max-height:83px;">
+                    <div class="col-md-1 col-2">
+                        <img class="img-fluid m-2" width="50" src="~/Content/img/Icono_dataIntelligence_Rojo.png" alt="Alternate Text" />
+                    </div>
+                    <div class="col">
+                        <p class="mt-2" style="color:#fff;">@ViewBag.Elemento.titulo</p>
+                    </div>
+                </div>
+
+                <!--Iframe de grafico-->
+                <div class="container">
+                    <iframe id="Imprimeme" class="pruebarara" style="width:100%; height:460px;" src="/info/dashboard?id=@ViewBag.Elemento.id">
+                    </iframe>
+                </div>
+                <div class="row quitarespacio2" style="color:blue; font-size:10px;">
+                    @*boton para ver mas informacion*@
+                    @*<div class="col-md-2 col-sm-2 borrar">
+                            <button type="button" class="btn btn-primary pull-right" id="boton" style="margin-bottom:20px; font-size:12px;">Más información</button>
+                        </div>*@
+                    @*boton para descargar iframe*@
+                    @*<a onclick="javascript:Imprime('Imprimeme');" class="btn btn-primary">Imprime</a>
+                        <script>
+                            function Imprime(Imprimeme) {
+                                window.print()
+                            }
+                        </script>*@
+                    <div class="col-md-1 col-2 mt-md-2 mb-md-5 ml-md-1 mr-md-1 borrar" style="border-right:1px solid #d9d9d9;">
+                        <script src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
+                        <a href="javascript:void(0);" style="text-decoration: none !important;" id="generarPDF">
+
+                            <span id="verPdf" style="font-size:12px;" onclick="descargarPDF();" data-toggle="tooltip" data-placement="top" title="Los mapas en Mozilla no descargan correctamente">
+
+                                Ver en Pdf
+                            </span>
+                        </a>
+
+                        <div id="chart_div"></div>
+                    </div>
+                    <!--descargar pdf iframe-->
+                    <script type="text/javascript">
+                        $("#verPdf").click(function () {
+
+                            /*var myIframe = document.getElementById("inlineFrameExample").contentWindow;*/
+                            var frame = document.getElementById("myIframe");
+                            frame.style.height = "470px";
+                            frame.style.width = "1020px";
+                            /*  margin = "-40px 0px 0px - 40px!important";*/
+                            transform = "scale(.8, .8)!important";
+                            //-ms - transform ="scale(.8, .8)!important"; /* IE 9 */
+                            //-webkit - transform ="scale(.8, .8)!important" ; /* Opera, Chrome, and Safari */
+                            /*frame.style.Size ="Landscape";*/
+                            /* frame.style.padding = "50px";*/
+                            /* frame.style.transform = "scale(.75)!important";*/
+                            /*  frame.style.zoom = "80%";*/
+                            frame.focus();
+                            /* myIframe.print();*/
+                            frame.contentWindow.print();
+                            return false;
+                        });
+                    </script>
+                    @*Logo de DATA INTELLIGENCE PIE DEL IFRAME*@
+                    <div class="col-8 col-md-9">
+                        <div class="row d-flex " style="justify-content:flex-end;">
+                            <div class="col-5 mb-1 p-1">
+                                <img class="img-fluid " src="~/Content/img/logosDataIntelligence_creadopor.png" alt="Logo transparente" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+        @*Seccion oculta de las informacion*@
+        @*estilos para acortar texto de la descripcion larga a 10 reglones*@
+        @*<section class="container-main mb-5 borrar" id="leerMas" style="display:none; background:#fff;">*@
+        <section class="container-main mb-5 borrar" style="background:#fff;">
+            <style>
+                .line-clamp2 {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 10;
+                    -webkit-box-orient: vertical;
+                    overflow-wrap: normal;
+                    overflow-y: hidden;
+                    width: 98%;
+                    margin: auto;
+                    font-family: sans-serif;
+                    line-height: 1.4;
+                }
+
+                    .line-clamp2:hover {
+                        -webkit-line-clamp: 100;
+                        cursor: pointer;
+                    }
+            </style>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-sm-12" style="border:2px solid #e6e6e6; border-radius:15px; ">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-10 mt-3" style="border-right:0.5px solid #e6e6e6; white-space:normal;">
+                            <p style="margin-bottom:0px !important; "><strong>Descripción:</strong></p>
+
+                            <p class='line-clamp2'>
+                                @ViewBag.ELEMENTO.descripcion_larga
+                            </p>
+
+                        </div>
+                        <div class="col-md-3 col-10" style="border-right: 0.5px solid #e6e6e6; white-space: normal;">
+                            <p class="mt-md-3 mb-md-0"><strong>Fuente de Datos:</strong></p>
+                            <p class="mb-md-1">@ViewBag.ELEMENTO.FUENTE.nombre</p>
+
+                            <p class="mb-md-1">
+                                <strong>Periodo: </strong>
+
+                                @ViewBag.ELEMENTO.TEMPORALIDAD.nombre
+                            </p>
+                            <p class="mb-md-1">
+                                <strong>@ViewBag.ELEMENTO.TERRITORIO.auxiliar:</strong>
+
+                                @ViewBag.ELEMENTO.TERRITORIO.nombre
+
+                            </p>
+                            <p class="mb-md-1">
+                                <strong>País:</strong> Chile-
+                                @ViewBag.ELEMENTO.TERRITORIO.iso_pais
+                            </p>
+
+
+                            <p class="mb-md-1"><Strong>Unidad de Medida:</Strong></p>
+                            <p style="white-space: normal;">@ViewBag.ELEMENTO.UNIDAD_MEDIDA1.nombre (@ViewBag.ELEMENTO.UNIDAD_MEDIDA1.descripcion)</p>
+                        </div>
+
+                        <div class="col-md-5 col-10">
+                            <p class="mt-md-3"><strong>Ver más información</strong></p>
+                            <div class="row justify-content-center mb-md-3">
+                                <!--<div class="col-md-5 col-10 text-center">-->
+                                @*  <a href="https://dataintelligence.store/collections">*@
+                                <!--<img class="img-fluid mb-4" src="~/Content/image_UsuarioIndex/icono_informeinteractivo_AZUL.png" />
+                                <button onclick="mostrador('#PBuno'); FiltrarII();" class="btn btn-danger" data-backdrop="True" style="font-size: 12px; width: 165px; border-radius: 25px; margin-left: 5px;">
+                                    Ver Informe Interactivo
+                                </button>-->
+                                @* </a>*@
+                                <!--</div>
+                                <div class="col-md-5 col-10 text-center">-->
+                                @*
+                                    <a href="https://dataintelligence.store/collections">*@
+                                <!--<img class="img-fluid mb-4 " src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+                                <button onclick="mostrador('#PBuno'); FiltrarReporte360();" class="btn btn-danger" data-backdrop="True" style="font-size:12px; width:165px; border-radius:25px;margin-left:5px;">
+                                    Ver Reporte 360°
+                                </button>-->
+                                @*
+                                    </a>*@
+                                <!--</div>-->
+                                @*estilos para cortar los tags en 3 filas y ocultar los demas con la clase line-clam *@
+                                <style>
+                                    .line-clamp {
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 3;
+                                        -webkit-box-orient: vertical;
+                                        overflow-wrap: normal;
+                                        overflow-y: hidden;
+                                        width: 98%;
+                                        margin: auto;
+                                        font-family: sans-serif;
+                                        line-height: 1.4;
+                                    }
+
+                                        .line-clamp:hover {
+                                            -webkit-line-clamp: 100;
+                                            cursor: pointer;
+                                        }
+                                </style>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <p class="mt-md-3 mb-md-1"><strong>Tags:</strong></p>
+                                        <p id="tagsGrafico" class='line-clamp'>@ViewBag.ELEMENTO.tags</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!--Script de ocultar texto-->
+    <script src="~/Scripts/OcultarBoton.js"></script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>
+        $(".line-clamp").text($(".line-clamp").text().split(",").join(", "));
+        function construirEstructura(Concepto) {
+            Concepto = Concepto.trim();
+            return '<a href="/Data/PaginaBusqueda?id=' + Concepto + '">' + Concepto + '</a>';
+
+        }
+        //var lista = [1, 2, 3, 4]
+        //lista.map(alert);
+        function estructura() {
+            // En esta linea, se transforma el texto del elemento #Gustavo en una lista separando el String por ,
+            var lista = $("#tagsGrafico").text().split(",") //["hola1", "hola2", "hola3"]
+            // A cada elemento de la lista se le aplioca la funcion construirEstructura
+            // La funcion construirEstructura toma un elemento y devuelve un elemento link (en este caso <a>)
+            var listaEstructurada = lista.map(construirEstructura)
+            // Esta variable vuelve a unir toda la lista en un solo String
+            var salida = listaEstructurada.join(", ")
+            // Setea el contenido del elemento #Gustavo con el String creado anteriormente
+            $("#tagsGrafico").html(salida)
+            return salida;
+        }
+        estructura();
+    </script>
+
+    <div class="container page " style="display:none;" id="grafico2">
+        <iframe id='inlineFrameExample2' class="borrar" width="1050" height="460" src="/info/dashboard?id=@ViewBag.Elemento.id">
+        </iframe>
+    </div>
+
+    <link href="~/Content/Estilos/grafico.css" rel="stylesheet" />
+</body>
+</html>
+

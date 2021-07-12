@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- head -->
+    <meta charset="utf-8">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider.">
+    <meta name="author" content="David Deutsch">
+    <title>
+        Home | Owl Carousel | 2.3.4
+    </title>
+
+    <!-- Stylesheets owl slider -->
+    @*<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'>*@
+    <link href="~/Content/assets/css/docs.theme.min.css" rel="stylesheet" />
+
+    <!-- Owl Stylesheets -->
+    <link href="~/Content/assets/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/owlcarousel/assets/owl.theme.default.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- javascript owl slider -->
+    <script src="~/Content/assets/vendors/jquery.min.js"></script>
+    <script src="assets/owlcarousel/owl.carousel.js"></script>
+    <script src="~/Content/assets/owlcarousel/owl.carousel.js"></script>
+
+    @*<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />*@
+</head>
+<body>
+    @*desde aqui codigo de i que se despliega la inforacion*@
+    @*Estilos de i de informacion*@
+    <!--<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-content: center;
+            align-items: center;
+            font-family: "nunito", sans-serif;
+            background-color: #0099ff;
+        }
+
+        .card {
+            position: relative;
+            padding: 42px 32px;
+            clip-path: circle(1.8% at 96% 11%);
+            transition: all ease-in-out 0.3s;
+            /* background-color: #ffffff;*/
+        }
+
+        .card__infoicon {
+            position: absolute;
+            top: 10px;
+            right: 28px;
+            font-size: 1.4em;
+            color: #000000;
+            transition: ease-out 0.3s;
+        }
+
+        .card__title {
+            margin: 0;
+            font-size: 3em;
+            line-height: 1.8;
+        }
+
+        .card__description {
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .card__credits {
+            margin: 0;
+            padding: 4px 0;
+            font-size: 1.1em;
+        }
+
+        .card__reference {
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            color: #0099ff;
+            text-decoration: none;
+            transition: ease-in 0.3s;
+        }
+
+            .card__reference:hover {
+                border-bottom-color: #0099ff;
+            }
+
+        .card:hover, .card:focus {
+            clip-path: circle(75%);
+            border-radius: 20px;
+            box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.12), 0px 3px 18px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+            outline: none;
+        }
+
+            .card:hover .card__infoicon, .card:focus .card__infoicon {
+                opacity: 0;
+            }
+
+        .card:focus {
+            box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.12), 0px 3px 18px rgba(0, 0, 0, 0.08), 0px 0px 0px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <div class="card" tabindex="0">-->
+    @*Link para Iconos de bootstrap 5*@
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <span class="card__infoicon">-->
+    @*<i class="fa fa-info"></i>*@
+    <!--<i class="bi bi-info-circle"></i>
+        </span>
+        <h1 class="card__title">This is a title</h1>
+        <p class="card__description">Lorem ipsum dolor sit amet and this is all the lorem ipsum text I remember</p>
+
+        <p class="card__credits">Thanks <a class="card__reference" href="https://www.youtube.com/channel/UCVyRiMvfUNMA1UPlDPzG5Ow">Gary Simon</a> for the inspiration</p>
+    </div>-->
+    @*Hasta aqui codigo de i que se despliega la inforacion*@
+    <!-- body -->
+    <div class="home-demo">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="owl-carousel">
+                    <div class="item col-10 col-md-3" style="max-width: 100% !important;">
+                        <img class="img-fluid" src="~/Content/image_UsuarioIndex/icono_graficogratuito_NARANJA.png" alt="" />
+                        <div>
+                            <p style="color:#000000">Lorem Ipsum is simply simply dummy text of the printing and</p>
+                        </div>
+                    </div>
+                    <div class="item col-10 col-md-3" style="max-width: 100% !important;">
+                        <h3>Gráficos</h3>
+                    </div>
+                    <div class="item col-10 col-md-3" style="max-width: 100% !important;">
+                        <h2>Responsive</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                    <div class="item col-10 col-md-3" style="max-width: 100% !important;">
+                        <h2>Responsive 2</h2>
+                        <p>Lorem Ipsum is simply</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            margin: 10,
+            loop: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                300: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                900: {
+                    items: 4
+                }
+
+            }
+        })
+    </script>
+
+    <!-- vendors -->
+    <script src="~/Content/assets/vendors/highlight.js"></script>
+    <script src="~/Content/assets/js/app.js"></script>
+
+</body>
+</html>

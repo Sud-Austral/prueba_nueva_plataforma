@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "HomeBusqueda";
+    Layout = "~/Views/Shared/_LayoutStatista.cshtml";
+}
+
+<div class="py-5 bg-light c2a1" style=" background-image: url('/Content/img/imagen_beneficiosNac_Inter895x430_POR2.jpg')" ;>
+    <div class="container">
+        <!-- Row -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-7 text-center">
+                <h3 class="mb-3 text-white font-weight-medium ">TODOS LOS DATOS EN UN SOLO REPORTE</h3>
+                <a class="btn btn-danger btn-sm border-0 text-white mt-3 text-uppercase mb-5" href="#"><span>ENTRAR</span></a>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+</div>
+<div class="container ">
+    <div class="row justify-content-center mt-5" id="subT">
+        <div class="col-6">
+            <h3 class="mb-3 font-weight-medium ">Palabras claves de búsqueda</h3>
+            <p class="font-weight-light ">
+                Nuestros temas abarcan 4 dimensiones:Dimension Social, Dimension Ambiental,
+                Dimension Institucional, y Dimension Económico.
+            </p>
+        </div>
+    </div>
+</div>
+@*seccion de botones palabras claves*@
+<div class="container text-center bClaves">
+    <button type="button" class="btn btn-sm btn-outline-secondary " style="border-radius: 25px;">Fuego</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px; border-radius:25px;">Riesgo</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Educación</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Territorio</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Exportaciones</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Covid-19</button>
+</div>
+<div class="container text-center bClaves">
+    <button type="button" class="btn btn-sm btn-outline-secondary " style="margin-right:20px; border-radius: 25px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right:20px; border-radius:25px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 20px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 20px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="">Primary</button>
+</div>
+<div class="container text-center bClaves">
+    <button type="button" class="btn btn-sm btn-outline-secondary " style="border-radius: 25px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px; border-radius:25px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Primary</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-left:20px;">Primary</button>
+</div>
+@* Seccion de buscador*@
+<div class="row mt-3">
+    <section class="call-to-action">
+        <div class="container">
+            <div class="row ml-1 mr-1 justify-content-center">
+                <div class="col-md-4 col-sm-8 m-text-center" style="background-color:#000;">
+                    <div class="input-group rounded mt-3">
+                        <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="Search"
+                               aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <h6 class="mt-2" style="color:#fff;">¿Buscas información para ti o un grupo de trabajo?</h6>
+                    <p id="last1">Gestiona y accede a nuestras licencias. Poseemos asistencia técnica exclusiva ininterrumpida.</p>
+                    <p id="last1">Consulta nuestros planes para empresas con un <a href="#">ejecutivo.</a> </p>
+                </div>
+                <div class="col-md-4 col-sm-4" style="background-image: url('/Content/img/ofrecemos_fondo_busqueda.jpg'); background-size: cover; text-align: right;">
+                    <img class="img-fluid  " style="width:50%;" src="~/Content/img/blanco-trans - copia.png" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

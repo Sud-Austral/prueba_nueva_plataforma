@@ -1,0 +1,33 @@
+﻿@model Login.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h4>¿Buscas dashboard sin límites e información útil?.</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0)
+    {
+        <div>
+            <p>
+                Encuentre su información de manera rápiza y eficaz. El uso de cientos de visualizaciones de datos, nos permiten ofrecer lo que buscar y con nuestras
+                funcionalidades de IA integradas, integración perfecta de datos y conectores de datos creados previamente y personalizados.
+            </p>
+            <img src="~/Images/login/data_portabilityprivacy_banner_003_256_30fps-1.gif" alt="Alternate Text" width="100%" />
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Inicie sesión con su cuenta @p.Caption">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

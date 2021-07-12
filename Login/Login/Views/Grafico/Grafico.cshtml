@@ -1,0 +1,250 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{
+    Layout = null;
+}
+@*
+    <!DOCTYPE html>
+        <html>
+        <head>
+            <!--Load the AJAX API-->
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+
+          // Load the Visualization API and the corechart package.
+          google.charts.load('current', {'packages':['corechart']});
+
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+
+          // Callback that creates and populates a data table,
+          // instantiates the pie chart, passes in the data and
+          // draws it.
+          function drawChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Partido 1', 30],
+              ['Partido 2', 45],
+              ['Partido 3', 25]
+            ]);
+
+            // Set chart options
+            var options = {'title':'Votación por partido Elección 2010',
+                           'width':400,
+                           'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+            </script>
+        </head>
+
+        <body>
+            <!--Div that will hold the pie chart-->
+            <div id="chart_div"></div>
+        </body>
+        </html>
+*@
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @*
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />*@
+    <meta charset="iso-8859-1">
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script type="text/javascript">
+
+        url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Datos/" + "@ViewBag.URL";
+        
+        
+        //alert(encodeURIComponent("á-é-í´-ó-ú"));
+
+        //
+
+        //%C3%A1-%C3%A9-%C3%AD%C2%B4-%C3%B3-%C3%BA
+        //alert(url);
+        //url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/Nuevo%20documento%20de%20texto.csv";
+        //alert(url);
+        $.get("/Grafico/GraficoString?id=@ViewBag.id", function (data) {
+        //$.get(url, function (data) {
+                        //data = data.replace("&#250;","ú")
+                        //alert(data);
+                        //data = encodeURIComponent(decodeURIComponent(encodeURIComponent(data)));
+                        var lines = data.split("\n");
+                        var a = lines[0].split(",");
+
+                        var datos = [a];
+                        //var data = new google.visualization.DataTable();
+                        //data.addColumn('number', 'Day')
+                        for (var i = 1; i < lines.length; i++) {
+                            try {
+                                var listAux = [];
+                                var fila = lines[i].split(",");
+                                listAux.push(fila[0]);
+                                for (var j = 1; j < fila.length; j++) {
+
+                                    listAux.push(Number.parseFloat(fila[j]));
+                                }
+                                //alert(listAux);
+                                if (a.length == listAux.length) {
+                                    datos.push(listAux);
+                                }
+
+                            } catch (error) {
+                                //console.error(error);
+                                // expected output: ReferenceError: nonExistentFunction is not defined
+                                // Note - error messages will vary depending on browser
+                            }
+                        }
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.load('current', { 'packages': ['line'] });
+            google.charts.setOnLoadCallback(drawChart);
+            //document.getElementById("Hola").innerText = datos; 
+            //alert(datos);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(datos);
+
+                var options = {
+                    //title: 'Geomática Agrícola',
+                    curveType: 'function',
+                    legend: { position: 'bottom' }
+            };
+
+            //var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                var chart = new google.charts.Line(document.getElementById('curve_chart'));
+            chart.draw(data, options);
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            // tu código aquí
+            //$.get(url, function (data) {
+            $.get("/Grafico/GraficoString?id=@ViewBag.id", function (data) {
+                var lines = data.split("\n");
+                var a = lines[0].split(",");
+                var datos = [a];
+                for (var i = 1; i < lines.length; i++) {
+                    try {
+                        var listAux = [];
+                        var fila = lines[i].split(",");
+                        listAux.push(fila[0]);
+                        for (var j = 1; j < fila.length; j++) {
+
+                            listAux.push(Number.parseFloat(fila[j]));
+                        }
+                        //alert(listAux);
+                        if (a.length == listAux.length) {
+                            datos.push(listAux);
+                        }
+
+                    } catch (error) {
+                        //console.error(error);
+                        // expected output: ReferenceError: nonExistentFunction is not defined
+                        // Note - error messages will vary depending on browser
+                    }
+                }
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(datos);
+
+                    var options = {
+                        //title: 'Geomática Agrícola',
+                        curveType: 'function',
+                        legend: { position: 'bottom' }, 
+                    };
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                    chart.draw(data, options);
+                }
+            });
+
+        });
+
+        var container = document.getElementById('chart_wrap');
+        var chart = new google.visualization.LineChart(container);
+        var btnSave = document.getElementById('save-pdf');
+
+        google.visualization.events.addListener(chart, 'ready', function () {
+            btnSave.disabled=false;
+        });
+
+        btnSave.addEventListener('click', function () {
+            var doc = new jsPDF();
+            doc.addImage(chart.getImageURI(), 20, 30);
+            doc.text("Hola", 10, 5);
+            doc.save('chart.pdf');
+        }, false);
+
+        chart.draw(data,{
+            chartArea: {
+                bottom: 24,
+                left: 36,
+                right: 12,
+                top: 48,
+                width: '100%',
+                height: '100%'
+            },
+            height: 600,
+            title: 'Test de descarga',
+            width: 600
+        });
+
+    </script>
+</head>
+
+<body>
+    <style>
+        #chart_wrap {
+            position: relative;
+            padding-bottom: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #curve_chart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        /*Estilos de marca de agua charts*/
+        .marca-de-agua {
+            background-image: url('../../Content/iconos_PopUp/bloggif_6050eb8030715.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-position: 120px 250px;
+        }
+
+        .agua {
+            opacity: 0.7;
+        }
+    </style>
+
+    <div id="chart_wrap" class="row marca-de-agua ">
+        <div class="col agua " id="curve_chart">
+           
+        </div>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</body>
+</html>

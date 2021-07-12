@@ -1,0 +1,45 @@
+﻿@media print{
+     *{
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    div.page{
+        writing-mode: horizontal-tb;
+    }
+
+   /* body {
+        transform: scale(1);
+    }*/
+    body{
+        width:650px;
+        zoom: 200%;
+        padding:0px !important;
+    }
+    h1 {
+        display: none !important;
+    }
+    
+    .borrar {
+        display: none !important;
+    }
+
+    @page {
+        /*margin: 0;*/
+        size: portrait;
+    }
+    .pruebarara{  
+        padding-bottom: 200px !important;
+    }
+    #grafico2 {
+        display: block !important;
+    }
+    .quitarespacio{
+        margin-top:-200px !important;
+    }
+    .quitarespacio2{
+        margin-top: -200px !important;
+        
+    }
+
+}

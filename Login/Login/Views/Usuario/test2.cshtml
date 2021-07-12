@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "test2";
+    @*Layout = "~/Views/Shared/_LayoutStatista.cshtml";
+    *@
+Layout = null;
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<h2>test2</h2>
+<div>
+
+    <br />
+    <input type="button" id="miBton" value="Click para llamar a la vista parcial :)" onclick="fnClick('Hola Mundo')" />
+</div>
+
+<div id="pvistaParcial">
+</div>
+<script>
+    function fnClick(saludo) {
+
+       var id = "parametros de la funcion";
+
+       $.ajax(
+            {
+               type: 'POST',
+               data: "{'id':" + "'" + saludo + "'}", //datos o parametros enviados al servidor
+                dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+                url: '/Usuario/UsuarioSelectProducto2?id=' + saludo,
+                //URL del action result que cargara la vista parcial
+                success: function (result) {
+                // si la funcion se ejecuta lanzara un alert
+                    alert('Success');
+                    //cuando se ejecuta bien la funcion agregara al div vistaParcial el contenido
+                    //que recibio del servidor
+                    $("#pvistaParcial").html(result);
+                },
+
+                error: function (error) {
+                // si hay un error lanzara el mensaje de error
+                    alert('Fail');
+                }
+            });
+
+   }
+</script>

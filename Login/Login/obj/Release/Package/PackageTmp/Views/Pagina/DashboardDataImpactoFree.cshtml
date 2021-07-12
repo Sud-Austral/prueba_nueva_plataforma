@@ -1,0 +1,315 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard de Data Riesgo</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="margin:0;padding:0">
+    <header id="top" data-name="Header">
+        <nav class="bg-dark fixed-top" style="padding:0 !important">
+            <!-- fixed-top -->
+            <div class="container">
+                <a href="http://dataintelligence-group.com/" class="navbar-brand logo">
+                    <span role="img" aria-label="Logo of dataintelligence" title="dataintelligence">
+
+
+                        <img src="~/Images/DataImpacto/logoDataIntelligence_transparente_Blanco.png"
+                             style="margin-left:-5vw"
+                             alt="dataintelligence">
+                    </span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div style="margin-top:12vh !important">
+        <style>
+            iframe {
+                /*
+                width: 98%;
+                height: 780px;
+                border: none;
+                position: absolute;
+                clip: rect(0px, 1400px, 743px, 0px);
+                */
+                width: 98%;
+                height: 780px;
+                border: none;
+                position: absolute;
+                /*
+                    position: absolute;
+                    */
+                clip: rect(0px, 2000px, 743px, 0px);
+                /* 0px=top(arriba)
+                1400px=left(izquierda)
+                 743px = botton(abajo)
+                 0px=right(derecha)
+            */
+            }
+
+            .nav-item {
+                width: 180px;
+                text-align: center;
+            }
+
+            .nav-item {
+                width: 180px;
+                text-align: center;
+            }
+            /*
+            .nav-link:active{
+                background-color:red !important;
+            }
+            .nav-item:active {
+                background-color: red !important;
+            }
+            */
+            .nav-link.active {
+                color: red !important;
+                background-color: red !important;
+            }
+
+            .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+                color: black !important;
+                background-color: red !important;
+            }
+        </style>
+        <nav >
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs " role="tablist" style=" margin-left:19%;">
+
+                <li class="nav-item">
+                    <a class="nav-link bg-light border  ml-2" data-toggle="tab" href="#home" role="tab">
+                        Impactos de Eta
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  bg-light  border ml-2" data-toggle="tab"
+                       href="#profile" role="tab">Trayectoria de Huracanes 2020</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  bg-light  border ml-2" data-toggle="tab"
+                       href="#messages" role="tab">Fuerza Huracán ETA</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  bg-light  border ml-2" data-toggle="tab"
+                       href="#settings" role="tab">
+                        Fuerza Huracán IOTA
+                    </a>
+                </li>
+
+
+            </ul>
+            <br />
+            <br />
+        </nav>
+        <!-- Tab panes -->
+        <div class="tab-content" style=" height:800px; margin-left19%;">
+            <div class="tab-pane active" id="home" role="tabpanel">
+                <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYjgzMDc4YWQtMGI0ZC00MTFmLWJlZTgtNTFiOTM0MGViM2FlIiwidCI6IjhmYmFhNWJmLTJlY2MtNGRjOC1iNTZiLThmOTJlMzA3ZjA3NiIsImMiOjR9"></iframe>
+            </div>
+
+            <div class="tab-pane" id="profile" role="tabpanel">
+                <iframe class="embed-responsive embed-responsive-16by9" id="powerbi"
+                        style="margin: 0 auto; width: 90%; height: 780px; "
+                        src="https://ide.dataintelligence-group.com/mapstore/#/context/huracanes/258"></iframe>
+            </div>
+
+            <div class="tab-pane" id="messages" role="tabpanel">
+                <iframe class="embed-responsive embed-responsive-16by9" id="powerbi"
+                        style="margin: 0 auto; width: 90%; height: 780px; "
+                        src="https://ide.dataintelligence-group.com/mapstore/#/context/huracanes/259"
+                        frameborder="0"></iframe>
+            </div>
+
+            <div class="tab-pane" id="settings" role="tabpanel">
+                <iframe class=" embed-responsive embed-responsive-16by9 " id="powerbi"
+                        style="margin: 0 auto; width: 90%; height: 780px;"
+                        src="https://ide.dataintelligence-group.com/mapstore/#/context/huracanes/260"
+                        frameborder="0"></iframe>
+            </div>
+
+        </div>
+    </div>
+    <footer id="bottom" data-anchor="true" class="bg-dark text-light" style="margin:0">
+        <div id="footer">
+            <section class="s_text_block pt0 pb0 bg-black" data-name="Text block">
+                <div class="container">
+                    <div class="row">
+                        <div class="pb24 col-lg-12">
+                            <h3 style="text-align: center; margin-left: 1.5em;">
+                                <b>
+                                    <br>
+                                </b>
+                            </h3>
+                        </div>
+                        <div class="s_title pb0 pt0 col-lg-12" style="text-align: center;">
+                            <h6 class="s_title_default" style="text-align: left; ">
+                                <br>
+                            </h6>
+                            <h6 class="s_title_default" style="text-align: left; ">
+                                <img class="img-fluid o_we_custom_image" src="https://prueba.dataintelligence-group.com/web/image/733/logoDataIntelligence_transparente_Blanco.png" data-original-title="" title="" aria-describedby="tooltip839260" style="width: 25%;">
+                                <br>
+                            </h6>
+                            <h6 class="s_title_default" style="text-align: left; ">
+                                <br>
+                            </h6>
+                            <h6 class="s_title_default" style="text-align: left; ">
+                                <u><font style="font-size: 18px;">DESCUBRE NUESTRO PRODUCTOS Y SERVICIOS&nbsp; &nbsp; &nbsp;&nbsp;</font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</u>
+                            </h6>
+                        </div>
+                        <div class="pt0 col-lg-2 pb0">
+                            <blockquote>
+                                <font style="font-size: 12px;">DIMENSION SOCIAL</font>
+                                <br>
+                                <font style="font-size: 12px;">SIS</font>
+                                <br>
+                                <font style="font-size: 12px;">Genero</font>
+                                <br>
+                                <font style="font-size: 12px;">DataDelitos</font>
+                                <br>
+                                <font style="font-size: 12px;">DataSalud</font>
+                                <br>
+                                <font style="font-size: 12px;">DataVivienda</font>
+                                <br>
+                                <font style="font-size: 12px;">DataEducacion</font>
+                            </blockquote>
+                            <blockquote>
+                                <font style="font-size: 12px;">DIMENSION AMBIENTAL</font>
+                                <br>
+                                <font style="font-size: 12px;">DataHidro</font>
+                                <br>
+                                <font style="font-size: 12px;">DataAgrostat</font>
+                                <br>
+                                <font style="font-size: 12px;">DataClima</font>
+                                <br>
+                                <font style="font-size: 12px;">EIACC</font>
+                                <br>
+                            </blockquote>
+                        </div>
+                        <div class="pt0 col-lg-2 pb0">
+                            <blockquote>
+                                <font style="font-size: 12px;">DIMENSION ECONOMICA</font>
+                                <br>
+                                <font style="font-size: 12px;">DataEmpresa</font>
+                                <br>
+                                <font style="font-size: 12px;">Comercio</font>
+                                <br>
+                                <font style="font-size: 12px;">Tax</font>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </blockquote>
+                            <blockquote>
+                                <font style="font-size: 12px;">DIMENSION INSTITUCIONAL</font>
+                                <br>
+                                <font style="font-size: 12px;">DataTerritorio</font>
+                                <br>
+                                <font style="font-size: 12px;">DataMunicipio</font>
+                                <br>
+                                <font style="font-size: 12px;">DataEvaluacion</font>
+                                <br>
+                                <font style="font-size: 12px;">DataElecciones</font>
+                                <br>
+                                <font style="font-size: 12px;">Global</font>
+                                <br>
+                                <font style="font-size: 12px;">ODS</font>
+                            </blockquote>
+                        </div>
+                        <div class="pt0 col-lg-2 pb0">
+                            <blockquote>
+                                <font style="font-size: 12px;">DATAINTELLIGENCE</font>
+                                <br>
+                                <font style="font-size: 12px;">Origen</font>
+                                <br>
+                                <font style="font-size: 12px;">Directivos</font>
+                                <br>
+                                <font style="font-size: 12px;">Procesos</font>
+                                <br>
+                                <font style="font-size: 12px;">EIACC</font>
+                                <br>
+                                <br>
+                                <br>
+                            </blockquote>
+                            <blockquote>
+                                <font style="font-size: 12px;">Asistencia</font>
+                                <br>
+                                <font style="font-size: 12px;">Contacto</font>
+                                <br>
+                                <font style="font-size: 12px;">Preguntas frecuentes</font>
+                            </blockquote>
+                        </div>
+                        <div class="pt0 pb0 col-lg-2">
+                            <blockquote>
+                                <font style="font-size: 12px;">SERVIVIOS</font>
+                                <br>
+                                <font style="font-size: 12px;">Personalizados</font>
+                                <br>
+                            </blockquote>
+                            <blockquote>
+                                <font style="font-size: 12px;">VENTAS</font>
+                                <br>
+                                <font style="font-size: 12px;">Modalidades</font>
+                                <br>
+                                <font style="font-size: 12px;">Plataforma</font>
+                            </blockquote>
+                        </div>
+                        <div class="pt0 pb0 col-lg-2">
+                            <blockquote>
+                                <font style="font-size: 12px;">OPORTUNIDADES</font>
+                                <br>
+                                <font style="font-size: 12px;">Empleo</font>
+                                <font style="font-size: 12px;">
+                                    <br>
+                                </font>
+                                <font style="font-size: 12px;">Inversion<br></font>
+                                <br>
+                            </blockquote>
+                            <blockquote>
+                                <font style="font-size: 12px;">TERMINOS Y CONDICIONES</font>
+                                <br>
+                                <font style="font-size: 12px;">Terminos y condiciones</font>
+                                <br>
+                                <font style="font-size: 12px;">Politicas de privacidad</font>
+                                <br>
+                                <font style="font-size: 12px;">
+                                    <br>
+                                </font>
+                            </blockquote>
+                            <p class="lead">
+                                <font style="font-size: 14px;">
+                                    <br>
+                                </font>
+                            </p>
+                            <p>
+                                <b>
+                                    <br>
+                                </b>
+                            </p>
+                            <p>
+                                <b>
+                                    <br>
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

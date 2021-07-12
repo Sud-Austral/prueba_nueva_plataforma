@@ -1,0 +1,267 @@
+﻿@using Login.Models
+@model LoginViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+
+
+    @*Normalize para adaptarse a todos los browsers
+        <link href="~/Content/normalize.min.css" rel="stylesheet" />
+    *@
+    @*icono de fontawesome menu principal *@
+    <script src="https://kit.fontawesome.com/2f08016506.js" crossorigin="anonymous"></script>
+    @*bootstrap*@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    @*Hola de estilos de esta vista solamente*@
+    <link href="~/Content/StylePagBusqueda.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header style="border:none;">
+        <div class="ruby-menu-demo-header row" style="background-color:#812429; font-family: 'MYRIADPRO-REGULAR';">
+            <!-- COMIENZO: MEGAMENU HORIZONTAL -->
+            <div class="ruby-wrapper" style="background-color:#812429; font-family:'MYRIADPRO-REGULAR'">
+                <button class="c-hamburger c-hamburger--htx visible-xs">
+                    <span>toggle menu</span>
+                </button>
+                <ul class="ruby-menu">
+
+                    <li class="ruby-active-menu-item"><a style="color:#fff !important;" href="#">Home</a></li>
+                    <li class="ruby-menu-mega-blog">
+                        <a href="#"> Recursos </a>
+
+                        <div style="height: 320px; background-image: url('../../Content/image_estadistica/fondo_submenu_emergente.jpg'); background-size: cover;  color: #fff;" class="d-flex; mb-2">
+                            <div class="d-flex; m-4 mt-5 p-2 pl-3" style="height:250px; overflow-y:scroll; background-color:transparent; padding-left:3.5% color:#fff; ">
+                                <style>
+                                    #menu {
+                                        padding: 0;
+                                        margin: 0;
+                                        border: 0;
+                                    }
+
+                                        #menu ul, li {
+                                            list-style: none;
+                                            margin: 0;
+                                            padding: 0;
+                                        }
+
+                                        #menu ul {
+                                            position: relative;
+                                            z-index: 597;
+                                            float: left;
+                                        }
+
+                                            #menu ul li {
+                                                float: left;
+                                                min-height: 1px;
+                                                line-height: 1em;
+                                                vertical-align: middle;
+                                            }
+
+                                                #menu ul li.hover,
+                                                #menu ul li:hover {
+                                                    position: relative;
+                                                    z-index: 599;
+                                                    cursor: default;
+                                                }
+
+                                            #menu ul ul {
+                                                visibility: hidden;
+                                                position: absolute;
+                                                top: 100%;
+                                                left: 0;
+                                                z-index: 598;
+                                                width: 100%;
+                                            }
+
+                                                #menu ul ul li {
+                                                    float: none;
+                                                }
+
+                                            #menu ul li:hover > ul {
+                                                visibility: visible;
+                                            }
+
+                                            #menu ul ul {
+                                                top: 0;
+                                                left: 100%;
+                                            }
+
+                                            #menu ul li {
+                                                float: none;
+                                            }
+
+                                    #menu {
+                                        width: 255px;
+                                    }
+
+                                        #menu:after, #menu ul:after {
+                                            content: '';
+                                            display: block;
+                                            clear: both;
+                                        }
+
+                                        #menu ul, #menu li {
+                                            width: 100%;
+                                        }
+
+                                        #menu li {
+                                            background: #dddddd;
+                                        }
+
+                                            #menu li:hover {
+                                                background: #f6f6f6;
+                                            }
+
+                                        #menu ul ul li {
+                                            background: #f6f6f6;
+                                        }
+
+                                            #menu ul ul li:hover {
+                                                background: #dddddd;
+                                            }
+
+                                                #menu ul ul li:hover a {
+                                                    color: #666666;
+                                                }
+
+                                            #menu ul ul li ul li {
+                                                background: #dddddd;
+                                            }
+
+                                                #menu ul ul li ul li:hover {
+                                                    background: #b7b7b7;
+                                                }
+
+                                        #menu .has-sub {
+                                            position: relative;
+                                        }
+
+                                            #menu .has-sub:after, #menu .has-sub > ul > .has-sub:hover:after {
+                                                content: '';
+                                                display: block;
+                                                width: 10px;
+                                                height: 9px;
+                                                position: absolute;
+                                                right: 5px;
+                                                top: 50%;
+                                                margin-top: -5px;
+                                            }
+
+                                        #menu .fa-angle-right {
+                                            float: right;
+                                        }
+                                </style>
+
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#test2,#test4").hover(function () {
+                                            $("#vis").css("visibility", "hidden");
+                                        }, $("#test3").hover(function () {
+                                            $("#vis").css("visibility", "visible");
+                                        }));
+                                    });
+                                </script>
+                                @{ Html.RenderAction("menuLayout", "info");}
+                            </div>
+                        </div>
+                        <span class="ruby-dropdown-toggle"></span>
+                    </li>
+
+                    <li class="ruby-menu-right">
+                        <a href="#">Acceso</a>
+                        <ul style="background:white">
+
+                            <li>
+                                <div class="col-12">
+                                    <div class="col-12">
+                                        <section id="loginForm">
+                                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                            {
+                                                //@Html.AntiForgeryToken()
+                                                <hr />
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    <div class="col-12">
+                                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "CORREO" })
+                                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-12">
+                                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "CONTRASEÑA" })
+                                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class=" col-12">
+                                                        <a href="https://serviciodashboard.azurewebsites.net/account/login" target="_blank">User</a>
+                                                        <input style="width:100%;" type="submit" value="ACCEDER" class="btn btn-primary" />
+                                                    </div>
+                                                </div>
+
+                                                <p>
+                                                    @Html.ActionLink("¿OLVIDÓ CONTRASEÑA?", "ForgotPassword", "account")
+                                                </p>
+                                                <p>
+                                                    @Html.ActionLink("REGÍSTRATE", "Register", "account")
+                                                </p>
+                                                @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                                                    <p>
+                                                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                                                    </p>*@
+                                            }
+                                        </section>
+                                    </div>
+                                </div>
+                            </li>
+                            @*  <li>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li><a href="~/account/ForgotPassword">¿OLVIDO CONTRASEÑA</a></li>
+                                <li><a href="~/account/Register">REGISTRO</a></li>
+                                <li>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Iniciar sesión" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </li>*@
+                        </ul>
+                        <span class="ruby-dropdown-toggle"></span>
+                    </li>
+                    @*REDES SOCIALES ICONOS*@
+                    @* <li class="ruby-menu-right ruby-menu-social"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>/rubymenu</span></a></li>
+
+                        <li class="ruby-menu-right ruby-menu-social"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>/rubymenu</span></a></li>
+
+                        <li class="ruby-menu-right ruby-menu-social ruby-menu-search"><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span><input type="text" name="search" placeholder="Search.."></span></a></li>
+                    *@
+                </ul>
+            </div>
+            <!-- FIN: MEGAMENU HORIZONTAL -->
+        </div>
+    </header>
+
+    @RenderBody()
+
+    @*Jquery, Popper bootstrap.min.js*@
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

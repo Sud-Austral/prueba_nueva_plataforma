@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Bienvenida";
+
+}
+<div class="jumbotron" style="background-color:transparent;padding:0;">
+    <img class="img-fluid" src="~/Images/Error/enlaceal_dashboard.jpg" style="width:100%;" />
+</div>
+<div id="image-box">
+    <div id="myframe" class="embed-responsive">
+    </div>
+</div>
+<h2>
+    Bienvenido @User.Identity.GetUserName(), para visualizar el producto que has adquirido, debes regresar al correo de confirmación de tu pedido y hacer nuevamente click en el link que te enviamos de la compra de tu producto para poder visualizarlo y poder utilizarlo. Disculpa las molestias pero este proceso es por el resguardo de nuestro producto y para poder brindarte una mejor atención.
+ </h2>
+
+    @{
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+            </ul>
+        }
+    }
+    @*
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+                </ul>
+            }
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        }*@
+

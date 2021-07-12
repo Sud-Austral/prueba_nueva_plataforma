@@ -1,0 +1,388 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index2</title>
+    <!--Meta Tags-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bundles rederizados-->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*fontawesome*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2f08016506.js" crossorigin="anonymous"></script>
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />*@
+    @*estilos*@
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    <link href="~/Content/StylePagBusqueda.css" rel="stylesheet" />
+
+    @*Titulo de la pagina*@
+    <!--<title>Resultados de Busqueda</title>-->
+    <!-- pdf descargar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        function descargarPDF(theObject) {
+            window.print()
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        @*Buscador general *@
+        <div class="container borrar">
+            <div class="row justify-content-center">
+                <div class="col-md-10 bg-light">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-8 text-center mb-2">
+                            <h4 class="tituloBuscador mb-3 font-weight-medium" style="color:black">¡Explora, busca y encuentra en todo nuestro universo de datos!</h4>
+                            <form action="~/info/PaginaBusqueda" method="get">
+                                <input class="buscador typeahead form-control" type="text" id="id" name="id" placeholder="Busqueda de palabras claves" style="border-radius:10px;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Buscador general *@
+
+        @*boton para ir atras*@
+        <div class="container">
+            <div class="row justify-content-center mb-3 borrar">
+                <div class="col-md-10">
+                    <input type="button" class="btn btn-danger btn-sm " style="border-radius: 25px; font-size: 14px; margin: 0px; width: 100px; cursor:pointer" ; onClick="history.go(-1);" name="volver atrás" value="Atrás">
+                </div>
+            </div>
+        </div>
+
+        @*fin boton para ir atras*@
+
+        <div class="container borrar">
+            <style>
+                .breadcrumb-item + .breadcrumb-item::before {
+                    content: "∙";
+                }
+            </style>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background-color:transparent;">
+                            <li class="breadcrumb-item"><a href="/info/homeOdoo">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA_id&id2=1">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR_id&id2=2">@ViewBag.Elemento.CATEGORIA.PRODUCTO.SECTOR.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA.PRODUCTO_id&id2=3">@ViewBag.Elemento.CATEGORIA.PRODUCTO.nombre</a></li>
+                            <li class="breadcrumb-item"><a href="/info/ResultadoNiveles?id=@ViewBag.Elemento.CATEGORIA_id&id2=4">@ViewBag.Elemento.CATEGORIA.nombre</a></li>
+
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+
+        @*seccion iframe grafico*@
+        <section class="contenedor-main row mr-md-2 justify-content-center">
+            <main class="col-md-10" style="border:1px solid #e6e6e6; border-radius:10px; border-top:none; max-height:590px !important;">
+                <div class="row bg-dark mb-2" style="border: 1px solid; border-top-left-radius: 10px; border-top-right-radius: 10px; max-height:83px;">
+                    <div class="col-md-1 col-2">
+                        <img class="img-fluid m-2" width="50" src="~/Content/img/Icono_dataIntelligence_Rojo.png" alt="Alternate Text" />
+                    </div>
+                    <div class="col">
+                        <p class="mt-2" style="color:#fff;">@ViewBag.Elemento.titulo</p>
+                    </div>
+                </div>
+                <!--Iframe de grafico-->
+                <div class="container">
+                    <iframe id="Imprimeme" style="width:100%; height:460px;" src="/info/dashboard?id=@ViewBag.Elemento.id">
+                    </iframe>
+                </div>
+                <div class="row quitarespacio" style="color:blue; font-size:10px;">
+                    @*boton para ver mas informacion*@
+                    <div class="col-md-2 col-sm-2 borrar">
+                        <button type="button" class="btn btn-primary pull-right" id="boton" style="margin-bottom:20px; font-size:12px;">Más información</button>
+                    </div>
+                    @*boton para descargar iframe*@
+                    <div class="col-md-1 col-2 mt-md-2 mb-md-5 ml-md-1 mr-md-1 borrar" style="border-right:1px solid #d9d9d9;">
+                        <script src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
+                        <a href="javascript:void(0);" style="text-decoration: none !important;" id="generarPDF">
+
+                            <span id="verPdf2" style="font-size:12px;" onclick="descargarPDF();" data-toggle="tooltip" data-placement="top" title="Los mapas en Mozilla no descargan correctamente">
+
+                                Ver en Pdf
+                            </span>
+                        </a>
+                    </div>
+                    <!--descargar pdf iframe-->
+                    <script type="text/javascript">
+                        $("#verPdf2").click(function () {
+
+                            /*var myIframe = document.getElementById("inlineFrameExample").contentWindow;*/
+                            var frame = document.getElementById("MyIframe");
+                            frame.style.height = "470px";
+                            frame.style.width = "1020px";
+                           /*   margin = "-40px 0px 0px - 40px!important";*/
+                            transform = "scale(.3, .3)!important";
+                            /*frame.style.Size ="Landscape";*/
+                            /* frame.style.padding = "50px";*/
+                            /* frame.style.transform = "scale(.75)!important";*/
+                            /*  frame.style.zoom = "80%";*/
+                            frame.focus();
+                            /* myIframe.print();*/
+                            frame.contentWindow.print();
+                            return false;
+                        });
+                    </script>
+                    @*Logo de DATA INTELLIGENCE PIE DEL IFRAME*@
+                    <div class="col-8 col-md-9">
+                        <div class="row d-flex " style="justify-content:flex-end;">
+                            <div class="col-5 mb-1 p-1">
+                                <img class="img-fluid " src="~/Content/img/logosDataIntelligence_creadopor.png" alt="Logo transparente" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+        @*estilos para acortar texto de la descripcion larga a 10 reglones*@
+        <section class="container-main mb-5 borrar" id="leerMas" style="display:none; background:#fff;">
+            <style>
+                .line-clamp2 {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 10;
+                    -webkit-box-orient: vertical;
+                    overflow-wrap: normal;
+                    overflow-y: hidden;
+                    width: 98%;
+                    margin: auto;
+                    font-family: sans-serif;
+                    line-height: 1.4;
+                }
+
+                    .line-clamp2:hover {
+                        -webkit-line-clamp: 100;
+                        cursor: pointer;
+                    }
+            </style>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-sm-12" style="border:2px solid #e6e6e6; border-radius:15px; ">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-10 mt-3" style="border-right:0.5px solid #e6e6e6; white-space:normal;">
+                            <p style="margin-bottom:0px !important; "><strong>Descripción:</strong></p>
+
+                            <p class='line-clamp2'>
+                                @ViewBag.ELEMENTO.descripcion_larga
+                            </p>
+
+                        </div>
+                        <div class="col-md-3 col-10" style="border-right: 0.5px solid #e6e6e6; white-space: normal;">
+                            <p class="mt-md-3 mb-md-0"><strong>Fuente de Datos:</strong></p>
+                            <p class="mb-md-1">@ViewBag.ELEMENTO.FUENTE.nombre</p>
+
+                            <p class="mb-md-1">
+                                <strong>Periodo: </strong>
+
+                                @ViewBag.ELEMENTO.TEMPORALIDAD.nombre
+                            </p>
+                            <p class="mb-md-1">
+                                <strong>@ViewBag.ELEMENTO.TERRITORIO.auxiliar:</strong>
+
+                                @ViewBag.ELEMENTO.TERRITORIO.nombre
+
+                            </p>
+                            <p class="mb-md-1">
+                                <strong>País:</strong> Chile-
+                                @ViewBag.ELEMENTO.TERRITORIO.iso_pais
+                            </p>
+
+
+                            <p class="mb-md-1"><Strong>Unidad de Medida:</Strong></p>
+                            <p style="white-space: normal;">@ViewBag.ELEMENTO.UNIDAD_MEDIDA1.nombre (@ViewBag.ELEMENTO.UNIDAD_MEDIDA1.descripcion)</p>
+                        </div>
+
+                        <div class="col-md-5 col-10">
+                            <p class="mt-md-3"><strong>Ver más información</strong></p>
+                            <div class="row justify-content-center mb-md-3">
+                                <div class="col-md-5 col-10 text-center">
+                                    <a href="https://dataintelligence.store/collections">
+                                        <img class="img-fluid mb-4" src="~/Content/image_UsuarioIndex/icono_informeinteractivo_AZUL.png" />
+                                        <button class="btn btn-danger" data-backdrop="True" style="font-size: 12px; width: 165px; border-radius: 25px; margin-left: 5px;">
+                                            Ver Informe Interactivo
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-md-5 col-10 text-center">
+                                    <a href="https://dataintelligence.store/collections">
+                                        <img class="img-fluid mb-4 " src="~/Content/image_UsuarioIndex/icono_reporte360_VERDE.png" />
+                                        <button class="btn btn-danger" data-backdrop="True" style="font-size:12px; width:165px; border-radius:25px;margin-left:5px;">
+                                            Ver Reporte 360°
+                                        </button>
+                                    </a>
+                                </div>
+                                @*estilos para cortar los tags en 3 filas y ocultar los demas con la clase line-clam *@
+                                <style>
+                                    .line-clamp {
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 3;
+                                        -webkit-box-orient: vertical;
+                                        overflow-wrap: break-word;
+                                        overflow-y: hidden;
+                                        width: 98%;
+                                        margin: auto;
+                                        font-family: sans-serif;
+                                        line-height: 1.4;
+                                    }
+
+                                        .line-clamp:hover {
+                                            -webkit-line-clamp: 100;
+                                            cursor: pointer;
+                                        }
+                                </style>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <p class="mt-md-3 mb-md-1"><strong>Tags:</strong></p>
+                                        <p id="tagsGrafico" class='line-clamp'>@ViewBag.ELEMENTO.tags</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+
+    <div id="tresRelacionados" class="borrar">
+
+    </div>
+    <!--seccion de suscripciones-->
+    <div class="container-fluid text-center borrar" style=" background-image: url('/Content/img/Promociones/imagenpromocion_fondo.jpg');padding-bottom:40px; background-size:cover;">
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <h3 style="color:#fff; padding:40px 0px;">
+                    ¡Imagina toda la información pública
+                    de un país en una sola plataforma!
+                </h3>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <img class="img-fluid" src="~/Content/image_estadistica/imagenpromocion_1.1.png" alt="100%x280" />
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center borrar" style=" background-color: black;padding-bottom:40px; background-size:cover;">
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <h3 style="color:#fff; padding:40px 0px; margin-bottom:10px;">
+                    ¡Y para los que necesitan más información!
+                </h3>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-4" style="padding-left:35%; padding-right:35%">
+            <div class="col-12">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_2.png" />
+            </div>
+        </div>
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3.png" />
+            </div>
+        </div>
+        <div class="row mb-1" style="padding-left:20%; padding-right:20%">
+            <div class="col-12">
+                <h3 style="color:#fff; padding:40px 0px;">
+                    La suscripción anual Cuenta Profesional fue diseñada especialmente para potenciar las investigaciones, proyectos o planificaciones de quienes requieren una mayor cantidad de información.
+
+                </h3>
+            </div>
+        </div>
+        <div class="row mb-4" style="padding-left:20%; padding-right:20%">
+            <h3 style="color:#009fcf">
+                INCLUYE
+            </h3>
+            <div class="col-md-3 col-10">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_1.png" />
+            </div>
+            <div class="col-md-3 col-10">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_2.png" />
+            </div>
+            <div class="col-md-3 col-10">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_3.png" />
+            </div>
+            <div class="col-md-3 col-10">
+                <img class="img-fluid" src="~/Content/img/Promociones/imagenpromocion_3_4.png" />
+            </div>
+        </div>
+        <div class="row" style="padding-left:20%; padding-right:20%">
+            <div class="col-6" style="border-right:0.5px solid #b5a7a7;font-size:9px;text-align:right;">
+                <span style="color:white; font-size:18px;">USD</span>
+                <span style="color:red; font-size:22px;">$35</span>
+                <br />
+                <span style="color:white; font-size:18px;"> mensuales</span>
+            </div>
+            <div class="col-md-6" style="text-align:left;">
+                <a href="https://dataintelligence.store/products/avance-del-covid-19-gt" target="_blank" class="btn btn-danger btn-sm mt-2 text-left enlace" style="border-radius:20px; font-size:16px;">
+                    Adquirir
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="carruselRelacionados" class="borrar">
+    </div>
+    <!--Script de ocultar texto-->
+    <script src="~/Scripts/OcultarBoton.js"></script>
+    <script src="~/Scripts/Index2.js"></script>
+    <script>
+        tresRelacionados(@ViewBag.Elemento.CATEGORIA_id);
+        carruselRelacionados(@ViewBag.Elemento.CATEGORIA.PRODUCTO_id);
+    </script>
+    @*<h1>@ViewBag.Elemento.CATEGORIA_id</h1>*@
+
+    
+    <script>
+        $(".line-clamp").text($(".line-clamp").text().split(",").join(", "));
+        function construirEstructura(Concepto) {
+            Concepto = Concepto.trim();
+            return '<a href="/info/PaginaBusqueda?id=' + Concepto + '">' + Concepto + '</a>';
+
+        }
+        //var lista = [1, 2, 3, 4]
+        //lista.map(alert);
+        function estructura() {
+            // En esta linea, se transforma el texto del elemento #Gustavo en una lista separando el String por ,
+            var lista = $("#tagsGrafico").text().split(",") //["hola1", "hola2", "hola3"]
+            // A cada elemento de la lista se le aplioca la funcion construirEstructura
+            // La funcion construirEstructura toma un elemento y devuelve un elemento link (en este caso <a>)
+            var listaEstructurada = lista.map(construirEstructura)
+            // Esta variable vuelve a unir toda la lista en un solo String
+            var salida = listaEstructurada.join(", ")
+            // Setea el contenido del elemento #Gustavo con el String creado anteriormente
+            $("#tagsGrafico").html(salida)
+            return salida;
+        }
+        estructura();
+    </script>
+    <link href="~/Content/Estilos/grafico.css" rel="stylesheet" />
+    <div class="container page " style="display:none;" id="grafico2">
+        <iframe id='inlineFrameExample2' class="borrar" width="1050" height="460" src="/info/dashboard?id=@ViewBag.Elemento.id">
+        </iframe>
+    </div>
+</body>
+</html>

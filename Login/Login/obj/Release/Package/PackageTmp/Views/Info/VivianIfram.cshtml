@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VivianIfram</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <link href="~/Content/VivianIframe.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <div style="width:100%; height:460px; border:1px solid red;" >
+        <iframe id='inlineFrameExample' height="460" width="1050" src="https://analytics.zoho.com/open-view/2395394000006351057?ZOHO_CRITERIA=%22Trasposicion_4.10%22.%22Cod_regi%C3%B3n%22%20%3D%2013"></iframe>
+    </div>
+    <button onclick="imprimir()">Imprimir pantalla</button>
+    <script>
+        function imprimir() {
+            window.print();
+        }
+    </script>
+
+
+    <button onclick="window.print()">Imprimir pantalla con otro ejemplo</button>
+
+
+    <input type="button" value="Imprimir esta página" οnclick="printpage ()" />
+    <div> Contenido </div>
+    <script>
+        function printpage() {
+            window.print()
+        }
+    </script>
+
+    @*<div class="container">
+            <iframe id='inlineFrameExample' style="width:100%; height:460px;" src="https://analytics.zoho.com/open-view/2395394000006351057?ZOHO_CRITERIA=%22Trasposicion_4.10%22.%22Cod_regi%C3%B3n%22%20%3D%2013"></iframe>
+        </div>
+        <a href="inlineFrameExample" download="grafica.pdf">Download Text</a>
+        <a href="javascript:void(0);" style="text-decoration: none !important;">
+            <span id="verPdf2" style="font-size:12px;">Ver en Pdf</span>
+        </a>*@
+    @*<script type="text/javascript">
+            $("#verPdf2").click(function () {
+                alert("Hola");
+                var myIframe = document.getElementById("inlineFrameExample").contentWindow;
+                myIframe.focus();
+                myIframe.print();
+                return false;
+            });
+        </script>*@
+</body>
+</html>

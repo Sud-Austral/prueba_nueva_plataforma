@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{
+    Layout = null;
+}
+
+
+<html>
+<head>
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="~/Content/EstilosPopUp.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+                        url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Datos/" + "@ViewBag.URL";
+                        //alert(url);
+                        //url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/Nuevo%20documento%20de%20texto.csv";
+                        //alert(url);
+                        //url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/paltas3.csv";
+                        $.get("/Grafico/GraficoString?id=@ViewBag.id", function (data) {
+                        //$.get(url, function (data) {
+
+                            var lines = data.split("\n");
+                            var a = lines[0].split(",");
+
+                            var datos = [a];
+                            for (var i = 1; i < lines.length; i++) {
+                                try {
+                                    var listAux = [];
+                                    var fila = lines[i].split(",");
+                                    listAux.push(fila[0]);
+                                    for (var j = 1; j < fila.length; j++) {
+
+                                        listAux.push(Number.parseFloat(fila[j]));
+                                    }
+                                    //alert(listAux);
+                                    if (a.length == listAux.length) {
+                                        datos.push(listAux);
+                                    }
+
+                                } catch (error) {
+                                    //console.error(error);
+                                    // expected output: ReferenceError: nonExistentFunction is not defined
+                                    // Note - error messages will vary depending on browser
+                                }
+
+                            }
+
+                            //var datos = [a];
+
+                            // Load the Visualization API and the corechart package.
+                            google.charts.load('current', {'packages': ['corechart']});
+
+                            // Set a callback to run when the Google Visualization API is loaded.
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable(datos);
+
+                                var options = {
+                                    title: 'Data Intelligence',
+                                    //hAxis: { title: 'Age', minValue: 0, maxValue: 15 },
+                                    //vAxis: { title: 'Weight', minValue: 0, maxValue: 15 },
+                                    legend: 'none'
+                                };
+
+                                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+                                chart.draw(data, options);
+                            }
+
+
+                    });
+
+                    window.addEventListener("resize", function () {
+                    // tu código aquí
+                     url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/" + "@ViewBag.URL";
+                        //alert(url);
+                        //url = "https://raw.githubusercontent.com/Sud-Austral/MPG/main/Prueba/Nuevo%20documento%20de%20texto.csv";
+                        //alert(url);
+                        //$.get(url, function (data) {
+                        $.get("/Grafico/GraficoString?id=@ViewBag.id", function (data) {
+                            var lines = data.split("\n");
+                            var a = lines[0].split(",");
+
+                            var datos = [a];
+                            for (var i = 1; i < lines.length; i++) {
+                                try {
+                                    var listAux = [];
+                                    var fila = lines[i].split(",");
+                                    listAux.push(fila[0]);
+                                    for (var j = 1; j < fila.length; j++) {
+
+                                        listAux.push(Number.parseFloat(fila[j]));
+                                    }
+                                    //alert(listAux);
+                                    if (a.length == listAux.length) {
+                                        datos.push(listAux);
+                                    }
+
+                                } catch (error) {
+                                    //console.error(error);
+                                    // expected output: ReferenceError: nonExistentFunction is not defined
+                                    // Note - error messages will vary depending on browser
+                                }
+
+                            }
+
+                            //var datos = [a];
+
+                            // Load the Visualization API and the corechart package.
+                            google.charts.load('current', {'packages': ['corechart']});
+
+                            // Set a callback to run when the Google Visualization API is loaded.
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable(datos);
+
+                                var options = {
+                                    title: 'Data Intelligence',
+                                    //hAxis: { title: 'Age', minValue: 0, maxValue: 15 },
+                                    //vAxis: { title: 'Weight', minValue: 0, maxValue: 15 },
+                                    legend: 'none'
+                                };
+
+                                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+                                chart.draw(data, options);
+                            }
+
+
+                        });
+
+
+                    });
+
+    </script>
+</head>
+
+<body>
+    <style>
+        #chart_div {
+            width: 100vw !important;
+            /* min-height: 450px;*/
+            height: 100vh;
+            margin-left: -14px !important;
+        }
+
+        .row {
+            margin: 0 !important;
+        }
+        .marca-de-agua {
+            background-image: url('../../Content/iconos_PopUp/bloggif_6050eb8030715.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-position: 120px 250px;
+        }
+
+        .agua {
+            opacity: 0.7;
+        }
+
+
+
+
+    </style>
+
+
+    <div id="chart_wrap" class="row marca-de-agua ">
+        <div class="col agua " id="chart_div"></div>
+    </div>
+
+
+
+
+
+</body>
+        </html>
+    
